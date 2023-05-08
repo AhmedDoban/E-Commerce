@@ -166,3 +166,48 @@ export const TodaysBestDeals_data = [
     TodaysBestDeals_cat_name: "electronic",
   },
 ];
+/****************************    Weekly Popular Products *****************************************************/
+export const Weekly_Popular_Products = [
+  {
+    Weekly_Popular_Products_name: "Gaming HeadPhone",
+    Weekly_Popular_Products_img: require("./assets/imgs/Popular Products/PopularProducts(1).png"),
+    Weekly_Popular_Products_price: "239",
+    Weekly_Popular_Products_des:
+      "Table with air purifier, stained veneer/black",
+  },
+  {
+    Weekly_Popular_Products_name: "Base Camp Duffel M",
+    Weekly_Popular_Products_img: require("./assets/imgs/Popular Products/PopularProducts(2).png"),
+    Weekly_Popular_Products_price: "239",
+    Weekly_Popular_Products_des:
+      "Table with air purifier, stained veneer/black",
+  },
+  {
+    Weekly_Popular_Products_name: "Tomford Watch",
+    Weekly_Popular_Products_img: require("./assets/imgs/Popular Products/PopularProducts(3).png"),
+    Weekly_Popular_Products_price: "159",
+    Weekly_Popular_Products_des:
+      "Table with air purifier, stained veneer/black",
+  },
+  {
+    Weekly_Popular_Products_name: "Cabin",
+    Weekly_Popular_Products_img: require("./assets/imgs/Popular Products/PopularProducts(4).png"),
+    Weekly_Popular_Products_price: "39",
+    Weekly_Popular_Products_des:
+      "Table with air purifier, stained veneer/black",
+  },
+  {
+    Weekly_Popular_Products_name: "Pendleton Water Bottle",
+    Weekly_Popular_Products_img: require("./assets/imgs/Popular Products/PopularProducts(5).png"),
+    Weekly_Popular_Products_price: "239",
+    Weekly_Popular_Products_des:
+      "Table with air purifier, stained veneer/black",
+  },
+  {
+    Weekly_Popular_Products_name: "Homepod mini",
+    Weekly_Popular_Products_img: require("./assets/imgs/Best Deals/BestDeals (6).png"),
+    Weekly_Popular_Products_price: "89",
+    Weekly_Popular_Products_des:
+      "Table with air purifier, stained veneer/black",
+  },
+];

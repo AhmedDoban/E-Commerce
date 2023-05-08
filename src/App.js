@@ -2,7 +2,7 @@ import { Player } from "@lottiefiles/react-lottie-player";
 import React, { lazy } from "react";
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-
+import Header from "./assets/Js/Header/Header";
 const Home = lazy(() => import("./assets/Js/Home/Home"));
 const NotFounded = lazy(() => import("./assets/Js//Not Founded/NotFounded"));
 
@@ -10,6 +10,8 @@ function App() {
   return (
     <div className="App">
       <div className="page-wrpper">
+        {/**************** Header *************************/}
+        <Header />
         <Suspense
           fallback={
             <div className="pre-loader">
@@ -25,7 +27,7 @@ function App() {
         >
           <Routes>
             <Route path="/home" element={<Home />} />
-            <Route path="/" element={<Home />} />
+            <Route exact path="/" element={<Home />} />
             <Route path="*" element={<NotFounded />} />
           </Routes>
         </Suspense>

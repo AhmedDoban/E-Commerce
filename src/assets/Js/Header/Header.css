@@ -25,6 +25,9 @@
   .info .container {
     flex-direction: column;
   }
+  .info .container .content.d-none {
+    display: none;
+  }
 }
 .info .container .content {
   position: relative;

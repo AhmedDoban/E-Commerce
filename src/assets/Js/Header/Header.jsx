@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-
-import "./Header.css";
 import { Link } from "react-router-dom";
+import "./Header.css";
 
 function Header() {
   const [Category, SetCategory] = useState(false);
@@ -15,7 +14,7 @@ function Header() {
             <i className="fa-solid fa-phone"></i>
             <p>01156526706</p>
           </div>
-          <div className="content">
+          <div className="content d-none">
             <p>Get 50% Off on Selected Items </p>
             <p> | </p>
             <p>Shop Now</p>

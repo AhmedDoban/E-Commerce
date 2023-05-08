@@ -211,3 +211,37 @@ export const Weekly_Popular_Products = [
       "Table with air purifier, stained veneer/black",
   },
 ];
+/****************************    Most Selling Products *****************************************************/
+export const Most_Selling_Product = [
+  {
+    Weekly_Popular_Products_name: "Instax Mini 11",
+    Weekly_Popular_Products_img: require("./assets/imgs/Most Selling Product/Most_Selling_Product(1).png"),
+    Weekly_Popular_Products_price: "89",
+    Weekly_Popular_Products_des: "Selfie mode and selfie mirror, Macro mode",
+  },
+  {
+    Weekly_Popular_Products_name: "Hand Watch",
+    Weekly_Popular_Products_img: require("./assets/imgs/Most Selling Product/Most_Selling_Product(2).png"),
+    Weekly_Popular_Products_price: "59",
+    Weekly_Popular_Products_des: "Citizen 650M, W-69g",
+  },
+  {
+    Weekly_Popular_Products_name: "adidas Sneakers",
+    Weekly_Popular_Products_img: require("./assets/imgs/Most Selling Product/Most_Selling_Product(3).png"),
+    Weekly_Popular_Products_price: "159",
+    Weekly_Popular_Products_des: "x Sean Wotherspoon Superstar sneakers",
+  },
+  {
+    Weekly_Popular_Products_name: "Pendleton Water Bottle",
+    Weekly_Popular_Products_img: require("./assets/imgs/Most Selling Product/Most_Selling_Product(4).png"),
+    Weekly_Popular_Products_price: "89",
+    Weekly_Popular_Products_des: "Stainless steel, Food safe, Hand wash",
+  },
+  {
+    Weekly_Popular_Products_name: "Cabin",
+    Weekly_Popular_Products_img: require("./assets/imgs/Most Selling Product/Most_Selling_Product(5).png"),
+    Weekly_Popular_Products_price: "239",
+    Weekly_Popular_Products_des:
+      "Table with air purifier, stained veneer/black",
+  },
+];

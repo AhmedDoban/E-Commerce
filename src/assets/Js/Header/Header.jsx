@@ -45,9 +45,10 @@ function Header() {
       </div>
       <div className="nav-bar">
         <div className="container">
-          <div className="content ">
+          <Link className="content " to="">
             <img src={require("../../imgs/icon.svg").default} alt="icon" />
-          </div>
+          </Link>
+
           <div className="togle-menu" onClick={() => SetTogle(!Togle)}>
             <i className="fa-solid fa-bars"></i>
           </div>

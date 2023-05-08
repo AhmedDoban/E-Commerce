@@ -12,6 +12,8 @@ import TodaysBestDeals from "./Todays Best Deals/TodaysBestDeals";
 function Home() {
   return (
     <React.Fragment>
+      {/**************** Header *************************/}
+      <Header />
       {/**************** Landing *************************/}
       <Landing />
       {/**************** Top Categories *************************/}

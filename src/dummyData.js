@@ -245,3 +245,34 @@ export const Most_Selling_Product = [
       "Table with air purifier, stained veneer/black",
   },
 ];
+/****************************    Best Selling*****************************************************/
+export const Best_Selling_Data = [
+  {
+    BestSelling_name: "Staples",
+    BestSelling_arrive_time: "Delivery with in 24 hours",
+    BestSelling_arrive_img: require("./assets/imgs/Best Selling/BestSelling(1).png"),
+    BestSelling_arrive_logo: require("./assets/imgs/Best Selling/BestSelling(11).png"),
+    BestSelling_arrive_contain: "Bag , Perfume",
+  },
+  {
+    BestSelling_name: "Now Delivery",
+    BestSelling_arrive_time: "Delivery with in 24 hours",
+    BestSelling_arrive_img: require("./assets/imgs/Best Selling/BestSelling(2).png"),
+    BestSelling_arrive_logo: require("./assets/imgs/Best Selling/BestSelling(22).png"),
+    BestSelling_arrive_contain: "Bag , Perfume",
+  },
+  {
+    BestSelling_name: "Bevmo",
+    BestSelling_arrive_time: "Delivery with in 24 hours",
+    BestSelling_arrive_img: require("./assets/imgs/Best Selling/BestSelling(3).png"),
+    BestSelling_arrive_logo: require("./assets/imgs/Best Selling/BestSelling(33).png"),
+    BestSelling_arrive_contain: "Bag , Perfume",
+  },
+  {
+    BestSelling_name: "Quicklly",
+    BestSelling_arrive_time: "Delivery with in 24 hours",
+    BestSelling_arrive_img: require("./assets/imgs/Best Selling/BestSelling(4).png"),
+    BestSelling_arrive_logo: require("./assets/imgs/Best Selling/BestSelling(44).png"),
+    BestSelling_arrive_contain: "Bag , Perfume",
+  },
+];

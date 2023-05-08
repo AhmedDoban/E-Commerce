@@ -45,6 +45,7 @@
 .lading .left h1 {
   font-size: 60px;
   color: var(--main-color);
+  font-family: "PT Sans Caption", sans-serif;
 }
 .lading .left p {
   font-size: 20px;

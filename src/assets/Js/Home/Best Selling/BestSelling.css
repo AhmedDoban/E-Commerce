@@ -12,7 +12,9 @@
   padding-bottom: var(--main-padding-bottom);
 }
 .BestSelling .container h1 {
-  font-family: "Darumadrop One", cursive;
+  font-family: "Dosis", sans-serif;
+  font-family: "Inter", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 700;
   margin-bottom: 15px;
 }

@@ -9,7 +9,12 @@ function BestSelling() {
   }, []);
   return (
     <React.Fragment>
-      <div className="BestSelling">
+      <div
+        className="BestSelling"
+        data-aos="fade-up"
+        data-aos-offset="300"
+        data-aos-easing="ease-in-out"
+      >
         <div className="container">
           <h1>Best Selling Store</h1>
           <div className="cards-container">

@@ -12,7 +12,9 @@
   padding-bottom: var(--main-padding-bottom);
 }
 .TopCategories .container h1 {
-  font-family: "Darumadrop One", cursive;
+  font-family: "Dosis", sans-serif;
+  font-family: "Inter", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 700;
 }
 .TopCategories .container .cards-container {
@@ -55,7 +57,10 @@
   padding: 10px;
   margin: 0 auto;
   text-align: center;
-  font-family: "Darumadrop One", cursive;
+
+  font-family: "Dosis", sans-serif;
+  font-family: "Inter", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 700;
 }
 

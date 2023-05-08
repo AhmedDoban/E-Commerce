@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./TopCategories.css";
+import { Categories_data } from "../../../../dummyData";
 
 function TopCategories() {
+  const [Categories, SetCategorie] = useState([]);
+  useEffect(() => {
+    SetCategorie(Categories_data);
+  }, []);
+
   return (
     <React.Fragment>
       <div
@@ -13,30 +19,12 @@ function TopCategories() {
         <div className="container">
           <h1>Shop Our Top Categories</h1>
           <div className="cards-container">
-            <div className="card">
-              <h5>Furniture</h5>
-              <img src={require("../../../imgs/Cards/Card(1).png")} alt="" />
-            </div>
-            <div className="card">
-              <h5>Hand Bag</h5>
-              <img src={require("../../../imgs/Cards/Card(2).png")} alt="" />
-            </div>
-            <div className="card">
-              <h5>Books</h5>
-              <img src={require("../../../imgs/Cards/Card(3).png")} alt="" />
-            </div>
-            <div className="card">
-              <h5>Tech</h5>
-              <img src={require("../../../imgs/Cards/Card(4).png")} alt="" />
-            </div>
-            <div className="card">
-              <h5>Sneakers</h5>
-              <img src={require("../../../imgs/Cards/Card(5).png")} alt="" />
-            </div>
-            <div className="card">
-              <h5>Travel</h5>
-              <img src={require("../../../imgs/Cards/Card(6).png")} alt="" />
-            </div>
+            {Categories.map((Categorie) => (
+              <div className="card">
+                <h5>{Categorie.Categorie_name}</h5>
+                <img src={Categorie.Categorie_img} alt="" />
+              </div>
+            ))}
           </div>
         </div>
       </div>

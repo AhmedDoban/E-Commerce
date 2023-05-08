@@ -19,8 +19,8 @@ function TopCategories() {
         <div className="container">
           <h1>Shop Our Top Categories</h1>
           <div className="cards-container">
-            {Categories.map((Categorie) => (
-              <div className="card">
+            {Categories.map((Categorie, index) => (
+              <div className="card" key={index}>
                 <h5>{Categorie.Categorie_name}</h5>
                 <img src={Categorie.Categorie_img} alt="" />
               </div>

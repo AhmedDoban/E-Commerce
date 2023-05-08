@@ -1,6 +1,6 @@
-import { Player } from "@lottiefiles/react-lottie-player";
 import React, { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
+import Loading from "./assets/Js/Components/Loading/Loading";
 const Home = lazy(() => import("./assets/Js/Home/Home"));
 const NotFounded = lazy(() => import("./assets/Js//Not Founded/NotFounded"));
 
@@ -8,19 +8,7 @@ function App() {
   return (
     <div className="App">
       <div className="page-wrpper">
-        <Suspense
-          fallback={
-            <div className="pre-loader">
-              <Player
-                autoplay={true}
-                loop={true}
-                controls={false}
-                src="https://assets10.lottiefiles.com/packages/lf20_p8bfn5to.json"
-                className="palyer"
-              />
-            </div>
-          }
-        >
+        <Suspense fallback={<Loading />}>
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route exact path="/" element={<Home />} />

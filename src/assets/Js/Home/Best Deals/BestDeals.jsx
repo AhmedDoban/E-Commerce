@@ -1,16 +1,19 @@
-import React, { useState } from "react";
-// import Swiper core and required modules
+import React, { useState, useEffect } from "react";
+import { BestDeals_Data } from "../../../../dummyData";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
-
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/scrollbar";
 import "./BestDeals.css";
 
 function BestDeals() {
   const [SlideProgress, SetSlideProgress] = useState(1);
+  const [BestDeals, SetBestDeals] = useState([]);
+
+  useEffect(() => {
+    SetBestDeals(BestDeals_Data);
+  }, []);
+
   return (
     <React.Fragment>
       <div className="spikes-reverced"></div>
@@ -38,162 +41,31 @@ function BestDeals() {
             spaceBetween={10}
             onSlideChange={(e) => SetSlideProgress(e.progress * 100)}
           >
-            <SwiperSlide>
-              <div className="card">
-                <div className="header">
-                  <img
-                    src={require("../../../imgs/Best Deals/BestDeals (1).png")}
-                    alt=""
-                  />
-                  <i className="fa-regular fa-heart"></i>
-                </div>
-                <div className="footer">
-                  <div className="info">
-                    <span>Homepod mini</span>
-                    <span className="Price">239</span>
+            {BestDeals.map((BestDeal, index) => (
+              <SwiperSlide key={index}>
+                <div className="card">
+                  <div className="header">
+                    <img src={BestDeal.BestDeals_img} alt="" />
+                    <i className="fa-regular fa-heart"></i>
                   </div>
-                  <p>Table with air purifier, stained veneer/black</p>
-                  <div className="stars">
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
+                  <div className="footer">
+                    <div className="info">
+                      <span>{BestDeal.BestDeals_name}</span>
+                      <span className="Price">{BestDeal.BestDeals_price}</span>
+                    </div>
+                    <p>{BestDeal.BestDeals_des}</p>
+                    <div className="stars">
+                      <i className="fa-solid fa-star"></i>
+                      <i className="fa-solid fa-star"></i>
+                      <i className="fa-solid fa-star"></i>
+                      <i className="fa-solid fa-star"></i>
+                      <i className="fa-solid fa-star"></i>
+                    </div>
+                    <button>Add To Cart</button>
                   </div>
-                  <button>Add To Cart</button>
                 </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="card">
-                <div className="header">
-                  <img
-                    src={require("../../../imgs/Best Deals/BestDeals (2).png")}
-                    alt=""
-                  />
-                  <i className="fa-regular fa-heart"></i>
-                </div>
-                <div className="footer">
-                  <div className="info">
-                    <span>Homepod mini</span>
-                    <span className="Price">99</span>
-                  </div>
-                  <p>Table with air purifier, stained veneer/black</p>
-                  <div className="stars">
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                  </div>
-                  <button>Add To Cart</button>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="card">
-                <div className="header">
-                  <img
-                    src={require("../../../imgs/Best Deals/BestDeals (3).png")}
-                    alt=""
-                  />
-                  <i className="fa-regular fa-heart"></i>
-                </div>
-                <div className="footer">
-                  <div className="info">
-                    <span>Homepod mini</span>
-                    <span className="Price">159</span>
-                  </div>
-                  <p>Table with air purifier, stained veneer/black</p>
-                  <div className="stars">
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                  </div>
-                  <button>Add To Cart</button>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="card">
-                <div className="header">
-                  <img
-                    src={require("../../../imgs/Best Deals/BestDeals (4).png")}
-                    alt=""
-                  />
-                  <i className="fa-regular fa-heart"></i>
-                </div>
-                <div className="footer">
-                  <div className="info">
-                    <span>Homepod mini</span>
-                    <span className="Price">239</span>
-                  </div>
-                  <p>Table with air purifier, stained veneer/black</p>
-                  <div className="stars">
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                  </div>
-                  <button>Add To Cart</button>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="card">
-                <div className="header">
-                  <img
-                    src={require("../../../imgs/Best Deals/BestDeals (5).png")}
-                    alt=""
-                  />
-                  <i className="fa-regular fa-heart"></i>
-                </div>
-                <div className="footer">
-                  <div className="info">
-                    <span>Homepod mini</span>
-                    <span className="Price">239</span>
-                  </div>
-                  <p>Table with air purifier, stained veneer/black</p>
-                  <div className="stars">
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                  </div>
-                  <button>Add To Cart</button>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="card">
-                <div className="header">
-                  <img
-                    src={require("../../../imgs/Best Deals/BestDeals (6).png")}
-                    alt=""
-                  />
-                  <i className="fa-regular fa-heart"></i>
-                </div>
-                <div className="footer">
-                  <div className="info">
-                    <span>Homepod mini</span>
-                    <span className="Price">239</span>
-                  </div>
-                  <p>Table with air purifier, stained veneer/black</p>
-                  <div className="stars">
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                  </div>
-                  <button>Add To Cart</button>
-                </div>
-              </div>
-            </SwiperSlide>
+              </SwiperSlide>
+            ))}
             <div className="progress">
               <span
                 className="propress-per"

@@ -1,12 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./TodaysBestDeals.css";
+import { TodaysBestDeals_data } from "../../../../dummyData";
 
 function TodaysBestDeals() {
-  const [Chosen, SetChosen] = useState("Gadgets");
+  const [Chosen, SetChosen] = useState("");
+  const [BestDeals, SetBestDeals] = useState([]);
+  const [filters, setFilters] = useState([]);
+
+  useEffect(() => {
+    SetBestDeals(TodaysBestDeals_data);
+    if (TodaysBestDeals_data.length > 0) {
+      const Data = [];
+      TodaysBestDeals_data.map((item) => {
+        Data.push(item.TodaysBestDeals_cat_name);
+        const data = new Set(Data);
+        setFilters([...data]);
+      });
+    }
+  }, []);
 
   const HandleFilter = (data) => {
     SetChosen(data);
   };
+
   return (
     <React.Fragment>
       <div
@@ -20,295 +36,55 @@ function TodaysBestDeals() {
           <ul className="nav-menu">
             <li>
               <span
-                className={Chosen === "Gadgets" ? "active" : ""}
-                onClick={() => HandleFilter("Gadgets")}
+                className={Chosen === "" ? "active" : ""}
+                onClick={() => HandleFilter("")}
               >
-                Gadgets
+                All
               </span>
             </li>
-            <li>
-              <span
-                className={Chosen === "Fashion" ? "active" : ""}
-                onClick={() => HandleFilter("Fashion")}
-              >
-                Fashion
-              </span>
-            </li>
-            <li>
-              <span
-                className={Chosen === "Toys" ? "active" : ""}
-                onClick={() => HandleFilter("Toys")}
-              >
-                Toys
-              </span>
-            </li>
-            <li>
-              <span
-                className={Chosen === "Education" ? "active" : ""}
-                onClick={() => HandleFilter("Education")}
-              >
-                Education
-              </span>
-            </li>
-            <li>
-              <span
-                className={Chosen === "Beauty" ? "active" : ""}
-                onClick={() => HandleFilter("Beauty")}
-              >
-                Beauty
-              </span>
-            </li>
-            <li>
-              <span
-                className={Chosen === "Fitness" ? "active" : ""}
-                onClick={() => HandleFilter("Fitness")}
-              >
-                Fitness
-              </span>
-            </li>
-            <li>
-              <span
-                className={Chosen === "Furniture" ? "active" : ""}
-                onClick={() => HandleFilter("Furniture")}
-              >
-                Furniture
-              </span>
-            </li>
-            <li>
-              <span
-                className={Chosen === "Sneakers" ? "active" : ""}
-                onClick={() => HandleFilter("Sneakers")}
-              >
-                Sneakers
-              </span>
-            </li>
+            {filters.map((Catego, index) => (
+              <li key={index}>
+                <span
+                  className={Chosen === Catego ? "active" : ""}
+                  onClick={() => HandleFilter(Catego)}
+                >
+                  {Catego}
+                </span>
+              </li>
+            ))}
           </ul>
           {/************************** Cards *********************************/}
           <div className="cards-container">
-            <div
-              className="card"
-              data-aos="zoom-in"
-              data-aos-easing="ease-in-out"
-            >
-              <div className="header">
-                <img
-                  src={require("../../../imgs/TodaysBestDeals/TodaysBestDeals(1).png")}
-                  alt=""
-                />
-                <i className="fa-regular fa-heart"></i>
-              </div>
-              <div className="footer">
-                <div className="info">
-                  <span>Laptop sleeve MacBook</span>
-                  <span className="Price">59</span>
+            {BestDeals.filter((item) =>
+              Chosen === "" ? item : item.TodaysBestDeals_cat_name === Chosen
+            ).map((item, index) => (
+              <div
+                className="card"
+                data-aos="zoom-in"
+                data-aos-easing="ease-in-out"
+                key={index}
+              >
+                <div className="header">
+                  <img src={item.TodaysBestDeals_img} alt="" />
+                  <i className="fa-regular fa-heart"></i>
                 </div>
-                <p>Table with air purifier, stained veneer/black</p>
-                <div className="stars">
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
+                <div className="footer">
+                  <div className="info">
+                    <span>{item.TodaysBestDeals_name}</span>
+                    <span className="Price">{item.TodaysBestDeals_price}</span>
+                  </div>
+                  <p>{item.TodaysBestDeals_des}</p>
+                  <div className="stars">
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                  </div>
+                  <button>Add To Cart</button>
                 </div>
-                <button>Add To Cart</button>
               </div>
-            </div>
-            <div
-              className="card"
-              data-aos="zoom-in"
-              data-aos-easing="ease-in-out"
-            >
-              <div className="header">
-                <img
-                  src={require("../../../imgs/TodaysBestDeals/TodaysBestDeals(2).png")}
-                  alt=""
-                />
-                <i className="fa-regular fa-heart"></i>
-              </div>
-              <div className="footer">
-                <div className="info">
-                  <span>AirPods Max</span>
-                  <span className="Price">559</span>
-                </div>
-                <p>Table with air purifier, stained veneer/black</p>
-                <div className="stars">
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                </div>
-                <button>Add To Cart</button>
-              </div>
-            </div>
-            <div
-              className="card"
-              data-aos="zoom-in"
-              data-aos-easing="ease-in-out"
-            >
-              <div className="header">
-                <img
-                  src={require("../../../imgs/TodaysBestDeals/TodaysBestDeals(3).png")}
-                  alt=""
-                />
-                <i className="fa-regular fa-heart"></i>
-              </div>
-              <div className="footer">
-                <div className="info">
-                  <span>Flower Laptop Sleeve</span>
-                  <span className="Price">39</span>
-                </div>
-                <p>Table with air purifier, stained veneer/black</p>
-                <div className="stars">
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                </div>
-                <button>Add To Cart</button>
-              </div>
-            </div>
-            <div
-              className="card"
-              data-aos="zoom-in"
-              data-aos-easing="ease-in-out"
-            >
-              <div className="header">
-                <img
-                  src={require("../../../imgs/TodaysBestDeals/TodaysBestDeals(4).png")}
-                  alt=""
-                />
-                <i className="fa-regular fa-heart"></i>
-              </div>
-              <div className="footer">
-                <div className="info">
-                  <span>Supreme Water Bottle</span>
-                  <span className="Price">19</span>
-                </div>
-                <p>Table with air purifier, stained veneer/black</p>
-                <div className="stars">
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                </div>
-                <button>Add To Cart</button>
-              </div>
-            </div>
-            <div
-              className="card"
-              data-aos="zoom-in"
-              data-aos-easing="ease-in-out"
-            >
-              <div className="header">
-                <img
-                  src={require("../../../imgs/TodaysBestDeals/TodaysBestDeals(5).png")}
-                  alt=""
-                />
-                <i className="fa-regular fa-heart"></i>
-              </div>
-              <div className="footer">
-                <div className="info">
-                  <span>Laptop sleeve MacBook</span>
-                  <span className="Price"> 59</span>
-                </div>
-                <p>Table with air purifier, stained veneer/black</p>
-                <div className="stars">
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                </div>
-                <button>Add To Cart</button>
-              </div>
-            </div>
-            <div
-              className="card"
-              data-aos="zoom-in"
-              data-aos-easing="ease-in-out"
-            >
-              <div className="header">
-                <img
-                  src={require("../../../imgs/TodaysBestDeals/TodaysBestDeals(6).png")}
-                  alt=""
-                />
-                <i className="fa-regular fa-heart"></i>
-              </div>
-              <div className="footer">
-                <div className="info">
-                  <span>Macbook pro 13</span>
-                  <span className="Price">1099</span>
-                </div>
-                <p>Table with air purifier, stained veneer/black</p>
-                <div className="stars">
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                </div>
-                <button>Add To Cart</button>
-              </div>
-            </div>
-            <div
-              className="card"
-              data-aos="zoom-in"
-              data-aos-easing="ease-in-out"
-            >
-              <div className="header">
-                <img
-                  src={require("../../../imgs/TodaysBestDeals/TodaysBestDeals(7).png")}
-                  alt=""
-                />
-                <i className="fa-regular fa-heart"></i>
-              </div>
-              <div className="footer">
-                <div className="info">
-                  <span>HomePod mini</span>
-                  <span className="Price">59</span>
-                </div>
-                <p>Table with air purifier, stained veneer/black</p>
-                <div className="stars">
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                </div>
-                <button>Add To Cart</button>
-              </div>
-            </div>
-            <div
-              className="card"
-              data-aos="zoom-in"
-              data-aos-easing="ease-in-out"
-            >
-              <div className="header">
-                <img
-                  src={require("../../../imgs/TodaysBestDeals/TodaysBestDeals(8).png")}
-                  alt=""
-                />
-                <i className="fa-regular fa-heart"></i>
-              </div>
-              <div className="footer">
-                <div className="info">
-                  <span>Ipad Mini</span>
-                  <span className="Price">539</span>
-                </div>
-                <p>Table with air purifier, stained veneer/black</p>
-                <div className="stars">
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                </div>
-                <button>Add To Cart</button>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

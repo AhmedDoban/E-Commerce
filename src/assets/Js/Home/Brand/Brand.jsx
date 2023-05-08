@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Brands_data } from "../../../../dummyData";
 import "./Brand.css";
+import LoadingFetchData from './../../Components/Loading Fetch Data/LoadingFetchData';
 
 function Brand() {
+  const [Brands, SetBrands] = useState([]);
+  useEffect(() => {
+    SetBrands(Brands_data);
+  }, []);
+  
   return (
     <React.Fragment>
       <div
@@ -11,105 +18,26 @@ function Brand() {
         data-aos-easing="ease-in-out"
       >
         <div className="container">
-          <h1>Choose By Brand</h1>
-          <div className="cards-container">
-            <div className="card">
-              <div className="left">
-                <img
-                  src={require("../../../imgs/Brand/Brand(1).png")}
-                  alt="Brand "
-                />
+          {Brands.length > 0 ? (
+            <React.Fragment>
+              <h1>Choose By Brand</h1>
+              <div className="cards-container">
+                {Brands.map((Brand, index) => (
+                  <div className="card" key={index}>
+                    <div className="left">
+                      <img src={Brand.Brands_img} alt="Brand " />
+                    </div>
+                    <div className="right">
+                      <h1>{Brand.Brands_name}</h1>
+                      <p>{Brand.Brands_Des}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="right">
-                <h1>Target</h1>
-                <p>Delivery with in 24 hours</p>
-              </div>
-            </div>
-            <div className="card">
-              <div className="left">
-                <img
-                  src={require("../../../imgs/Brand/Brand(2).png")}
-                  alt="Brand "
-                />
-              </div>
-              <div className="right">
-                <h1>Grocery outlet</h1>
-                <p>Delivery with in 24 hours</p>
-              </div>
-            </div>
-            <div className="card">
-              <div className="left">
-                <img
-                  src={require("../../../imgs/Brand/Brand(3).png")}
-                  alt="Brand "
-                />
-              </div>
-              <div className="right">
-                <h1>Bevmo!</h1>
-                <p>Delivery with in 24 hours</p>
-              </div>
-            </div>
-            <div className="card">
-              <div className="left">
-                <img
-                  src={require("../../../imgs/Brand/Brand(4).png")}
-                  alt="Brand "
-                />
-              </div>
-              <div className="right">
-                <h1>Sprouts</h1>
-                <p>Delivery with in 24 hours</p>
-              </div>
-            </div>
-            <div className="card">
-              <div className="left">
-                <img
-                  src={require("../../../imgs/Brand/Brand(5).png")}
-                  alt="Brand "
-                />
-              </div>
-              <div className="right">
-                <h1>Mollie stones</h1>
-                <p>Delivery with in 24 hours</p>
-              </div>
-            </div>
-            <div className="card">
-              <div className="left">
-                <img
-                  src={require("../../../imgs/Brand/Brand(6).png")}
-                  alt="Brand "
-                />
-              </div>
-              <div className="right">
-                <h1>Container Store</h1>
-                <p>Delivery with in 24 hours</p>
-              </div>
-            </div>
-            <div className="card">
-              <div className="left">
-                <img
-                  src={require("../../../imgs/Brand/Brand(7).png")}
-                  alt="Brand "
-                />
-              </div>
-              <div className="right">
-                <h1>Staples</h1>
-                <p>Delivery with in 24 hours</p>
-              </div>
-            </div>
-            <div className="card">
-              <div className="left">
-                <img
-                  src={require("../../../imgs/Brand/Brand(8).png")}
-                  alt="Brand "
-                />
-              </div>
-              <div className="right">
-                <h1>Sports Basement</h1>
-                <p>Delivery with in 24 hours</p>
-              </div>
-            </div>
-          </div>
+            </React.Fragment>
+          ) : (
+            <LoadingFetchData />
+          )}
         </div>
       </div>
     </React.Fragment>

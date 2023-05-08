@@ -3,8 +3,8 @@ import React, { lazy } from "react";
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 
-const Home = lazy(() => import("./Js/Home/Home"));
-const NotFounded = lazy(() => import("./Js/Not Founded/NotFounded"));
+const Home = lazy(() => import("./assets/Js/Home/Home"));
+const NotFounded = lazy(() => import("./assets/Js//Not Founded/NotFounded"));
 
 function App() {
   return (

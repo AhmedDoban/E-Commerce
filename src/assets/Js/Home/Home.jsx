@@ -12,6 +12,7 @@ import CardCashback from "./Card Cashback/CardCashback";
 import MostSelling from "./Most Selling/MostSelling";
 import TrendingProducts from "./Trending Products/TrendingProducts";
 import BestSelling from "./Best Selling/BestSelling";
+import Services from "./Services/Services";
 
 function Home() {
   return (
@@ -42,6 +43,8 @@ function Home() {
       <TrendingProducts />
       {/****************  Best Selling *************************/}
       <BestSelling />
+      {/****************  Services  *************************/}
+      <Services />
     </React.Fragment>
   );
 }

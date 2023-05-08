@@ -10,6 +10,7 @@ import CashBack from "./Cash Back/CashBack";
 import TodaysBestDeals from "./Todays Best Deals/TodaysBestDeals";
 import CardCashback from "./Card Cashback/CardCashback";
 import MostSelling from "./Most Selling/MostSelling";
+import TrendingProducts from "./Trending Products/TrendingProducts";
 
 function Home() {
   return (
@@ -36,6 +37,8 @@ function Home() {
       <CardCashback />
       {/****************  Most Sellings  *************************/}
       <MostSelling />
+      {/****************  Trending Products *************************/}
+      <TrendingProducts />
     </React.Fragment>
   );
 }

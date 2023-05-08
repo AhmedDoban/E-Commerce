@@ -7,9 +7,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-.App {
-  overflow: hidden;
-}
+
 body {
   font-family: "Cairo", sans-serif;
 }
@@ -44,7 +42,9 @@ p {
   color: #767676;
   font-weight: 400;
 }
-
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# container
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
 .container {
   padding-left: 15px;
   padding-right: 15px;
@@ -69,7 +69,18 @@ p {
     width: 1170px;
   }
 }
-
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# page
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.App {
+  position: relative;
+  max-width: 100%;
+}
+.App .page-wrpper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
 /*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 # Scroll bar
 ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
@@ -120,4 +131,21 @@ p {
   top: 0;
   background-image: linear-gradient(135deg, #fff 25%, transparent 25%),
     linear-gradient(225deg, #fff 25%, transparent 25%);
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# back to top 
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.back-to-top {
+  position: fixed;
+  width: 35px;
+  height: 35px;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white-alt-1);
+  z-index: 999;
+  color: var(--blue-color);
+  bottom: 15px;
+  right: 15px;
+  border-radius: 50%;
+  cursor: pointer;
 }

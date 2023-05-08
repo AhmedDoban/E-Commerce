@@ -46,7 +46,7 @@ function Header() {
       <div className="nav-bar">
         <div className="container">
           <Link className="content " to="">
-            <img src={require("../../imgs/icon.svg").default} alt="icon" />
+            <img src={require("../../../imgs/icon.svg").default} alt="icon" />
           </Link>
 
           <div className="togle-menu" onClick={() => SetTogle(!Togle)}>
@@ -80,7 +80,7 @@ function Header() {
                     <div className="box">
                       <div className="left">
                         <img
-                          src={require("../../imgs/DropDown/Furniture.png")}
+                          src={require("../../../imgs/DropDown/Furniture.png")}
                           alt=""
                         />
                       </div>
@@ -96,7 +96,7 @@ function Header() {
                     <div className="box">
                       <div className="left">
                         <img
-                          src={require("../../imgs/DropDown/HandBag.png")}
+                          src={require("../../../imgs/DropDown/HandBag.png")}
                           alt=""
                         />
                       </div>
@@ -112,7 +112,7 @@ function Header() {
                     <div className="box">
                       <div className="left">
                         <img
-                          src={require("../../imgs/DropDown/Shoes.png")}
+                          src={require("../../../imgs/DropDown/Shoes.png")}
                           alt=""
                         />
                       </div>
@@ -128,7 +128,7 @@ function Header() {
                     <div className="box">
                       <div className="left">
                         <img
-                          src={require("../../imgs/DropDown/HeadPhone.png")}
+                          src={require("../../../imgs/DropDown/HeadPhone.png")}
                           alt=""
                         />
                       </div>
@@ -144,7 +144,7 @@ function Header() {
                     <div className="box">
                       <div className="left">
                         <img
-                          src={require("../../imgs/DropDown/Laptop.png")}
+                          src={require("../../../imgs/DropDown/Laptop.png")}
                           alt=""
                         />
                       </div>
@@ -160,7 +160,7 @@ function Header() {
                     <div className="box">
                       <div className="left">
                         <img
-                          src={require("../../imgs/DropDown/Books.png")}
+                          src={require("../../../imgs/DropDown/Books.png")}
                           alt=""
                         />
                       </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./../Header/Header";
+import Header from "../Components/Header/Header";
 import Landing from "./../Home/Landing/Landing";
 import TopCategories from "./Top Categories/TopCategories";
 import BestDeals from "./Best Deals/BestDeals";
@@ -13,6 +13,7 @@ import MostSelling from "./Most Selling/MostSelling";
 import TrendingProducts from "./Trending Products/TrendingProducts";
 import BestSelling from "./Best Selling/BestSelling";
 import Services from "./Services/Services";
+import Footer from "./../Components/Footer/Footer";
 
 function Home() {
   return (
@@ -45,6 +46,8 @@ function Home() {
       <BestSelling />
       {/****************  Services  *************************/}
       <Services />
+      {/****************  Footer  *************************/}
+      <Footer />
     </React.Fragment>
   );
 }

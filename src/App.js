@@ -19,8 +19,7 @@ function App() {
       return;
     }
     Setlogedin(CheckLogin);
-    Navigate("/home");
-  }, [logedin]);
+  }, []);
 
   if (logedin) {
     return (
@@ -29,11 +28,7 @@ function App() {
           <Suspense fallback={<Loading />}>
             <Routes>
               <Route path="/home" element={<Home Setlogedin={Setlogedin} />} />
-              <Route
-                exact
-                path="/"
-                element={<Home Setlogedin={Setlogedin} />}
-              />
+              <Route path="/" element={<Home Setlogedin={Setlogedin} />} />
               <Route path="*" element={<NotFounded />} />
             </Routes>
           </Suspense>

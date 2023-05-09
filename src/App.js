@@ -44,20 +44,11 @@ function App() {
     return (
       <div className="App">
         <div className="page-wrpper">
-          <Suspense fallback={<Loading />}>
-            <Routes>
-              <Route
-                path="/login"
-                element={<Login Setlogedin={Setlogedin} />}
-              />
-              <Route
-                exact
-                path="/"
-                element={<Login Setlogedin={Setlogedin} />}
-              />
-              <Route path="*" element={<NotFounded />} />
-            </Routes>
-          </Suspense>
+          <Routes>
+            <Route path="/login" element={<Login Setlogedin={Setlogedin} />} />
+            <Route exact path="/" element={<Login Setlogedin={Setlogedin} />} />
+            <Route path="*" element={<NotFounded />} />
+          </Routes>
         </div>
       </div>
     );

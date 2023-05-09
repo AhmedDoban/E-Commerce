@@ -4,8 +4,7 @@ import Loading from "./assets/Js/Components/Loading/Loading";
 
 import Login from "./assets/Js/Login/Login";
 
-import Home from "./assets/Js/Home/Home";
-
+const Home = lazy(() => import("./assets/Js/Home/Home"));
 const NotFounded = lazy(() => import("./assets/Js//Not Founded/NotFounded"));
 
 function App() {

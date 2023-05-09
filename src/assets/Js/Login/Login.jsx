@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import "./Login.css";
 
 function Login(props) {
+  const Navigate = useNavigate();
+
   const [email, SetEmail] = useState("");
   const [password, SetPassword] = useState("");
 
   const handleLogin = () => {
     localStorage.setItem("E-commerce-login", JSON.stringify(true));
     props.Setlogedin(true);
+    Navigate("/");
   };
 
   return (

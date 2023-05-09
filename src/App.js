@@ -15,6 +15,7 @@ function App() {
     const CheckLogin = JSON.parse(localStorage.getItem("E-commerce-login"));
     if (CheckLogin === null) {
       Setlogedin(false);
+      Navigate("/");
       return;
     }
     Setlogedin(CheckLogin);

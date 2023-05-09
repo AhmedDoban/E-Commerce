@@ -41,7 +41,20 @@ function App() {
     return (
       <div className="App">
         <div className="page-wrpper">
-          <Login Setlogedin={Setlogedin} />
+          <Suspense fallback={<Loading />}>
+            <Routes>
+              <Route
+                path="/login"
+                element={<Login Setlogedin={Setlogedin} />}
+              />
+              <Route
+                exact
+                path="/"
+                element={<Login Setlogedin={Setlogedin} />}
+              />
+              <Route path="*" element={<NotFounded />} />
+            </Routes>
+          </Suspense>
         </div>
       </div>
     );

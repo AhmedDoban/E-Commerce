@@ -7,31 +7,22 @@ function Landing() {
     <React.Fragment>
       <div className="lading">
         <div className="container">
-          <div className="left">
-            <h1
-              data-aos="fade-up"
-              data-aos-offset="300"
-              data-aos-easing="ease-in-out"
-            >
+          <div
+            className="left"
+            data-aos="fade-up"
+            data-aos-offset="300"
+            data-aos-easing="ease-in-out"
+          >
+            <h1>
               Shopping And
               <br />
               Department Store.
             </h1>
-            <p
-              data-aos="fade-up"
-              data-aos-offset="300"
-              data-aos-easing="ease-in-out"
-            >
+            <p>
               Shopping is a bit of a relaxing hobby for me, which is sometimes
               troubling for the bank balance
             </p>
-            <Link
-              data-aos="fade-up"
-              data-aos-offset="100"
-              data-aos-easing="ease-in-out"
-            >
-              Learn More
-            </Link>
+            <Link>Learn More</Link>
           </div>
           <div className="right">
             <img

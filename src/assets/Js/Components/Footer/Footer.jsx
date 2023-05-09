@@ -210,7 +210,7 @@ function Footer() {
               <span>Gift Cardss</span>
             </p>
             <p>
-              <i class="fa-solid fa-circle-info"></i>
+              <i className="fa-solid fa-circle-info"></i>
               <span>Help Center</span>
             </p>
           </div>

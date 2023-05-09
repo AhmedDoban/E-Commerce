@@ -15,11 +15,11 @@ import BestSelling from "./Best Selling/BestSelling";
 import Services from "./Services/Services";
 import Footer from "./../Components/Footer/Footer";
 
-function Home() {
+function Home(props) {
   return (
     <React.Fragment>
       {/**************** Header *************************/}
-      <Header />
+      <Header Setlogedin={props.Setlogedin} />
       {/**************** Landing *************************/}
       <Landing />
       {/**************** Top Categories *************************/}

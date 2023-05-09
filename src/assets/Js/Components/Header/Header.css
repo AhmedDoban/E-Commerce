@@ -13,7 +13,7 @@
 }
 .info i {
   color: var(--white-color);
-  font-size: 14px;
+  font-size: 12px;
 }
 .info .container {
   display: flex;
@@ -43,7 +43,7 @@
 .info .container .content p {
   color: var(--white-color);
   cursor: pointer;
-  font-size: 14px;
+  font-size: 12px;
 }
 .info .container .content .DropDown {
   position: relative;
@@ -61,6 +61,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+  font-size: 12px;
 }
 .info .container .content .DropDown .list {
   display: none;
@@ -101,13 +102,13 @@
   position: relative;
   width: 100%;
   background-color: #f9f9f9;
-  height: 80px;
+  height: 60px;
 }
 .nav-bar .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
+  height: 60px;
 }
 .nav-bar .container .content {
   position: relative;
@@ -137,7 +138,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  font-size: 18px;
+  font-size: 16px;
   height: 80px;
   padding: 5px 8px;
   font-weight: 600;
@@ -241,7 +242,7 @@
 .nav-bar .container .content input {
   position: relative;
   width: 350px;
-  padding: 10px 15px;
+  padding: 4px 15px;
   border-radius: calc(var(--main-border-radius) * 3);
   border: 0.5px solid #888;
   height: 100%;
@@ -270,12 +271,19 @@
 ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
 .nav-bar .container .content > a {
   position: relative;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+.nav-bar .container .content > a i {
+  color: var(--white-alt-2);
+  transition: var(--main-transition);
+}
+.nav-bar .container .content > a:hover i {
+  color: var(--main-color);
 }
 @media (max-width: 992px) {
   .nav-bar .container .content.d-none {

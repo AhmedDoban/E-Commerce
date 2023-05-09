@@ -11,7 +11,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: calc(100vh - 110px);
+  height: calc(100vh - 90px);
   background-image: url("../../../imgs/Landing/LandingBG.png");
   background-size: cover;
   background-repeat: no-repeat;

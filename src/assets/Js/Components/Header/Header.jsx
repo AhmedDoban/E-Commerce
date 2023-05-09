@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 
-function Header() {
+function Header(props) {
   const [Category, SetCategory] = useState(false);
   const [Togle, SetTogle] = useState(false);
+
+  const HandleLogout = () => {
+    localStorage.clear();
+    props.Setlogedin(false);
+  };
 
   return (
     <React.Fragment>
@@ -180,15 +185,18 @@ function Header() {
                 <Link href="">Deals</Link>
               </li>
               <li>
-                <Link href="">Whats's New</Link>
+                <Link href="">Shopping</Link>
               </li>
               <li>
                 <Link href="">Delivery</Link>
               </li>
+              <li>
+                <Link onClick={() => HandleLogout()}>logout</Link>
+              </li>
             </ul>
           </div>
           <div className="content d-none">
-            <input type="search" name="" id="" placeholder="Search proudact" />
+            <input type="text" placeholder="Search proudact" />
             <i className="fa-solid fa-magnifying-glass"></i>
           </div>
           <div className="content d-none2">

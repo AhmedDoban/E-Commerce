@@ -5,6 +5,9 @@ import Stars from "./Stars";
 import { ProudactContext } from "../Auth/Auth";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import PopularProducts from "../Home/Popular Products/PopularProducts";
+import Footer from "../Components/Footer/Footer";
+import Services from "../Home/Services/Services";
 
 function Products(props) {
   const Products = useContext(ProudactContext);
@@ -33,8 +36,21 @@ function Products(props) {
     <React.Fragment>
       <Header />
       <div className="Products">
+        <div className="header">
+          <div className="container">
+            <div className="data">
+              <h5>Grab Upto 50% Off On Selected HeadPhone </h5>
+              <button>Buy Now</button>
+            </div>
+            <div className="data">
+              <img
+                src={require("../../imgs/bacgroundProudacts.png")}
+                alt="bacgroundProudacts"
+              />
+            </div>
+          </div>
+        </div>
         <div className="container">
-          <p> All proudacts From Fake Store Api </p>
           <ul className="nav-menu">
             <li>
               <span
@@ -113,6 +129,9 @@ function Products(props) {
           )}
         </div>
       </div>
+      <PopularProducts />
+      <Services />
+      <Footer />
     </React.Fragment>
   );
 }

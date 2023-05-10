@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../Components/Header/Header";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 function ProductDetails() {
   const params = useParams();
-  console.log(params);
+  const [prolduct, SetProudact] = useState([]);
+
+  useEffect(() => {
+    const fetchdata = (async) => {
+      try {
+        axios
+          .get(`https://fakestoreapi.com/products/${params.productId}`)
+          .then((data) => SetProudact(data.data));
+      } catch (err) {
+        throw err;
+      }
+    };
+    fetchdata();
+  }, []);
+  console.log(prolduct);
   return (
     <React.Fragment>
       <Header />

@@ -6,14 +6,16 @@ import React, {
   createContext,
 } from "react";
 import { Outlet, Route, Routes } from "react-router-dom";
+import axios from "axios";
 
 import Loading from "./../Components/Loading/Loading";
-import axios from "axios";
-import ProductDetails from "../Products/ProductDetails";
 // Home Page
 const Home = lazy(() => import("../Home/Home"));
 // proudacts Page
 const Products = lazy(() => import("../Products/Products"));
+const ProductDetails = lazy(() =>
+  import("../Products/Product Details/ProductDetails")
+);
 //Not Founded
 const NotFounded = lazy(() => import("../Not Founded/NotFounded"));
 

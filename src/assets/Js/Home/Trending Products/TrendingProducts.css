@@ -1,0 +1,78 @@
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Root
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+@import url("../../../css/root.css");
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Trending Products
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.TrendingProducts {
+  position: relative;
+  width: 100%;
+  padding-top: var(--main-padding-top);
+  padding-bottom: var(--main-padding-bottom);
+}
+.TrendingProducts .container h1 {
+  font-family: "Dosis", sans-serif;
+  font-family: "Inter", sans-serif;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.TrendingProducts .cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  gap: 15px;
+}
+@media (max-width: 772px) {
+  .TrendingProducts .cards-container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+.TrendingProducts .cards-container .card {
+  position: relative;
+  background-color: var(--white-alt-1);
+  border-radius: calc(var(--main-border-radius) * 2);
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+}
+.TrendingProducts .cards-container .card .header {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.TrendingProducts .cards-container .card .header img {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  transition: var(--main-transition);
+}
+.TrendingProducts .cards-container .card:hover img {
+  transform: scale(1.3) rotate(1deg);
+}
+.TrendingProducts .cards-container .card .footer {
+  position: relative;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  flex-direction: column;
+}
+.TrendingProducts .cards-container .card .footer h5 {
+  position: relative;
+  font-size: 25px;
+  letter-spacing: 2;
+}
+.TrendingProducts .cards-container .card .footer a {
+  position: relative;
+  background-color: var(--main-color);
+  padding: 8px 15px;
+  color: var(--white-color);
+  border-radius: calc(var(--main-border-radius) * 2);
+  transition: var(--main-transition);
+}
+.TrendingProducts .cards-container .card .footer a:hover {
+  background-color: #000;
+}

@@ -1,0 +1,108 @@
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Root
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+@import url("../../../css/root.css");
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Card Cash back 
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.CardCashback {
+  position: relative;
+  width: 100%;
+  background-color: #ffe6cc;
+  padding-top: var(--main-padding-top);
+  padding-bottom: var(--main-padding-bottom);
+  height: 40vh;
+  overflow: hidden;
+}
+.CardCashback .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Card Cash back 
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.CardCashback .container .left {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 15px;
+}
+.CardCashback .container .left h1 {
+  font-size: 52px;
+  text-transform: capitalize;
+  color: var(--main-color);
+}
+.CardCashback .container .left p {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--main-color);
+}
+.CardCashback .container .left a {
+  position: relative;
+  background-color: var(--main-color);
+  padding: 8px 30px;
+  font-size: 20px;
+  border-radius: calc(var(--main-border-radius) * 5);
+  color: var(--white-color);
+  transition: var(--main-transition);
+}
+.CardCashback .container .left a:hover {
+  background-color: #000;
+}
+@media (max-width: 776px) {
+  .CardCashback .container .left {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+  .CardCashback .container .left h1 {
+    font-size: 35px;
+  }
+  .CardCashback .container .left p {
+    font-size: 16px;
+  }
+  .CardCashback .container .left a {
+    padding: 6px 25px;
+    font-size: 18px;
+    border-radius: calc(var(--main-border-radius) * 5);
+  }
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Card Cash back 
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.CardCashback .container .right {
+  position: relative;
+  width: 100%;
+}
+@media (max-width: 776px) {
+  .CardCashback .container .right {
+    display: none;
+  }
+}
+.CardCashback .container .right img {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+}
+.CardCashback .container .right :nth-child(1) {
+  z-index: 3;
+  transform: rotate(-30deg);
+  right: 22px;
+  top: -37px;
+}
+.CardCashback .container .right :nth-child(2) {
+  z-index: 2;
+  transform: rotate(-21deg);
+  right: 6px;
+  top: -18px;
+}
+.CardCashback .container .right :nth-child(3) {
+  z-index: 1;
+  transform: rotate(-15deg);
+  right: 0px;
+}

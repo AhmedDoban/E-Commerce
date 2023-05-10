@@ -1,16 +1,14 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Header.css";
 
 function Header(props) {
-  const Navigate = useNavigate();
   const [Category, SetCategory] = useState(false);
   const [Togle, SetTogle] = useState(false);
 
   const HandleLogout = () => {
     localStorage.clear();
     props.Setlogedin(false);
-    Navigate("/");
   };
 
   return (

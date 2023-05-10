@@ -78,17 +78,16 @@ function Products(props) {
             )
               .slice(0, ShowMore)
               .map((item, index) => (
-                <Link
+                <div
                   className="card"
                   data-aos="zoom-in"
                   data-aos-easing="ease-in-out"
                   key={item.id}
-                  to={`${item.id}`}
                 >
-                  <div className="header">
+                  <Link className="header" to={`${item.id}`}>
                     <img src={item.image} alt="" />
                     <i className="fa-regular fa-heart"></i>
-                  </div>
+                  </Link>
                   <div className="footer">
                     <div className="info">
                       <span>{item.title.slice(0, 20)}...</span>
@@ -117,7 +116,7 @@ function Products(props) {
                       </button>
                     </div>
                   </div>
-                </Link>
+                </div>
               ))}
           </div>
           {ShowMore > Products.length ? null : (

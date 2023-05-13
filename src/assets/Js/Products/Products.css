@@ -124,13 +124,15 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 250px;
-  height: auto;
-  background-color: var(--white-alt-1);
+  gap: 20px;
   box-shadow: 5px 5px 5px 5px var(--white-alt-1);
   border-radius: var(--main-border-radius);
   cursor: pointer;
+  padding: 20px;
 }
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+  # Todays Best Deals cards-container card header
+  ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
 .Products .container .cards-container .card .header {
   position: relative;
   width: 100%;
@@ -140,68 +142,117 @@
   align-items: center;
   overflow: hidden;
   border-radius: var(--main-border-radius);
-  padding: 10px;
 }
 .Products .container .cards-container .card .header img {
   position: relative;
-  width: calc(100% - 10px);
-  height: 180px;
+  width: 100%;
+  height: 100%;
   border-radius: var(--main-border-radius);
   transition: var(--main-transition);
   object-fit: contain;
   overflow: hidden;
-  background-color: var(--white-color);
+  background-color: transparent;
 }
-.Products .container .cards-container .card:hover img {
-  transform: scale(1.3);
-}
-.Products .container .cards-container .card .header i {
+
+.Products .container .cards-container .card .header .icons {
   position: absolute;
   top: 15px;
-  right: 15px;
-  font-size: 18px;
-  cursor: pointer;
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 50%;
+  right: 0px;
+  font-size: 21px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 15px;
+  color: var(--white-alt-2);
+  padding: 5px;
+  width: 100%;
+  height: fit-content;
   transition: var(--main-transition);
 }
-.Products .container .cards-container .card .header i:hover {
-  background-color: #ff000082;
-  color: #fff;
+.Products .container .cards-container .card .header .icons i {
+  transition: var(--main-transition);
 }
+.Products .container .cards-container .card .header .icons i:hover {
+  color: #ff0000;
+}
+
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+  # Todays Best Deals cards-container card footer
+  ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
 .Products .container .cards-container .card .footer {
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  height: 200px;
-  padding: 10px;
+  gap: 5px;
   width: 100%;
 }
-.Products .container .cards-container .card .footer .info {
+.Products .container .cards-container .card .footer > span {
   position: relative;
-  background-color: transparent;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.Products .container .cards-container .card .footer .info > span {
-  position: relative;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   color: var(--main-color);
   transition: var(--main-transition);
+  width: 100%;
 }
-.Products .container .cards-container .card .footer .info span.Price {
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+  # Todays Best Deals cards-container card footer counter
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Products .container .cards-container .card .footer .counter {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  background-color: var(--white-color);
+  padding: 0 0 20px 0;
+}
+.Products .container .cards-container .card .footer .counter button {
+  background-color: transparent;
+  width: fit-content;
+  padding: 1px 8px;
+  text-align: center;
+  border-radius: var(--main-border-radius);
+  border: 1px solid var(--white-alt-2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: var(--main-transition);
+  font-size: 22px;
+}
+.Products .container .cards-container .card .footer .counter button:hover {
+  background-color: #ff0000;
+  color: #fff;
+  border: 1px solid #fff;
+}
+.Products .container .cards-container .card .footer .counter p {
+  width: fit-content;
+}
+.Products .container .cards-container .card .footer .counter p span {
+  color: #ffb700;
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+  # Todays Best Deals cards-container card footer button-box
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Products .container .cards-container .card .footer .button-box > span.Price {
   position: relative;
   padding: 0 25px 0 15px;
   font-weight: bold;
   width: fit-content;
-  color: #47c20a;
+  color: #003d29;
+  width: fit-content;
 }
-.Products .container .cards-container .card .footer .info span.Price::before {
+.Products
+  .container
+  .cards-container
+  .card
+  .footer
+  .button-box
+  > span.Price::before {
   content: " .00";
   position: absolute;
   top: -1px;
@@ -209,7 +260,13 @@
   font-size: 14px;
   font-weight: normal;
 }
-.Products .container .cards-container .card .footer .info span.Price::after {
+.Products
+  .container
+  .cards-container
+  .card
+  .footer
+  .button-box
+  > span.Price::after {
   position: absolute;
   content: "";
   font-family: "Font Awesome 5 Free";
@@ -220,13 +277,35 @@
   font-size: 14px;
   font-weight: normal;
 }
+
+.Products .container .cards-container .card .footer .button-box button {
+  position: relative;
+  width: fit-content;
+  padding: 8px 8px;
+  border-radius: var(--main-border-radius);
+  background-color: #c90101;
+  color: var(--white-color);
+  transform: var(--main-transition);
+  border: 0;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+  # Todays Best Deals cards-container card footer des
+  ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
 .Products .container .cards-container .card .footer p {
   position: relative;
-  font-size: 14px;
-  margin: 10px 0;
-  height: 30px;
+  font-size: 16px;
   width: 100%;
+  line-height: 1.2;
 }
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+  # Todays Best Deals cards-container card footer stars
+  ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
 .Products .container .cards-container .card .footer .stars {
   position: relative;
   display: flex;
@@ -234,10 +313,15 @@
   align-items: flex-start;
   gap: 2px;
   margin: 10px 0;
+  width: 100%;
 }
+
 .Products .container .cards-container .card .footer .stars i {
-  color: #47c20a;
+  color: #ffb700;
 }
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+  # Todays Best Deals cards-container card footer button
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
 .Products .container .cards-container .card .footer .button-box {
   position: relative;
   width: 100%;
@@ -246,61 +330,15 @@
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  background-color: var(--white-color);
-  border-radius: var(--main-border-radius);
-  overflow: hidden;
-}
-.Products .container .cards-container .card .footer .button-box .counter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-}
-.Products
-  .container
-  .cards-container
-  .card
-  .footer
-  .button-box
-  .counter
-  button {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-}
-.Products .container .cards-container .card .footer .button-box button,
-.Products .container .cards-container .card .footer .button-box a {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px;
-  border: none;
-  cursor: pointer;
-  transition: var(--main-transition);
   background-color: transparent;
-}
-
-.Products .container .cards-container .card .footer .button-box a:hover {
-  background-color: #0075ff;
-  color: #fff;
-}
-.Products .container .cards-container .card .footer .button-box button:hover {
-  background-color: var(--main-color);
-  color: #fff;
-}
-.Products .container .cards-container .card .footer .button-box button.active {
-  background-color: var(--main-color);
-  color: #fff;
 }
 /*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
   # seemore
 ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
 .see-more {
   position: relative;
-  width: 100%;
+  width: fit-content;
+  margin: 10px auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -313,8 +351,10 @@
   border: 0;
   cursor: pointer;
   border-radius: var(--main-border-radius);
+  background-color: #c90101;
+  color: var(--white-color);
 }
 .see-more button:hover {
-  background-color: var(--blue-color);
+  background-color: var(--main-color);
   color: var(--white-alt-1);
 }

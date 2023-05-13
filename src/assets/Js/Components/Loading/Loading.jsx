@@ -1,6 +1,6 @@
 import React from "react";
-import { Player } from "@lottiefiles/react-lottie-player";
 import "./Loading.css";
+import { Player } from "@lottiefiles/react-lottie-player";
 
 function Loading() {
   return (
@@ -12,6 +12,7 @@ function Loading() {
         src="https://assets10.lottiefiles.com/packages/lf20_p8bfn5to.json"
         className="palyer"
       />
+      <p>Loading</p>
     </div>
   );
 }

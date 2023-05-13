@@ -86,51 +86,53 @@ function Products(props) {
                 >
                   <div className="header">
                     <img src={item.image} alt="" />
-                    <i className="fa-regular fa-heart"></i>
+                    <div className="icons">
+                      <i className="fa-solid fa-heart"></i>
+                      <Link to={`${item.id}`}>
+                        <i className="fa-solid fa-circle-info"></i>
+                      </Link>
+                    </div>
                   </div>
                   <div className="footer">
-                    <div className="info">
-                      <span>{item.title.slice(0, 20)}...</span>
-                      <span className="Price">{item.price}</span>
-                    </div>
-                    <div className="data">
-                      <p>{item.description.slice(0, 60)}...</p>
-                      <div className="stars">
-                        <Stars rate={item.rating.rate} />
-                      </div>
+                    <span>{item.title.slice(0, 20)}...</span>
 
-                      <div className="button-box">
-                        <button
-                          onClick={() => props.HandleIsInCart(index)}
-                          className={item.isInCard ? "active" : ""}
-                        >
-                          {item.isInCard ? (
-                            <React.Fragment>
-                              <i className="fa-solid fa-trash"></i>
-                            </React.Fragment>
-                          ) : (
-                            <React.Fragment>
-                              <i className="fa-solid fa-cart-shopping"></i>
-                            </React.Fragment>
-                          )}
-                        </button>
-                        <div className="counter">
-                          <button
-                            onClick={() => props.HandleDecrement(item.id - 1)}
-                          >
-                            -
-                          </button>
-                          {item.CountInCart}
-                          <button
-                            onClick={() => props.HandleIncrement(item.id - 1)}
-                          >
-                            +
-                          </button>
-                        </div>
-                        <Link to={`${item.id}`}>
-                          <i className="fa-solid fa-eye"></i>
-                        </Link>
-                      </div>
+                    <p>{item.description.slice(0, 50)}...</p>
+                    <div className="stars">
+                      <Stars rate={item.rating.rate} />
+                    </div>
+                    <div className="counter">
+                      <button
+                        onClick={() => props.HandleDecrement(item.id - 1)}
+                      >
+                        -
+                      </button>
+                      <p>
+                        <span> {item.CountInCart} </span> item
+                      </p>
+                      <button
+                        onClick={() => props.HandleIncrement(item.id - 1)}
+                      >
+                        +
+                      </button>
+                    </div>
+                    <div className="button-box">
+                      <span className="Price">{item.price}</span>
+                      <button
+                        onClick={() => props.HandleIsInCart(index)}
+                        className={item.isInCard ? "active" : ""}
+                      >
+                        {item.isInCard ? (
+                          <React.Fragment>
+                            <i className="fa-solid fa-trash"></i>
+                            <span>Remove</span>
+                          </React.Fragment>
+                        ) : (
+                          <React.Fragment>
+                            <i className="fa-solid fa-cart-shopping"></i>
+                            <span>Add To Cart</span>
+                          </React.Fragment>
+                        )}
+                      </button>
                     </div>
                   </div>
                 </div>

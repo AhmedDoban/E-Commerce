@@ -84,10 +84,10 @@ function Products(props) {
                   data-aos-easing="ease-in-out"
                   key={item.id}
                 >
-                  <Link className="header" to={`${item.id}`}>
+                  <div className="header">
                     <img src={item.image} alt="" />
                     <i className="fa-regular fa-heart"></i>
-                  </Link>
+                  </div>
                   <div className="footer">
                     <div className="info">
                       <span>{item.title.slice(0, 20)}...</span>
@@ -98,22 +98,27 @@ function Products(props) {
                       <div className="stars">
                         <Stars rate={item.rating.rate} />
                       </div>
-                      <button
-                        onClick={() => props.HandleIsInCart(index)}
-                        className={item.isInCard ? "active" : ""}
-                      >
-                        {item.isInCard ? (
-                          <React.Fragment>
-                            <span>Remove From Cart</span>
-                            <i className="fa-solid fa-trash"></i>
-                          </React.Fragment>
-                        ) : (
-                          <React.Fragment>
-                            <span>Add To Cart</span>
-                            <i className="fa-solid fa-cart-shopping"></i>
-                          </React.Fragment>
-                        )}
-                      </button>
+                      <div className="button-box">
+                        <button
+                          onClick={() => props.HandleIsInCart(index)}
+                          className={item.isInCard ? "active" : ""}
+                        >
+                          {item.isInCard ? (
+                            <React.Fragment>
+                              <span>Remove From Cart</span>
+                              <i className="fa-solid fa-trash"></i>
+                            </React.Fragment>
+                          ) : (
+                            <React.Fragment>
+                              <span>Add To Cart</span>
+                              <i className="fa-solid fa-cart-shopping"></i>
+                            </React.Fragment>
+                          )}
+                        </button>
+                        <Link to={`${item.id}`}>
+                          <i className="fa-solid fa-eye"></i>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>

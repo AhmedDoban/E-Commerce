@@ -238,7 +238,14 @@
 .Products .container .cards-container .card .footer .stars i {
   color: #47c20a;
 }
-.Products .container .cards-container .card .footer button {
+.Products .container .cards-container .card .footer .button-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.Products .container .cards-container .card .footer .button-box button,
+.Products .container .cards-container .card .footer .button-box a {
   position: relative;
   display: flex;
   width: 100%;
@@ -252,12 +259,20 @@
   transition: var(--main-transition);
   background-color: transparent;
 }
-.Products .container .cards-container .card .footer button:hover {
+.Products .container .cards-container .card .footer .button-box a {
+  width: fit-content;
+}
+.Products .container .cards-container .card .footer .button-box a:hover {
+  background-color: #0075ff;
+  border: 0.5px solid #0075ff;
+  color: #fff;
+}
+.Products .container .cards-container .card .footer .button-box button:hover {
   background-color: #47c20a;
   border: 0.5px solid #47c20a;
   color: #fff;
 }
-.Products .container .cards-container .card .footer button.active {
+.Products .container .cards-container .card .footer .button-box button.active {
   background-color: var(--main-color);
   border: 0.5px solid var(--main-color);
   color: #fff;

@@ -232,6 +232,11 @@
   gap: 15px;
   width: 100%;
 }
+@media (max-width: 772px) {
+  .Cart .container .left .delvery-information .ReturnCustomer-false .box {
+    flex-direction: column;
+  }
+}
 .Cart .container .left .delvery-information .ReturnCustomer-false .card-input {
   position: relative;
   display: flex;
@@ -688,7 +693,7 @@
   width: 350px;
   height: 350px;
 }
-.No-data-inCart p{
+.No-data-inCart p {
   font-size: 18px;
   font-weight: bold;
 }

@@ -159,7 +159,14 @@
   width: 100%;
   height: 3px;
 }
-
+.nav-bar .container .content ul li.mob-des {
+  display: none;
+}
+@media (max-width: 772px) {
+  .nav-bar .container .content ul li.mob-des {
+    display: flex;
+  }
+}
 /*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 # navbar menu dropdown
 ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/

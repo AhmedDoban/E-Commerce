@@ -86,7 +86,7 @@ function Header(props) {
                       <div className="left">
                         <img
                           src={require("../../../imgs/DropDown/Furniture.png")}
-                          alt=""
+                          alt="Furniture"
                         />
                       </div>
                       <div className="right">
@@ -102,7 +102,7 @@ function Header(props) {
                       <div className="left">
                         <img
                           src={require("../../../imgs/DropDown/HandBag.png")}
-                          alt=""
+                          alt="HandBag"
                         />
                       </div>
                       <div className="right">
@@ -118,7 +118,7 @@ function Header(props) {
                       <div className="left">
                         <img
                           src={require("../../../imgs/DropDown/Shoes.png")}
-                          alt=""
+                          alt="Shoes"
                         />
                       </div>
                       <div className="right">
@@ -134,7 +134,7 @@ function Header(props) {
                       <div className="left">
                         <img
                           src={require("../../../imgs/DropDown/HeadPhone.png")}
-                          alt=""
+                          alt="HeadPhone"
                         />
                       </div>
                       <div className="right">
@@ -150,7 +150,7 @@ function Header(props) {
                       <div className="left">
                         <img
                           src={require("../../../imgs/DropDown/Laptop.png")}
-                          alt=""
+                          alt="Laptop"
                         />
                       </div>
                       <div className="right">
@@ -166,7 +166,7 @@ function Header(props) {
                       <div className="left">
                         <img
                           src={require("../../../imgs/DropDown/Books.png")}
-                          alt=""
+                          alt="Books"
                         />
                       </div>
                       <div className="right">
@@ -190,6 +190,12 @@ function Header(props) {
               <li>
                 <Link to="">Delivery</Link>
               </li>
+              <li className="mob-des">
+                <Link to="">Account</Link>
+              </li>
+              <li className="mob-des">
+                <Link to="/Cart">Cart</Link>
+              </li>
               <li>
                 <Link onClick={() => HandleLogout()}>logout</Link>
               </li>
@@ -204,7 +210,7 @@ function Header(props) {
               <i className="fa-regular fa-user"></i>
               <span>Account</span>
             </Link>
-            <Link to="">
+            <Link to="/Cart">
               <i className="fa-solid fa-cart-shopping"></i>
               <span>Cart</span>
             </Link>

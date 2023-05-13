@@ -119,7 +119,10 @@ function Products(props) {
                 </div>
               ))}
           </div>
-          {ShowMore > Products.length ? null : (
+          {ShowMore >
+          Products.filter((data) =>
+            Chosen === "" ? data : data.category === Chosen
+          ).length ? null : (
             <div className="see-more">
               <button onClick={() => SetShowMore(ShowMore + 8)}>
                 Show More

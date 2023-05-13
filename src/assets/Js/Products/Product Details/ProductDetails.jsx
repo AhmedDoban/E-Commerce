@@ -11,12 +11,12 @@ import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import "swiper/css";
 import "swiper/css/scrollbar";
 
-function ProductDetails() {
+function ProductDetails(props) {
   const params = useParams();
   const [product, SetProduct] = useState([]);
   const [color, SetColor] = useState("red");
   const [SlideProgress, SetSlideProgress] = useState(1);
-  const [Counter, SetCoounter] = useState(1);
+  const [Counter, SetCounter] = useState(0);
 
   useEffect(() => {
     const fetchdata = (async) => {
@@ -30,7 +30,14 @@ function ProductDetails() {
     };
     fetchdata();
   }, []);
-  console.log(product);
+  const HandleDecrement = (index) => {
+    SetCounter(Counter > 0 ? Counter - 1 : 0);
+    props.HandleCountInCart(Counter, index);
+  };
+  const HandleIncrement = (index) => {
+    SetCounter(Counter + 1);
+    props.HandleCountInCart(Counter, index);
+  };
   return (
     <React.Fragment>
       <Header />
@@ -133,16 +140,17 @@ function ProductDetails() {
             <div className="box">
               <div className="counter-items">
                 <div className="counter">
-                  <button
-                    onClick={() => SetCoounter(Counter > 0 ? Counter - 1 : 0)}
-                  >
+                  <button onClick={() => HandleDecrement(product.id - 1)}>
                     -
                   </button>
                   {Counter}
-                  <button onClick={() => SetCoounter(Counter + 1)}>+</button>
+                  <button onClick={() => HandleIncrement(product.id - 1)}>
+                    +
+                  </button>
                 </div>
                 <p>
-                  only <span>12 items</span> Left! Don't miss it
+                  only <span>{product.rating?.count} items</span> Left! Don't
+                  miss it
                 </p>
               </div>
               <div className="counter-items">

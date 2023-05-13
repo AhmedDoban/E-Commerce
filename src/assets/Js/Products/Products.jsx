@@ -19,7 +19,7 @@ function Products(props) {
     const fetchcategories = async () => {
       try {
         await axios
-          .get("http://fakestoreapi.com/products/categories")
+          .get("https://fakestoreapi.com/products/categories")
           .then((data) => setFilters(data.data));
       } catch (err) {
         throw err;

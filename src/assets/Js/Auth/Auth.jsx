@@ -49,22 +49,57 @@ function Auth(props) {
     //clone
     let Data = [...AllProducts];
     // Edit
-    Data[index] = {
-      ...Data[index],
-      isInCard: !Data[index].isInCard,
-      CountInCart: 1,
-    };
+    if (Data[index].isInCard === true) {
+      Data[index] = {
+        ...Data[index],
+        isInCard: false,
+        CountInCart: 0,
+      };
+    } else {
+      Data[index] = {
+        ...Data[index],
+        isInCard: true,
+        CountInCart: 1,
+      };
+    }
     // upDate
     SetAllProducts(Data);
   };
 
-  const HandleCountInCart = (data, index) => {
-    console.log(index);
-    console.log(data);
+  const HandleDecrement = (index) => {
     //clone
     let Data = [...AllProducts];
     // Edit
-    Data[index] = { ...Data[index], CountInCart: data, isInCard: true };
+    let Counter = Data[index].CountInCart;
+    Counter--;
+
+    if (Counter <= 0) {
+      Data[index] = {
+        ...Data[index],
+        CountInCart: 0,
+        isInCard: false,
+      };
+    } else {
+      Data[index] = {
+        ...Data[index],
+        CountInCart: Counter,
+        isInCard: true,
+      };
+    }
+    // upDate
+    SetAllProducts(Data);
+  };
+  const HandleIncrement = (index) => {
+    //clone
+    let Data = [...AllProducts];
+    let Counter = Data[index].CountInCart;
+    Counter++;
+    // Edit
+    Data[index] = {
+      ...Data[index],
+      CountInCart: Counter,
+      isInCard: true,
+    };
     // upDate
     SetAllProducts(Data);
   };
@@ -90,19 +125,33 @@ function Auth(props) {
                           Setlogedin={props.Setlogedin}
                           AllProducts={AllProducts}
                           HandleIsInCart={HandleIsInCart}
+                          HandleDecrement={HandleDecrement}
+                          HandleIncrement={HandleIncrement}
                         />
                       }
                     />
                     <Route
                       path=":productId"
                       element={
-                        <ProductDetails HandleCountInCart={HandleCountInCart} />
+                        <ProductDetails
+                          HandleDecrement={HandleDecrement}
+                          HandleIncrement={HandleIncrement}
+                        />
                       }
                     />
                   </Route>
                 </Route>
                 {/******************************* Cart *****************************************/}
-                <Route path="/Cart" element={<Cart />} />
+                <Route
+                  path="/Cart"
+                  element={
+                    <Cart
+                      HandleIsInCart={HandleIsInCart}
+                      HandleDecrement={HandleDecrement}
+                      HandleIncrement={HandleIncrement}
+                    />
+                  }
+                />
                 {/******************************* Not Founded *****************************************/}
                 <Route path="*" element={<NotFounded />} />
               </Routes>

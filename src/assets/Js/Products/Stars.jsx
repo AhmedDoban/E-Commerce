@@ -8,9 +8,9 @@ function Stars(props) {
       <div className="stars">
         {[...new Array(totalStars)].map((arr, index) => {
           return index < activeStars ? (
-            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star" key={index}></i>
           ) : (
-            <i className="fa-regular fa-star"></i>
+            <i className="fa-regular fa-star" key={index}></i>
           );
         })}
       </div>

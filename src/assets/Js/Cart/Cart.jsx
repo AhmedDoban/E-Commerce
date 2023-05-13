@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "./Cart.css";
 import { ProudactContext } from "../Auth/Auth";
 import { Player } from "@lottiefiles/react-lottie-player";
-function Cart() {
+function Cart(props) {
   const Products = useContext(ProudactContext);
   const [ReturnCustomer, SetReturnCustomer] = useState(false);
   const [PaymentMethod, SetPaymentMethod] = useState("CashOnDelivery");
@@ -15,11 +15,11 @@ function Cart() {
   useEffect(() => {
     let total = 0;
     Products.filter((data) => data.isInCard === true).map((item) => {
-      total += item.price;
+      total += item.price * item.CountInCart;
       SetTotalPrice(total);
     });
     SetTotalTax((TotalPrice * 10) / 100);
-  }, [TotalPrice]);
+  }, [TotalPrice, Products]);
 
   return (
     <React.Fragment>
@@ -30,7 +30,7 @@ function Cart() {
             <div className="left">
               <h3>review item and Shipping</h3>
               {Products.filter((data) => data.isInCard === true).map((data) => (
-                <div className="product-details">
+                <div className="product-details" key={data.id}>
                   <div className="info">
                     <img src={data.image} alt="BestDeals" />
                     <div className="data">
@@ -39,8 +39,26 @@ function Cart() {
                     </div>
                   </div>
                   <div className="price">
-                    <h2>${data.price}</h2>
-                    <p>Quantity : 1</p>
+                    <h2>
+                      ${data.price}
+                      <i
+                        className="fa-solid fa-trash"
+                        onClick={() => props.HandleIsInCart(data.id - 1)}
+                      ></i>
+                    </h2>
+                    <p>
+                      <button
+                        onClick={() => props.HandleDecrement(data.id - 1)}
+                      >
+                        -
+                      </button>
+                      {data.CountInCart}
+                      <button
+                        onClick={() => props.HandleIncrement(data.id - 1)}
+                      >
+                        +
+                      </button>
+                    </p>
                   </div>
                 </div>
               ))}
@@ -213,19 +231,28 @@ function Cart() {
                       <div className="card-input">
                         <input type="radio" name="Otherpayment" id="amazon" />
                         <label htmlFor="amazon">
-                          <i className="fa-brands fa-cc-amazon-pay"></i>
+                          <img
+                            src={require("../../imgs/Footer/footer(4).png")}
+                            alt="amazon"
+                          />
                         </label>
                       </div>
                       <div className="card-input">
                         <input type="radio" name="Otherpayment" id="paypal" />
                         <label htmlFor="paypal">
-                          <i className="fa-brands fa-cc-paypal"></i>
+                          <img
+                            src={require("../../imgs/Footer/footer(6).png")}
+                            alt="paypal"
+                          />
                         </label>
                       </div>
                       <div className="card-input">
                         <input type="radio" name="Otherpayment" id="visa" />
                         <label htmlFor="visa">
-                          <i className="fa-brands fa-cc-visa"></i>
+                          <img
+                            src={require("../../imgs/Footer/footer(2).png")}
+                            alt="visa"
+                          />
                         </label>
                       </div>
                     </div>

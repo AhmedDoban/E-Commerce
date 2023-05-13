@@ -32,11 +32,11 @@ function ProductDetails(props) {
   }, []);
   const HandleDecrement = (index) => {
     SetCounter(Counter > 0 ? Counter - 1 : 0);
-    props.HandleCountInCart(Counter, index);
+    props.HandleDecrement(index);
   };
   const HandleIncrement = (index) => {
     SetCounter(Counter + 1);
-    props.HandleCountInCart(Counter, index);
+    props.HandleIncrement(index);
   };
   return (
     <React.Fragment>

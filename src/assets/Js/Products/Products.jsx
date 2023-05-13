@@ -98,6 +98,7 @@ function Products(props) {
                       <div className="stars">
                         <Stars rate={item.rating.rate} />
                       </div>
+
                       <div className="button-box">
                         <button
                           onClick={() => props.HandleIsInCart(index)}
@@ -105,16 +106,27 @@ function Products(props) {
                         >
                           {item.isInCard ? (
                             <React.Fragment>
-                              <span>Remove From Cart</span>
                               <i className="fa-solid fa-trash"></i>
                             </React.Fragment>
                           ) : (
                             <React.Fragment>
-                              <span>Add To Cart</span>
                               <i className="fa-solid fa-cart-shopping"></i>
                             </React.Fragment>
                           )}
                         </button>
+                        <div className="counter">
+                          <button
+                            onClick={() => props.HandleDecrement(item.id - 1)}
+                          >
+                            -
+                          </button>
+                          {item.CountInCart}
+                          <button
+                            onClick={() => props.HandleIncrement(item.id - 1)}
+                          >
+                            +
+                          </button>
+                        </div>
                         <Link to={`${item.id}`}>
                           <i className="fa-solid fa-eye"></i>
                         </Link>

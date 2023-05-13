@@ -239,42 +239,60 @@
   color: #47c20a;
 }
 .Products .container .cards-container .card .footer .button-box {
+  position: relative;
+  width: 100%;
+  height: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
+  background-color: var(--white-color);
+  border-radius: var(--main-border-radius);
+  overflow: hidden;
+}
+.Products .container .cards-container .card .footer .button-box .counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+.Products
+  .container
+  .cards-container
+  .card
+  .footer
+  .button-box
+  .counter
+  button {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
 }
 .Products .container .cards-container .card .footer .button-box button,
 .Products .container .cards-container .card .footer .button-box a {
   position: relative;
-  display: flex;
+  height: 100%;
   width: 100%;
-  justify-content: space-between;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 5px;
-  border-radius: calc(var(--main-border-radius) * 5);
-  padding: 8px 15px;
-  border: 0.5px solid #888;
+  padding: 8px;
+  border: none;
   cursor: pointer;
   transition: var(--main-transition);
   background-color: transparent;
 }
-.Products .container .cards-container .card .footer .button-box a {
-  width: fit-content;
-}
+
 .Products .container .cards-container .card .footer .button-box a:hover {
   background-color: #0075ff;
-  border: 0.5px solid #0075ff;
   color: #fff;
 }
 .Products .container .cards-container .card .footer .button-box button:hover {
-  background-color: #47c20a;
-  border: 0.5px solid #47c20a;
+  background-color: var(--main-color);
   color: #fff;
 }
 .Products .container .cards-container .card .footer .button-box button.active {
   background-color: var(--main-color);
-  border: 0.5px solid var(--main-color);
   color: #fff;
 }
 /*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ

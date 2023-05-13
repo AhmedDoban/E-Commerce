@@ -72,12 +72,39 @@
   font-size: 22px;
   width: fit-content;
 }
+.Cart .container .left .product-details .price {
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 10px;
+}
 .Cart .container .left .product-details .price h2 {
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
   margin: 0;
   font-size: 20px;
   font-weight: 550;
-  width: fit-content;
+}
+
+.Cart .container .left .product-details .price h2 i {
+  position: relative;
+  padding: 8px;
+  color: var(--main-color);
+  border-radius: var(--main-border-radius);
+  background-color: var(--white-alt-1);
+  transition: var(--main-transition);
+  font-size: 14px;
+  cursor: pointer;
+}
+.Cart .container .left .product-details .price h2 i:hover {
+  background-color: #ff0000;
+  color: var(--white-color);
 }
 @media (max-width: 992px) {
   .Cart .container .left .product-details img {
@@ -94,8 +121,29 @@
 }
 .Cart .container .left .product-details .price p {
   position: relative;
-  font-size: 16px;
-  min-width: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--white-alt-1);
+  border-radius: var(--main-border-radius);
+  overflow: hidden;
+  font-size: 14px;
+}
+.Cart .container .left .product-details .price p button {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: var(--main-transition);
+}
+.Cart .container .left .product-details .price p button:hover {
+  background-color: var(--main-color);
+  color: var(--white-color);
 }
 /*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 # Cart return-customer
@@ -443,8 +491,8 @@
   .right
   > .box
   .card
-  .card-input
-  input[type="radio"]:checked
+  > .card-input
+  > input[type="radio"]:checked
   + label::after {
   background-color: #0075ff;
 }
@@ -455,10 +503,15 @@
 .Cart .container .right > .box .card .cards-Method {
   display: flex;
   justify-content: space-between;
+  gap: 15px;
   align-items: center;
   width: 100%;
   padding: 5px;
   transition: var(--main-transition);
+}
+.Cart .container .right > .box .card .cards-Method .card-input {
+  position: relative;
+  width: 100%;
 }
 .Cart .container .right > .box .card .cards-Method input[type="radio"] {
   display: none;
@@ -477,7 +530,7 @@
   padding: 5px;
   font-weight: bold;
   height: 40px;
-  width: 90px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -528,18 +581,7 @@
   + label {
   color: #0075ff;
 }
-.Cart
-  .container
-  .right
-  > .box
-  .card
-  .cards-Method
-  input[type="radio"]:checked
-  + label::after {
-  width: 0;
-  height: 0;
-  transition: none;
-}
+
 /*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 # Cart right card card-fields
 ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/

@@ -35,6 +35,7 @@
   border-radius: var(--main-border-radius);
   transition: var(--main-transition);
   z-index: 2;
+  overflow: hidden;
 }
 .login .clippath {
   position: absolute;
@@ -87,11 +88,50 @@
   background-color: var(--main-color);
   color: var(--white-alt-1);
   transition: var(--main-transition);
-  padding: 4px 8px;
+  padding: 8px 8px;
   border-radius: var(--main-border-radius);
   cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
 }
 .login .card button:hover {
   background-color: var(--white-alt-1);
   color: var(--main-color);
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Login
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.login .card .footer-login {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.login .card .split {
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+  text-align: center;
+}
+.login .card .split::before,
+.login .card .split::after {
+  position: absolute;
+  content: "";
+  width: 10000%;
+  background-color: rgb(255, 255, 255);
+  height: 2px;
+  top: 50%;
+  border-radius: var(--main-border-radius);
+}
+
+.login .card .split::before {
+  left: 200%;
+}
+.login .card .split::after {
+  right: 200%;
 }

@@ -343,7 +343,7 @@
     gap: 5px;
     transition: var(--main-transition);
 
-    box-shadow: 0px 0px 15px 2px var(--white-alt-2);
+    box-shadow: 2px 2px 5px 5px #eee;
   }
   .nav-bar .container .content.d-ap-mob ul li {
     width: 100%;

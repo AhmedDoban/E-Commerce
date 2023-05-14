@@ -22,6 +22,7 @@ function Login(props) {
         <div className="container">
           <div className="card">
             <img src={require("../../imgs/icon.svg").default} alt="" />
+            <div className="split">Welcome Again</div>
             <div className="card-input">
               <label htmlFor="Email">Email</label>
               <input
@@ -42,8 +43,14 @@ function Login(props) {
                 onChange={(e) => SetPassword(e.target.value)}
               />
             </div>
-
             <button onClick={handleLogin}>login</button>
+            <div className="footer-login">
+              <p className="split">or</p>
+              <button>
+                <i className="fa-brands fa-google"></i>Signin with google
+              </button>
+              <button>Regiter</button>
+            </div>
           </div>
         </div>
       </div>

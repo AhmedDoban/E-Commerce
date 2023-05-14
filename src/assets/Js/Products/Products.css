@@ -283,7 +283,7 @@
   width: fit-content;
   padding: 8px 8px;
   border-radius: var(--main-border-radius);
-  background-color: #c90101;
+  background-color: #003d29;
   color: var(--white-color);
   transform: var(--main-transition);
   border: 0;
@@ -293,6 +293,9 @@
   align-items: center;
   font-size: 14px;
   cursor: pointer;
+}
+.Products .container .cards-container .card .footer .button-box button.active {
+  background-color: #ff0000;
 }
 /*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
   # Todays Best Deals cards-container card footer des
@@ -351,10 +354,6 @@
   border: 0;
   cursor: pointer;
   border-radius: var(--main-border-radius);
-  background-color: #c90101;
+  background-color: #003d29;
   color: var(--white-color);
-}
-.see-more button:hover {
-  background-color: var(--main-color);
-  color: var(--white-alt-1);
 }

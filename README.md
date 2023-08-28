@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# <p align="center" id="title">Shopcart</p>
+# 🚀 <a href="https://e-commerce-git-main-ahmeddoban.vercel.app/" > Demo </a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center"><img src="https://github.com/AhmedDoban/Market/assets/73547094/c38f7bed-2768-4ad1-b262-c8fe1a1155d3"></p>
 
-## Available Scripts
+<p id="description" align="center">This is a new full response project with react JS "E-Commerce: Shopcart", containing these pages</p>
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<h2>Project Screenshots</h2>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<img src="https://github.com/AhmedDoban/Market/assets/73547094/d8b20ddd-41c5-4b99-a788-33203f085a4c" alt="project-screenshot" >
 
-### `npm test`
+<img src="https://github.com/AhmedDoban/Market/assets/73547094/cf90eb8c-837e-434a-b8de-839c73289585" alt="project-screenshot" >
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img src="https://github.com/AhmedDoban/Market/assets/73547094/c522242d-c73b-4779-a9e0-cd7aacce1513" alt="project-screenshot" >
 
-### `npm run build`
+# 🧐 Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Here're some of the project's best features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<details open >
+<summary>The first page "auth" includes</summary>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    - home page.
+    - Products page.
+    - Not found page when you route to somewhere I didn't give you access to.
+    - cart page
 
-### `npm run eject`
+</details >
+<details open>
+<summary> The second-page "guest" includes</summary>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    - login
+    - register
+    - Not found page when you route to somewhere I didn't give you.
+</details >
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<details >
+<summary> function I have implemented</summary>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    - Scroll to the top.
+    - nav menu mobile response.
+    - Add to cart from any page.
+    - Increment product you already added.
+    - Decrement product you already added.
+    - Remove the product from the cart.
+    - Filter in the menu page
+    - Show more 9 products.
+    - Fake login authentication If you click on the remember me, it will be saved in the local storage, and even if you close your browser, it will login again when you visit the site. If you don't click on it, it will be saved in the session storage.
+</details >
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<h2>🛠️ Installation Steps</h2>
 
-## Learn More
+<p>1. Create a Project First</p>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+npx create-react-app Herbivoria
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<p>2. install all dependencys</p>
 
-### Code Splitting
+```
+npm i
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<p>3. Run the project</p>
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+npm start
+```

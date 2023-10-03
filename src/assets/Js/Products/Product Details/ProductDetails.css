@@ -188,7 +188,7 @@
   font-weight: bold;
   font-size: 20px;
 }
-.ProductDetails .container .right .counter-items .counter button {
+.ProductDetails .container .right .counter-items .counter .btnStyle {
   position: relative;
   width: 100%;
   border: 0;
@@ -200,7 +200,7 @@
   transition: var(--main-transition);
   border-radius: 0;
 }
-.ProductDetails .container .right .counter-items .counter button:hover {
+.ProductDetails .container .right .counter-items .counter .btnStyle:hover {
   background-color: var(--main-color);
   color: var(--white-alt-1);
 }
@@ -212,7 +212,7 @@
   color: #ffaa00;
   font-weight: bold;
 }
-.ProductDetails .container .right .counter-items button {
+.ProductDetails .container .right .counter-items .btnStyle {
   position: relative;
   width: 100%;
   padding: 10px 15px;
@@ -222,12 +222,13 @@
   transition: var(--main-transition);
   font-weight: bold;
   cursor: pointer;
+  text-align: center;
 }
-.ProductDetails .container .right .counter-items > button:first-child {
+.ProductDetails .container .right .counter-items > .btnStyle:first-child {
   background-color: var(--main-color);
   color: var(--white-color);
 }
-.ProductDetails .container .right .counter-items button:hover {
+.ProductDetails .container .right .counter-items .btnStyle:hover {
   background-color: var(--white-alt-2);
   color: var(--main-color);
 }

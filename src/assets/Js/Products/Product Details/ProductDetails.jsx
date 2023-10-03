@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "../../Components/Header/Header";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Stars from "../Stars";
 import "./ProductDetails.css";
@@ -140,11 +140,17 @@ function ProductDetails(props) {
             <div className="box">
               <div className="counter-items">
                 <div className="counter">
-                  <button onClick={() => HandleDecrement(product.id - 1)}>
+                  <button
+                    onClick={() => HandleDecrement(product.id)}
+                    className="btnStyle"
+                  >
                     -
                   </button>
                   {Counter}
-                  <button onClick={() => HandleIncrement(product.id - 1)}>
+                  <button
+                    onClick={() => HandleIncrement(product.id)}
+                    className="btnStyle"
+                  >
                     +
                   </button>
                 </div>
@@ -154,8 +160,19 @@ function ProductDetails(props) {
                 </p>
               </div>
               <div className="counter-items">
-                <button>Buy Now </button>
-                <button>Add to Cart </button>
+                <Link
+                  to="/Cart"
+                  onClick={() => props.HandleIsInCart(product.id)}
+                  className="btnStyle"
+                >
+                  Buy Now
+                </Link>
+                <button
+                  className={product.isInCard ? "btnStyle active" : "btnStyle"}
+                  onClick={() => props.HandleIsInCart(product.id)}
+                >
+                  Add to Cart
+                </button>
               </div>
               <div className="box-1">
                 <i className="fa-solid fa-truck-fast"></i>

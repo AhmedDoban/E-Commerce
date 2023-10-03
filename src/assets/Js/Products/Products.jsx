@@ -1,13 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./Products.css";
 import Header from "../Components/Header/Header";
-import Stars from "./Stars";
 import { ProudactContext } from "../Auth/Auth";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import PopularProducts from "../Home/Popular Products/PopularProducts";
 import Footer from "../Components/Footer/Footer";
 import Services from "../Home/Services/Services";
+import Stars from "./Stars";
 
 function Products(props) {
   const Products = useContext(ProudactContext);
@@ -77,59 +77,34 @@ function Products(props) {
               Chosen === "" ? data : data.category === Chosen
             )
               .slice(0, ShowMore)
-              .map((item, index) => (
-                <div
-                  className="card"
-                  data-aos="zoom-in"
-                  data-aos-easing="ease-in-out"
-                  key={item.id}
-                >
-                  <div className="header">
+              .map((item) => (
+                <div className="card" key={item.id}>
+                  <Link to={`${item.id}`} className="header">
                     <img src={item.image} alt="" />
                     <div className="icons">
                       <i className="fa-solid fa-heart"></i>
-                      <Link to={`${item.id}`}>
-                        <i className="fa-solid fa-circle-info"></i>
-                      </Link>
                     </div>
-                  </div>
+                  </Link>
                   <div className="footer">
-                    <span>{item.title.slice(0, 20)}...</span>
-
-                    <p>{item.description.slice(0, 50)}...</p>
-                    <div className="stars">
-                      <Stars rate={item.rating.rate} />
+                    <div className="info-box">
+                      <span>{item.title.slice(0, 25)}... </span>
+                      <Stars rate={item.rating?.rate} />
                     </div>
-                    <div className="counter">
+                    <div className="action-price">
+                      <span className="Price">
+                        {item.price.toString().split(".")[0]}
+                      </span>
                       <button
-                        onClick={() => props.HandleDecrement(item.id - 1)}
-                      >
-                        -
-                      </button>
-                      <p>
-                        <span> {item.CountInCart} </span> item
-                      </p>
-                      <button
-                        onClick={() => props.HandleIncrement(item.id - 1)}
-                      >
-                        +
-                      </button>
-                    </div>
-                    <div className="button-box">
-                      <span className="Price">{item.price}</span>
-                      <button
-                        onClick={() => props.HandleIsInCart(index)}
+                        onClick={() => props.HandleIsInCart(item.id)}
                         className={item.isInCard ? "active" : ""}
                       >
                         {item.isInCard ? (
                           <React.Fragment>
-                            <i className="fa-solid fa-trash"></i>
-                            <span>Remove</span>
+                            <i className="fa-solid fa-xmark"></i>
                           </React.Fragment>
                         ) : (
                           <React.Fragment>
-                            <i className="fa-solid fa-cart-shopping"></i>
-                            <span>Add To Cart</span>
+                            <i className="fa-solid fa-cart-arrow-down"></i>
                           </React.Fragment>
                         )}
                       </button>

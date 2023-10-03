@@ -43,19 +43,15 @@ function Cart(props) {
                       ${data.price}
                       <i
                         className="fa-solid fa-trash"
-                        onClick={() => props.HandleIsInCart(data.id - 1)}
+                        onClick={() => props.HandleIsInCart(data.id)}
                       ></i>
                     </h2>
                     <p>
-                      <button
-                        onClick={() => props.HandleDecrement(data.id - 1)}
-                      >
+                      <button onClick={() => props.HandleDecrement(data.id)}>
                         -
                       </button>
                       {data.CountInCart}
-                      <button
-                        onClick={() => props.HandleIncrement(data.id - 1)}
-                      >
+                      <button onClick={() => props.HandleIncrement(data.id)}>
                         +
                       </button>
                     </p>

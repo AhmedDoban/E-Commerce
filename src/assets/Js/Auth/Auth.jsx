@@ -45,43 +45,47 @@ function Auth(props) {
     GetProducts();
   }, []);
 
-  const HandleIsInCart = (index) => {
+  const HandleIsInCart = (id) => {
     //clone
     let Data = [...AllProducts];
+    let Proudact = Data.filter((AllProudacts) => +AllProudacts.id === +id)[0];
+    const ProudactId = Data.indexOf(Proudact);
     // Edit
-    if (Data[index].isInCard === true) {
-      Data[index] = {
-        ...Data[index],
+    if (Proudact.isInCard === true) {
+      Data[ProudactId] = {
+        ...Data[ProudactId],
         isInCard: false,
         CountInCart: 0,
       };
     } else {
-      Data[index] = {
-        ...Data[index],
+      Data[ProudactId] = {
+        ...Data[ProudactId],
         isInCard: true,
-        CountInCart: 1,
+        CountInCart: 0,
       };
     }
     // upDate
     SetAllProducts(Data);
   };
 
-  const HandleDecrement = (index) => {
+  const HandleDecrement = (id) => {
     //clone
     let Data = [...AllProducts];
+    let Proudact = Data.filter((AllProudacts) => +AllProudacts.id === +id)[0];
+    const ProudactId = Data.indexOf(Proudact);
     // Edit
-    let Counter = Data[index].CountInCart;
+    let Counter = Data[ProudactId].CountInCart;
     Counter--;
 
     if (Counter <= 0) {
-      Data[index] = {
-        ...Data[index],
+      Data[ProudactId] = {
+        ...Data[ProudactId],
         CountInCart: 0,
         isInCard: false,
       };
     } else {
-      Data[index] = {
-        ...Data[index],
+      Data[ProudactId] = {
+        ...Data[ProudactId],
         CountInCart: Counter,
         isInCard: true,
       };
@@ -89,14 +93,16 @@ function Auth(props) {
     // upDate
     SetAllProducts(Data);
   };
-  const HandleIncrement = (index) => {
+  const HandleIncrement = (id) => {
     //clone
     let Data = [...AllProducts];
-    let Counter = Data[index].CountInCart;
+    let Proudact = Data.filter((AllProudacts) => +AllProudacts.id === +id)[0];
+    const ProudactId = Data.indexOf(Proudact);
+    let Counter = Data[ProudactId].CountInCart;
     Counter++;
     // Edit
-    Data[index] = {
-      ...Data[index],
+    Data[ProudactId] = {
+      ...Data[ProudactId],
       CountInCart: Counter,
       isInCard: true,
     };
@@ -136,6 +142,7 @@ function Auth(props) {
                         <ProductDetails
                           HandleDecrement={HandleDecrement}
                           HandleIncrement={HandleIncrement}
+                          HandleIsInCart={HandleIsInCart}
                         />
                       }
                     />

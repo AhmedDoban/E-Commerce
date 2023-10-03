@@ -24,9 +24,10 @@ export const ProudactContext = createContext();
 
 function Auth(props) {
   const [AllProducts, SetAllProducts] = useState([]);
-
+  const [LoadingProudacts, SetLoadingProudacts] = useState(true);
   useEffect(() => {
     const GetProducts = async () => {
+      SetLoadingProudacts(true);
       try {
         await axios.get("https://fakestoreapi.com/products").then((Data) => {
           SetAllProducts(
@@ -36,6 +37,7 @@ function Auth(props) {
               CountInCart: 0,
             }))
           );
+          SetLoadingProudacts(false);
         });
       } catch (errr) {
         throw errr;
@@ -133,6 +135,7 @@ function Auth(props) {
                           HandleIsInCart={HandleIsInCart}
                           HandleDecrement={HandleDecrement}
                           HandleIncrement={HandleIncrement}
+                          LoadingProudacts={LoadingProudacts}
                         />
                       }
                     />

@@ -197,7 +197,9 @@ function Header(props) {
                 <Link to="/Cart">Cart</Link>
               </li>
               <li>
-                <Link onClick={() => HandleLogout()}>logout</Link>
+                <Link onClick={() => HandleLogout()} to="/">
+                  logout
+                </Link>
               </li>
             </ul>
           </div>

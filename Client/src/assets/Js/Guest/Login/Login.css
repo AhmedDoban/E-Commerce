@@ -1,0 +1,212 @@
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# General
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+@import url("../../../css/root.css");
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Login
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.login {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  min-height: 100vh;
+  height: 100vh;
+}
+
+@media (max-width: 992px) {
+  .login {
+    flex-direction: column;
+    height: auto;
+  }
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Login left
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.login .left {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 20px 40px 20px 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.login .left::before {
+  position: absolute;
+  content: "";
+  width: 300px;
+  height: 300px;
+  box-shadow: 0 0 500px #e4ac29, 0 0 5000px #e4ac29;
+  background-color: #e4ac29;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  filter: blur(150px);
+}
+.login .left h1 {
+  color: var(--main-color);
+  font-size: 56px;
+  z-index: 1;
+}
+.login .left p {
+  color: var(--main-color);
+  font-size: 18px;
+  z-index: 1;
+}
+.login .left img {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  object-fit: contain;
+  z-index: 1;
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Login Right
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.login .right {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+.login .card {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  width: 450px;
+  transition: var(--main-transition);
+  overflow-x: hidden;
+  border: 1px solid #e7e6e5;
+  padding: 20px;
+}
+.login .card h1 {
+  position: relative;
+  font-size: 40px;
+  color: var(--main-color);
+}
+.login .card > p {
+  position: relative;
+  margin-bottom: 30px;
+  color: var(--main-color);
+}
+.login .card .card-input {
+  position: relative;
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-bottom: 1px solid #e7e6e5;
+}
+.login .card .card-input label {
+  font-weight: bold;
+  text-wrap: nowrap;
+  min-width: 60px;
+  color: var(--main-color);
+}
+.login .card .card-input input {
+  width: 100%;
+  padding: 5px 8px;
+  background-color: transparent;
+  border: 0;
+
+  transition: var(--main-transition);
+}
+.login .card .card-input input:focus {
+  outline: 0;
+}
+.login .card .card-input input:focus::placeholder {
+  opacity: 0;
+  transition: var(--main-transition);
+}
+.login .card > button {
+  position: relative;
+  width: 100%;
+  border: 0;
+  background-color: #ffbb21;
+  color: var(--white-alt-1);
+  transition: var(--main-transition);
+  padding: 12px 8px;
+  border-radius: var(--main-border-radius);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+.login .card button:hover {
+  background-color: #e4ac29;
+}
+.login .card .card-save {
+  position: relative;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.login .card .card-save button {
+  position: relative;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.login .card .card-save > input {
+  display: none;
+}
+.login .card .card-save > label {
+  position: relative;
+  padding: 0 0 0 25px;
+  cursor: pointer;
+  font-weight: 450;
+}
+.login .card .card-save > label::before {
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 20px;
+  left: 0;
+  border: 1px solid #e7e6e5;
+  border-radius: 1px;
+}
+.login .card .card-save > label::after {
+  position: absolute;
+  content: "\f00c";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  top: 1px;
+  background-color: var(--blue-color);
+  width: 20px;
+  height: 20px;
+  left: 0.5px;
+  border-radius: 1px;
+  transform: scale(0) rotate(360deg);
+  transition: var(--main-transition);
+}
+.login .card .card-save > input:checked + label::after {
+  transform: scale(1);
+}
+.login .card .card-register {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,741 @@
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# General
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+@import url("../../../css/root.css");
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Cart
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Cart {
+  position: relative;
+  padding-top: var(--main-padding-top);
+  padding-bottom: var(--main-padding-bottom);
+  width: 100%;
+  transition: var(--main-transition);
+}
+.Cart .container {
+  display: flex;
+  gap: 15px;
+}
+@media (max-width: 992px) {
+  .Cart .container {
+    flex-direction: column;
+  }
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Cart left
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Cart .container .left {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: var(--main-transition);
+}
+.Cart .container .left h3 {
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 25px;
+  transition: var(--main-transition);
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Cart left product-details 
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Cart .container .left .product-details {
+  position: relative;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 3px solid var(--white-alt-1);
+  border-radius: var(--main-border-radius);
+  transition: var(--main-transition);
+}
+
+.Cart .container .left .product-details .info {
+  position: relative;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  background-color: transparent;
+}
+
+.Cart .container .left .product-details img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  background-color: var(--white-color);
+  border-radius: var(--main-border-radius);
+}
+.Cart .container .left .product-details .info .data h4 {
+  position: relative;
+  font-size: 22px;
+  width: fit-content;
+}
+.Cart .container .left .product-details .price {
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 10px;
+}
+.Cart .container .left .product-details .price h2 {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 550;
+}
+
+.Cart .container .left .product-details .price h2 i {
+  position: relative;
+  padding: 8px;
+  color: var(--main-color);
+  border-radius: var(--main-border-radius);
+  background-color: var(--white-alt-1);
+  transition: var(--main-transition);
+  font-size: 14px;
+  cursor: pointer;
+}
+.Cart .container .left .product-details .price h2 i:hover {
+  background-color: #ff0000;
+  color: var(--white-color);
+}
+@media (max-width: 992px) {
+  .Cart .container .left .product-details img {
+    width: 35px;
+    height: 35px;
+  }
+  .Cart .container .left .product-details .info .data h4 {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .Cart .container .left .product-details .price h2 {
+    font-size: 14px;
+  }
+}
+.Cart .container .left .product-details .price p {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--white-alt-1);
+  border-radius: var(--main-border-radius);
+  overflow: hidden;
+  font-size: 14px;
+}
+.Cart .container .left .product-details .price p button {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: var(--main-transition);
+}
+.Cart .container .left .product-details .price p button:hover {
+  background-color: var(--main-color);
+  color: var(--white-color);
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Cart return-customer
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Cart .container .left .return-customer {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.Cart .container .left .return-customer input {
+  opacity: 0;
+  display: none;
+}
+.Cart .container .left .return-customer label {
+  position: relative;
+  padding: 0 0 0 35px;
+  font-size: 16px;
+  font-weight: bold;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: var(--main-transition);
+}
+.Cart .container .left .return-customer label::before {
+  position: absolute;
+  content: "\f00c";
+  font-weight: 900;
+  font-family: var(--fa-style-family-classic);
+  left: 5px;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  border-radius: var(--main-border-radius);
+  border: 2px solid var(--white-alt-2);
+  transition: var(--main-transition);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  transform: translateY(-50%) scale(1) rotate(360deg);
+}
+.Cart .container .left .return-customer input:checked + label::before {
+  background-color: #0075ff;
+  transform: translateY(-50%) scale(1);
+  border: 0px solid var(--white-alt-2);
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Cart delvery-information
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Cart .container .left .delvery-information {
+  position: relative;
+  border: 3px solid var(--white-alt-1);
+  padding: 20px;
+  border-radius: var(--main-border-radius);
+  transition: var(--main-transition);
+}
+.Cart .container .left .delvery-information h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: capitalize;
+  margin-bottom: 15px;
+}
+
+.Cart .container .left .delvery-information h3 button {
+  background-color: var(--white-alt-1);
+  border: 0;
+  padding: 8px 12px;
+  border-radius: var(--main-border-radius);
+  font-size: 16px;
+  cursor: pointer;
+  letter-spacing: 1.3px;
+  font-weight: 500;
+  transition: var(--main-transition);
+}
+.Cart .container .left .delvery-information h3 button:hover {
+  background-color: #0075ff;
+  color: #fff;
+}
+@media (max-width: 992px) {
+  .Cart .container .left .delvery-information h3 {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .Cart .container .left .delvery-information h3 button {
+    width: 100%;
+  }
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Cart delvery-information ReturnCustomer-true
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Cart .container .left .delvery-information .ReturnCustomer-true {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  transition: var(--main-transition);
+}
+.Cart .container .left .delvery-information .ReturnCustomer-true h2 {
+  font-size: 18px;
+  position: relative;
+  color: var(--white-alt-2);
+  transition: var(--main-transition);
+  margin: 10px 0;
+}
+.Cart .container .left .delvery-information .ReturnCustomer-true p {
+  position: relative;
+  font-size: 16px;
+  transition: var(--main-transition);
+  margin: 0;
+  padding: 0;
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Cart delvery-information ReturnCustomer-false
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Cart .container .left .delvery-information .ReturnCustomer-false {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: var(--main-transition);
+}
+.Cart .container .left .delvery-information .ReturnCustomer-false .box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+@media (max-width: 772px) {
+  .Cart .container .left .delvery-information .ReturnCustomer-false .box {
+    flex-direction: column;
+  }
+}
+.Cart .container .left .delvery-information .ReturnCustomer-false .card-input {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
+}
+.Cart
+  .container
+  .left
+  .delvery-information
+  .ReturnCustomer-false
+  .card-input
+  input {
+  padding: 8px;
+  border: 2px solid var(--white-alt-1);
+  border-radius: calc(var(--main-border-radius) / 2);
+  transition: var(--main-transition);
+}
+.Cart
+  .container
+  .left
+  .delvery-information
+  .ReturnCustomer-false
+  .card-input
+  input::placeholder {
+  color: var(--white-alt-2);
+}
+.Cart
+  .container
+  .left
+  .delvery-information
+  .ReturnCustomer-false
+  .card-input
+  input:focus {
+  outline: 0;
+  border: 2px solid #0075ff;
+}
+.Cart
+  .container
+  .left
+  .delvery-information
+  .ReturnCustomer-false
+  .card-input
+  input:focus::placeholder {
+  opacity: 0;
+  transition: var(--main-transition);
+}
+.Cart
+  .container
+  .left
+  .delvery-information
+  .ReturnCustomer-false
+  .card-input
+  label {
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Cart right
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Cart .container .right {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  min-width: 350px;
+}
+.Cart .container .right > .box {
+  position: relative;
+  padding: 20px;
+  border: 3px solid var(--white-alt-1);
+  border-radius: var(--main-border-radius);
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Cart right card
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Cart .container .right > .box .card {
+  position: relative;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.Cart .container .right > .box .card:first-child {
+  padding: 0 0 20px 0;
+}
+.Cart .container .right > .box .card:not(:last-child) {
+  border-bottom: 3px solid var(--white-alt-1);
+}
+.Cart .container .right > .box .card > h3 {
+  font-size: 25px;
+}
+.Cart .container .right > .box .card > h4 {
+  font-size: 20px;
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Cart right card.Coupon
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+
+.Cart .container .right > .box .card.Coupon input {
+  position: relative;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: calc(var(--main-border-radius) * 2);
+  transition: var(--main-transition);
+  border: 3px solid var(--white-alt-1);
+}
+.Cart .container .right > .box .card.Coupon input::placeholder {
+  color: var(--white-alt-2);
+}
+.Cart .container .right > .box .card.Coupon input:focus {
+  outline: 0;
+}
+.Cart .container .right > .box .card.Coupon input:focus::placeholder {
+  opacity: 0;
+  transition: var(--main-transition);
+}
+.Cart .container .right > .box .card.Coupon button {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--main-color);
+  color: var(--white-color);
+  padding: 4px 8px;
+  border-radius: calc(var(--main-border-radius) * 2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Cart right card card-input
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Cart .container .right > .box .card > .card-input {
+  position: relative;
+  width: 100%;
+}
+.Cart .container .right > .box .card .card-input > input[type="radio"] {
+  display: none;
+  opacity: 0;
+}
+.Cart .container .right > .box .card .card-input > input[type="radio"] + label {
+  position: relative;
+  padding: 0 0 0 35px;
+  font-size: 16px;
+  font-weight: bold;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: var(--main-transition);
+}
+.Cart
+  .container
+  .right
+  > .box
+  .card
+  .card-input
+  > input[type="radio"]
+  + label::before,
+.Cart
+  .container
+  .right
+  > .box
+  .card
+  .card-input
+  > input[type="radio"]
+  + label::after {
+  position: absolute;
+  content: "";
+  left: 5px;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  border-radius: 50%;
+  transition: var(--main-transition);
+  border: 2px solid var(--white-alt-2);
+  color: #fff;
+  transform: translateY(-50%);
+}
+.Cart
+  .container
+  .right
+  > .box
+  .card
+  .card-input
+  > input[type="radio"]
+  + label::after {
+  border: 0;
+  width: calc(20px - 3px);
+  height: calc(20px - 3px);
+  left: 8px;
+  z-index: 22;
+}
+.Cart
+  .container
+  .right
+  > .box
+  .card
+  > .card-input
+  > input[type="radio"]:checked
+  + label::after {
+  background-color: #0075ff;
+}
+
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Cart right card cards-Method
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Cart .container .right > .box .card .cards-Method {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  transition: var(--main-transition);
+}
+.Cart .container .right > .box .card .cards-Method .card-input {
+  position: relative;
+  width: 100%;
+}
+.Cart .container .right > .box .card .cards-Method input[type="radio"] {
+  display: none;
+  opacity: 0;
+}
+.Cart
+  .container
+  .right
+  > .box
+  .card
+  > .cards-Method
+  input[type="radio"]
+  + label {
+  position: relative;
+  font-size: 16px;
+  padding: 5px;
+  font-weight: bold;
+  height: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--main-transition);
+  color: var(--main-color);
+  font-size: 30px;
+  border-radius: var(--main-border-radius);
+}
+.Cart
+  .container
+  .right
+  > .box
+  .card
+  .cards-Method
+  input[type="radio"]
+  + label::before {
+  position: absolute;
+  content: "";
+  border-radius: var(--main-border-radius);
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  transform: translateY(0) translateX(0);
+  border: 2px solid var(--white-alt-2);
+  transition: var(--main-transition);
+}
+.Cart
+  .container
+  .right
+  > .box
+  .card
+  .cards-Method
+  input[type="radio"]:checked
+  + label::before {
+  border: 2px solid #0075ff;
+  transition: var(--main-transition);
+}
+.Cart
+  .container
+  .right
+  > .box
+  .card
+  .cards-Method
+  input[type="radio"]:checked
+  + label {
+  color: #0075ff;
+}
+
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Cart right card card-fields
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+
+.Cart .container .right > .box .card .card-fields {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
+}
+.Cart .container .right > .box .card .card-fields .p-ab {
+  width: 100%;
+  position: relative;
+}
+.Cart .container .right > .box .card .card-fields .p-ab > input {
+  padding: 8px 8px 8px 30px;
+}
+
+.Cart .container .right > .box .card .card-fields .p-ab i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  transition: var(--main-transition);
+}
+.Cart .container .right > .box .card .card-fields .p-ab > input:focus + i {
+  color: #0075ff;
+}
+.Cart .container .right > .box .card .box-fields {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+.Cart .container .right > .box .card .card-fields input {
+  padding: 8px;
+  width: 100%;
+  border: 2px solid var(--white-alt-1);
+  border-radius: calc(var(--main-border-radius) / 2);
+  transition: var(--main-transition);
+}
+.Cart .container .right > .box .card .card-fields input::placeholder {
+  color: var(--white-alt-2);
+}
+.Cart .container .right > .box .card .card-fields input:focus {
+  outline: 0;
+  border: 2px solid #0075ff;
+}
+.Cart .container .right > .box .card .card-fields input:focus::placeholder {
+  opacity: 0;
+  transition: var(--main-transition);
+}
+.Cart .container .right > .box .card .card-fields label {
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Cart right card box-price
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Cart .container .right > .box .card .box-price {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  gap: 15px;
+}
+.Cart .container .right > .box .card .box-price h5 {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--main-transition);
+}
+.Cart .container .right > .box .card .box-price h5 p {
+  font-size: 16px;
+  color: var(--main-color);
+  font-weight: bold;
+}
+.Cart .container .right > .box .card .box-price h5 span {
+  font-size: 14px;
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Cart right card box-total-price
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Cart .container .right > .box .total-price h3 {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--main-color);
+  font-size: 25px;
+}
+.Cart .container .right > .box .total-price button {
+  position: relative;
+  padding: 8px 15px;
+  border: 0;
+  transition: var(--main-transition);
+  background-color: var(--main-color);
+  color: var(--white-color);
+  font-size: 16px;
+  border-radius: calc(var(--main-border-radius) * 2);
+  cursor: pointer;
+}
+.Cart .container .right > .box .total-price button:hover {
+  background-color: #0075ff;
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Cart right box.cashback 
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Cart .container .right > .box.cashback {
+  background-color: #fcffad;
+  border: 0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.Cart .container .right > .box.cashback img {
+  width: 50px;
+  height: 50px;
+}
+.Cart .container .right > .box.cashback .info {
+  background-color: transparent;
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  flex-direction: column;
+}
+.Cart .container .right > .box.cashback .info h3 {
+  font-size: 14px;
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+#  No-data-inCart
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.No-data-inCart {
+  position: relative;
+
+  padding-top: var(--main-padding-top);
+  padding-bottom: var(--main-padding-bottom);
+}
+.No-data-inCart .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.No-data-inCart .No-item-player {
+  width: 350px;
+  height: 350px;
+}
+.No-data-inCart p {
+  font-size: 18px;
+  font-weight: bold;
+}

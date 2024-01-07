@@ -1,24 +1,12 @@
+// import files
 import express from "express";
-import Users_Controllers from "../Controllers/Users_Controllers.js";
+import Users_controllers from "../Controllers/Users_controllers.js";
 import { body } from "express-validator";
-const Route = express.Router();
 
-Route.route("/Register").post(
-  [
-    body("email")
-      .notEmpty()
-      .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/gi)
-      .withMessage("Email is not Valid"),
-    body("password")
-      .notEmpty()
-      .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gi)
-      .withMessage("Password is not Valid"),
-    body("name").notEmpty().withMessage("Name is not Valid"),
-  ],
-  Users_Controllers.HandleRegister
-);
+const Router = express.Router();
 
-Route.route("/Login").post(
+// Routes Handelar /API/Users/Login
+Router.route("/Login").post(
   [
     body("email")
       .notEmpty()
@@ -29,7 +17,7 @@ Route.route("/Login").post(
       .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gi)
       .withMessage("Password is not Valid"),
   ],
-  Users_Controllers.HandleLogin
+  Users_controllers.User_Login
 );
 
-export default Route;
+export default Router;

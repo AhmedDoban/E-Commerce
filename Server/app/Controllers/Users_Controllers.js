@@ -35,7 +35,10 @@ const User_Login = async (Req, Res) => {
         return Res.json({
           Status: Codes.SUCCESS,
           Status_Code: Codes.SUCCESS_CODE,
-          Data: USER.Token,
+          Data: await Users_Model.findOne(
+            { email },
+            { password: 0, __v: 0, Role: 0 }
+          ),
         });
       } else {
         // here found email but the password does not match
@@ -52,6 +55,55 @@ const User_Login = async (Req, Res) => {
       Status: Codes.FAILD,
       Status_Code: Codes.FAILD_CODE,
       message: "Sorry Something went wrong please try again later !",
+    });
+  }
+};
+
+// Get Specific User from database
+const Get_Specific_User = async (Req, Res) => {
+  const User_id = Req.params.User_id;
+  const { _id, Token } = Req.body;
+
+  const Errors = validationResult(Req);
+  // Body Validation Before Searching in the database to increase performance
+  if (!Errors.isEmpty()) {
+    return Res.json({
+      Status: Codes.FAILD,
+      Status_Code: Codes.FAILD_CODE,
+      message: "Can't Register please Try again later",
+      data: Errors.array().map((arr) => arr.msg),
+    });
+  }
+
+  try {
+    // GEt user Data From the Data Base
+    const USER = await Users_Model.findOne(
+      { _id, Token },
+      { password: 0, __v: 0, Role: 0 }
+    );
+    if (User_id === _id && USER !== null) {
+      // return ther user data
+      return Res.json({
+        Status: Codes.SUCCESS,
+        Status_Code: Codes.SUCCESS_CODE,
+        Data: USER,
+      });
+    } else {
+      const User = await Users_Model.findOne(
+        { _id: User_id },
+        { name: 1, email: 1, Mobile: 1, Avatar: 1 }
+      );
+      return Res.json({
+        Status: Codes.SUCCESS,
+        Status_Code: Codes.SUCCESS_CODE,
+        Data: User,
+      });
+    }
+  } catch (err) {
+    Res.json({
+      Status: Codes.FAILD,
+      Status_Code: Codes.FAILD_CODE,
+      message: "User not founded",
     });
   }
 };
@@ -116,4 +168,5 @@ const User_Register = async (Req, Res) => {
 export default {
   User_Login,
   User_Register,
+  Get_Specific_User,
 };

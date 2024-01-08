@@ -83,7 +83,6 @@
   width: 450px;
   transition: var(--main-transition);
   overflow-x: hidden;
-  border: 1px solid #e7e6e5;
   padding: 20px;
 }
 .Register .card h1 {

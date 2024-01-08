@@ -1,20 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Auth from "./assets/Js/Auth/Auth";
 import Guest from "./assets/Js/Guest/Guest";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  Login_Local,
+  Login_Local_Thunk,
+} from "./assets/Js/Toolkit/Slice/UserSlice";
 
 function App() {
-  const [logedin, Setlogedin] = useState(false);
+  const IsLogin = useSelector((state) => state.User.IsLogin);
+  const Dispatch = useDispatch();
 
   useEffect(() => {
     const CheckLogin = JSON.parse(localStorage.getItem("E-commerce-login"));
-    Setlogedin(CheckLogin);
-  }, []);
+    if (CheckLogin !== null) {
+      Dispatch(Login_Local());
+      Dispatch(Login_Local_Thunk());
+    }
+  }, [Dispatch]);
 
-  if (logedin) {
-    return <Auth Setlogedin={Setlogedin} />;
-  } else {
-    return <Guest Setlogedin={Setlogedin} />;
-  }
+  return IsLogin ? <Auth /> : <Guest />;
 }
 
 export default App;

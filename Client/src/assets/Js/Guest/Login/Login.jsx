@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Login.css";
 import { useDispatch } from "react-redux";
 import { Login_Thunk } from "../../Toolkit/Slice/UserSlice";
 
 function Login(props) {
-  // to navigate to home page after login
-  const Navigate = useNavigate();
   // to featch user date from backend
   const Dispatch = useDispatch();
   // store date from input

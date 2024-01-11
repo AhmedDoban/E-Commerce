@@ -1,12 +1,12 @@
 import React, {
   lazy,
   Suspense,
-  useEffect,
+
   useState,
   createContext,
 } from "react";
 import { Outlet, Route, Routes } from "react-router-dom";
-import axios from "axios";
+
 
 import Loading from "./../Components/Loading/Loading";
 import Cart from "../Auth/Cart/Cart";
@@ -24,28 +24,6 @@ export const ProudactContext = createContext();
 
 function Auth(props) {
   const [AllProducts, SetAllProducts] = useState([]);
-  const [LoadingProudacts, SetLoadingProudacts] = useState(true);
-  useEffect(() => {
-    const GetProducts = async () => {
-      SetLoadingProudacts(true);
-      try {
-        await axios.get("https://fakestoreapi.com/products").then((Data) => {
-          SetAllProducts(
-            Data.data.map((pro) => ({
-              ...pro,
-              isInCard: false,
-              CountInCart: 0,
-            }))
-          );
-          SetLoadingProudacts(false);
-        });
-      } catch (errr) {
-        throw errr;
-      }
-    };
-
-    GetProducts();
-  }, []);
 
   const HandleIsInCart = (id) => {
     //clone
@@ -116,57 +94,54 @@ function Auth(props) {
     <React.Fragment>
       <div className="Auth">
         <div className="page-wrpper">
-          <ProudactContext.Provider value={AllProducts}>
-            <Suspense fallback={<Loading />}>
-              {/******************************* HOME *****************************************/}
-              <Routes>
-                <Route path="/" element={<Outlet />}>
+          <Suspense fallback={<Loading />}>
+            {/******************************* HOME *****************************************/}
+            <Routes>
+              <Route path="/" element={<Outlet />}>
+                <Route
+                  path=""
+                  element={<Home Setlogedin={props.Setlogedin} />}
+                />
+                <Route path="Products" element={<Outlet />}>
                   <Route
                     path=""
-                    element={<Home Setlogedin={props.Setlogedin} />}
+                    element={
+                      <Products
+                        Setlogedin={props.Setlogedin}
+                        AllProducts={AllProducts}
+                        HandleIsInCart={HandleIsInCart}
+                        HandleDecrement={HandleDecrement}
+                        HandleIncrement={HandleIncrement}
+                      />
+                    }
                   />
-                  <Route path="Products" element={<Outlet />}>
-                    <Route
-                      path=""
-                      element={
-                        <Products
-                          Setlogedin={props.Setlogedin}
-                          AllProducts={AllProducts}
-                          HandleIsInCart={HandleIsInCart}
-                          HandleDecrement={HandleDecrement}
-                          HandleIncrement={HandleIncrement}
-                          LoadingProudacts={LoadingProudacts}
-                        />
-                      }
-                    />
-                    <Route
-                      path=":productId"
-                      element={
-                        <ProductDetails
-                          HandleDecrement={HandleDecrement}
-                          HandleIncrement={HandleIncrement}
-                          HandleIsInCart={HandleIsInCart}
-                        />
-                      }
-                    />
-                  </Route>
+                  <Route
+                    path=":productId"
+                    element={
+                      <ProductDetails
+                        HandleDecrement={HandleDecrement}
+                        HandleIncrement={HandleIncrement}
+                        HandleIsInCart={HandleIsInCart}
+                      />
+                    }
+                  />
                 </Route>
-                {/******************************* Cart *****************************************/}
-                <Route
-                  path="/Cart"
-                  element={
-                    <Cart
-                      HandleIsInCart={HandleIsInCart}
-                      HandleDecrement={HandleDecrement}
-                      HandleIncrement={HandleIncrement}
-                    />
-                  }
-                />
-                {/******************************* Not Founded *****************************************/}
-                <Route path="*" element={<NotFounded />} />
-              </Routes>
-            </Suspense>
-          </ProudactContext.Provider>
+              </Route>
+              {/******************************* Cart *****************************************/}
+              <Route
+                path="/Cart"
+                element={
+                  <Cart
+                    HandleIsInCart={HandleIsInCart}
+                    HandleDecrement={HandleDecrement}
+                    HandleIncrement={HandleIncrement}
+                  />
+                }
+              />
+              {/******************************* Not Founded *****************************************/}
+              <Route path="*" element={<NotFounded />} />
+            </Routes>
+          </Suspense>
         </div>
       </div>
     </React.Fragment>

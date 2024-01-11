@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
+import { useDispatch } from "react-redux";
+import { Handle_Logout } from "../../Toolkit/Slice/UserSlice";
 
-function Header(props) {
+function Header() {
   const [Category, SetCategory] = useState(false);
   const [Togle, SetTogle] = useState(false);
+  const Dispatch = useDispatch();
 
   const HandleLogout = () => {
-    localStorage.clear();
-    props.Setlogedin(false);
+    Dispatch(Handle_Logout());
   };
 
   return (
@@ -154,7 +156,7 @@ function Header(props) {
                         />
                       </div>
                       <div className="right">
-                        <h1>Furniture</h1>
+                        <h1>Laptop</h1>
                         <p>
                           <span>250</span>
                           <span>item</span>

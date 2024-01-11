@@ -26,7 +26,7 @@ function Register(props) {
           <p>
             Manage your shop efficiently on shope with our shope seller center
           </p>
-          <img src={require("../../../imgs/buyers-banner.webp")} alt="" />
+          <img src={require("../../../imgs/Guest.webp")} alt="" />
         </div>
         <div className="right">
           <div className="card">

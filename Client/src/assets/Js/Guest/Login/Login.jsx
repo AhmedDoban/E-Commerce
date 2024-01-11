@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
-import { useDispatch } from "react-redux";
-import { Login_Thunk } from "../../Toolkit/Slice/UserSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { Handle_RemmberMe, Login_Thunk } from "../../Toolkit/Slice/UserSlice";
 
 function Login(props) {
   // to featch user date from backend
   const Dispatch = useDispatch();
+  const Remember = useSelector((state) => state.User.RememberMe);
   // store date from input
   const [User, SetUser] = useState({
     email: "",
@@ -31,7 +32,7 @@ function Login(props) {
           <p>
             Manage your shop efficiently on shope with our shope seller center
           </p>
-          <img src={require("../../../imgs/buyers-banner.webp")} alt="" />
+          <img src={require("../../../imgs/Guest.webp")} alt="" />
         </div>
         <div className="right">
           <div className="card">
@@ -60,8 +61,18 @@ function Login(props) {
               />
             </div>
             <div className="card-save">
-              <input type="checkbox" name="SaveInfo" id="SaveInfo" />
-              <label htmlFor="SaveInfo">Remember me</label>
+              <input
+                type="checkbox"
+                name="SaveInfo"
+                id="SaveInfo"
+                checked={Remember}
+              />
+              <label
+                htmlFor="SaveInfo"
+                onClick={() => Dispatch(Handle_RemmberMe())}
+              >
+                Remember me
+              </label>
               <button>Forgot password ?</button>
             </div>
             <button onClick={handleLogin}>login</button>

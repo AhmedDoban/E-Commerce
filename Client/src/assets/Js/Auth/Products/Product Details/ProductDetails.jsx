@@ -18,18 +18,6 @@ function ProductDetails(props) {
   const [SlideProgress, SetSlideProgress] = useState(1);
   const [Counter, SetCounter] = useState(0);
 
-  useEffect(() => {
-    const fetchdata = (async) => {
-      try {
-        axios
-          .get(`https://fakestoreapi.com/products/${params.productId}`)
-          .then((data) => SetProduct(data.data));
-      } catch (err) {
-        throw err;
-      }
-    };
-    fetchdata();
-  }, []);
   const HandleDecrement = (index) => {
     SetCounter(Counter > 0 ? Counter - 1 : 0);
     props.HandleDecrement(index);

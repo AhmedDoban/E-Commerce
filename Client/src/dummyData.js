@@ -1,4 +1,4 @@
-/****************************     Categories_data *****************************************************/
+/**************************** Categories_data *****************************************************/
 export const Categories_data = [
   {
     Categorie_name: "Furniture",
@@ -25,7 +25,7 @@ export const Categories_data = [
     Categorie_img: require("./assets/imgs/Categories/Card(6).png"),
   },
 ];
-/****************************    Brands_data*****************************************************/
+/**************************** Brands_data *****************************************************/
 export const Brands_data = [
   {
     Brands_name: "Target",
@@ -68,7 +68,7 @@ export const Brands_data = [
     Brands_img: require("./assets/imgs/Brand/Brand(8).png"),
   },
 ];
-/****************************    Brands_data*****************************************************/
+/**************************** Brands_data *****************************************************/
 export const BestDeals_Data = [
   {
     BestDeals_name: "Homepod mini",
@@ -107,7 +107,7 @@ export const BestDeals_Data = [
     BestDeals_price: "266",
   },
 ];
-/****************************    Brands_data *****************************************************/
+/****************************   Brands_data *****************************************************/
 export const TodaysBestDeals_data = [
   {
     TodaysBestDeals_name: "Laptop sleeve MacBook",

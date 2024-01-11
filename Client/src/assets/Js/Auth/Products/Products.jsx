@@ -1,42 +1,53 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./Products.css";
 import Header from "./../../Components/Header/Header";
 import Footer from "./../../Components/Footer/Footer";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import PopularProducts from "../Home/Popular Products/PopularProducts";
 import Services from "../Home/Services/Services";
 import Stars from "./Stars";
 import LoadingFetchData from "./../../Components/Loading Fetch Data/LoadingFetchData";
-import { ProudactContext } from "../Auth";
 
-function Products(props) {
-  const Products = useContext(ProudactContext);
-  const [ShowMore, SetShowMore] = useState(8);
-  const [filters, setFilters] = useState([]);
+import { useDispatch, useSelector } from "react-redux";
+
+import {
+  Get_All_Category,
+  Get_All_Products,
+  SeeNext,
+  SeePrev,
+} from "../../Toolkit/Slice/ProductsSlice";
+
+function Products() {
   const [Chosen, SetChosen] = useState("");
+  const Dispatch = useDispatch();
+  const Products = useSelector((state) => state.Products.Products);
+  const Category = useSelector((state) => state.Products.Category);
+  const Loading = useSelector((state) => state.Products.Loading);
+  const Pages = useSelector((state) => state.Products.Pages);
+  const CurentPage = useSelector((state) => state.Products.CurentPage);
 
   useEffect(() => {
-    const fetchcategories = async () => {
-      try {
-        await axios
-          .get("https://fakestoreapi.com/products/categories")
-          .then((data) => setFilters(data.data));
-      } catch (err) {
-        throw err;
-      }
-    };
-    fetchcategories();
+    Dispatch(Get_All_Products());
+    Dispatch(Get_All_Category());
   }, []);
 
   const HandleFilter = (data) => {
     SetChosen(data);
   };
 
+  const HandleNext = () => {
+    Dispatch(SeeNext());
+    Dispatch(Get_All_Products());
+  };
+  const HandlePrev = () => {
+    Dispatch(SeePrev());
+    Dispatch(Get_All_Products());
+  };
+
   return (
     <React.Fragment>
       <Header />
-      {props.LoadingProudacts ? (
+      {Loading ? (
         <LoadingFetchData />
       ) : (
         <div className="Products">
@@ -64,7 +75,7 @@ function Products(props) {
                   All
                 </span>
               </li>
-              {filters.map((Catego, index) => (
+              {Category.map((Catego, index) => (
                 <li key={index}>
                   <span
                     className={Chosen === Catego ? "active" : ""}
@@ -79,54 +90,50 @@ function Products(props) {
             <div className="cards-container">
               {Products.filter((data) =>
                 Chosen === "" ? data : data.category === Chosen
-              )
-                .slice(0, ShowMore)
-                .map((item) => (
-                  <div className="card" key={item.id}>
-                    <Link to={`${item.id}`} className="header">
+              ).map((item) => (
+                <div
+                  className="card"
+                  data-aos="zoom-in"
+                  data-aos-easing="ease-in-out"
+                  key={item._id}
+                >
+                  <div className="header">
+                    <Link to={item._id}>
                       <img src={item.image} alt="" />
-                      <div className="icons">
-                        <i className="fa-solid fa-heart"></i>
-                      </div>
                     </Link>
-                    <div className="footer">
-                      <div className="info-box">
-                        <span>{item.title.slice(0, 25)}... </span>
-                        <Stars rate={item.rating?.rate} />
-                      </div>
-                      <div className="action-price">
-                        <span className="Price">
-                          {item.price.toString().split(".")[0]}
-                        </span>
-                        <button
-                          onClick={() => props.HandleIsInCart(item.id)}
-                          className={item.isInCard ? "active" : ""}
-                        >
-                          {item.isInCard ? (
-                            <React.Fragment>
-                              <i className="fa-solid fa-xmark"></i>
-                            </React.Fragment>
-                          ) : (
-                            <React.Fragment>
-                              <i className="fa-solid fa-cart-arrow-down"></i>
-                            </React.Fragment>
-                          )}
-                        </button>
-                      </div>
-                    </div>
+                    <i className="fa-regular fa-heart"></i>
                   </div>
-                ))}
+                  <div className="footer">
+                    <div className="info">
+                      <Link to={item._id}>
+                        <span>{item.name}</span>
+                      </Link>
+                      <span className="Price">{item.price}'$</span>
+                    </div>
+                    <p>{item.description}</p>
+                    <Stars rate={item.rating.rate} />
+                    <button>Add To Cart</button>
+                  </div>
+                </div>
+              ))}
             </div>
-            {ShowMore >
-            Products.filter((data) =>
-              Chosen === "" ? data : data.category === Chosen
-            ).length ? null : (
-              <div className="see-more">
-                <button onClick={() => SetShowMore(ShowMore + 8)}>
-                  Show More
-                </button>
-              </div>
-            )}
+
+            <div className="see-more">
+              <button
+                onClick={() => HandlePrev()}
+                className={CurentPage === 1 && "active"}
+                disabled={CurentPage === 1 && "active"}
+              >
+                <i className="fa-solid fa-arrow-left"></i>
+              </button>
+              <button
+                onClick={() => HandleNext()}
+                className={CurentPage === Pages && "active"}
+                disabled={CurentPage === Pages && "active"}
+              >
+                <i className="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
           </div>
         </div>
       )}

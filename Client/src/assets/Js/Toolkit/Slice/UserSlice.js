@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import Toast_Handelar from "./../../Components/Toast_Handelar";
 
 export const Login_Thunk = createAsyncThunk("User/Login", async (USER) => {
   const Data = await axios.post(
@@ -39,10 +40,40 @@ const UserSlice = createSlice({
     loading: false,
     Token: "",
     IsLogin: false,
+    RememberMe: false,
   },
   reducers: {
+    Handle_RemmberMe: (State, action) => {
+      State.RememberMe = !State.RememberMe;
+    },
     Login_Local: (State, action) => {
-      State.IsLogin = true;
+      const CheckLogin = JSON.parse(localStorage.getItem("E-commerce-login"));
+      const sessionLogin = JSON.parse(
+        sessionStorage.getItem("E-commerce-login")
+      );
+      if (CheckLogin !== null) {
+        State.IsLogin = true;
+        State.RememberMe = true;
+        return;
+      } else {
+        State.IsLogin = false;
+        State.RememberMe = false;
+        if (sessionLogin !== null) {
+          State.IsLogin = true;
+          State.RememberMe = false;
+        } else {
+          State.IsLogin = false;
+          State.RememberMe = false;
+        }
+      }
+    },
+    Handle_Logout: (State, action) => {
+      State.IsLogin = false;
+      State.RememberMe = false;
+      State.user = {};
+      State.Token = "";
+      sessionStorage.clear();
+      localStorage.clear();
     },
   },
   extraReducers: (builder) => {
@@ -54,19 +85,31 @@ const UserSlice = createSlice({
     });
     builder.addCase(Login_Thunk.fulfilled, (State, action) => {
       State.loading = false;
-      console.log(action.payload);
       if (action.payload.Status !== "Faild") {
         State.IsLogin = true;
         State.user = action.payload.Data;
         State.Token = action.payload.Data.Token;
-        localStorage.setItem("E-commerce-login", JSON.stringify(true));
-        localStorage.setItem(
-          "Token",
-          JSON.stringify({
-            Token: action.payload.Data.Token,
-            _id: action.payload.Data._id,
-          })
-        );
+        if (State.RememberMe) {
+          localStorage.setItem("E-commerce-login", JSON.stringify(true));
+          localStorage.setItem(
+            "Token",
+            JSON.stringify({
+              Token: action.payload.Data.Token,
+              _id: action.payload.Data._id,
+            })
+          );
+        } else {
+          sessionStorage.setItem("E-commerce-login", JSON.stringify(true));
+          sessionStorage.setItem(
+            "Token",
+            JSON.stringify({
+              Token: action.payload.Data.Token,
+              _id: action.payload.Data._id,
+            })
+          );
+        }
+      } else {
+        Toast_Handelar("error", action.payload.message);
       }
     });
     builder.addCase(Login_Local_Thunk.fulfilled, (State, action) => {
@@ -78,6 +121,7 @@ const UserSlice = createSlice({
       } else {
         State.IsLogin = false;
         localStorage.clear();
+        Toast_Handelar("error", action.payload.message);
       }
     });
     builder.addCase(Login_Thunk.rejected, (State, action) => {
@@ -89,6 +133,7 @@ const UserSlice = createSlice({
   },
 });
 
-export const { Login_Local } = UserSlice.actions;
+export const { Login_Local, Handle_RemmberMe, Handle_Logout } =
+  UserSlice.actions;
 
 export default UserSlice.reducer;

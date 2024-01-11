@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "./TodaysBestDeals.css";
-import { TodaysBestDeals_data } from "../../../../../dummyData";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  Get_All_Category,
+  Get_All_Products,
+} from "../../../Toolkit/Slice/ProductsSlice";
+import { Link } from "react-router-dom";
+import Stars from "../../Products/Stars";
 
 function TodaysBestDeals() {
   const [Chosen, SetChosen] = useState("");
-  const [BestDeals, SetBestDeals] = useState([]);
-  const [filters, setFilters] = useState([]);
+
+  const Dispatch = useDispatch();
+  const Products = useSelector((state) => state.Products.Products);
+  const Category = useSelector((state) => state.Products.Category);
 
   useEffect(() => {
-    SetBestDeals(TodaysBestDeals_data);
-    if (TodaysBestDeals_data.length > 0) {
-      const Data = [];
-      TodaysBestDeals_data.map((item) => {
-        Data.push(item.TodaysBestDeals_cat_name);
-        const data = new Set(Data);
-        setFilters([...data]);
-      });
-    }
+    Dispatch(Get_All_Products());
+    Dispatch(Get_All_Category());
   }, []);
 
   const HandleFilter = (data) => {
@@ -42,45 +43,44 @@ function TodaysBestDeals() {
                 All
               </span>
             </li>
-            {filters.map((Catego, index) => (
-              <li key={index}>
-                <span
-                  className={Chosen === Catego ? "active" : ""}
-                  onClick={() => HandleFilter(Catego)}
-                >
-                  {Catego}
-                </span>
-              </li>
-            ))}
+            {Category &&
+              Category.slice(0, 5).map((Catego, index) => (
+                <li key={index}>
+                  <span
+                    className={Chosen === Catego ? "active" : ""}
+                    onClick={() => HandleFilter(Catego)}
+                  >
+                    {Catego}
+                  </span>
+                </li>
+              ))}
           </ul>
           {/************************** Cards *********************************/}
           <div className="cards-container">
-            {BestDeals.filter((item) =>
-              Chosen === "" ? item : item.TodaysBestDeals_cat_name === Chosen
-            ).map((item, index) => (
+            {Products.filter((item) =>
+              Chosen === "" ? item : item.category === Chosen
+            ).map((item) => (
               <div
                 className="card"
                 data-aos="zoom-in"
                 data-aos-easing="ease-in-out"
-                key={index}
+                key={item._id}
               >
                 <div className="header">
-                  <img src={item.TodaysBestDeals_img} alt="" />
+                  <Link to={item._id}>
+                    <img src={item.image} alt="" />
+                  </Link>
                   <i className="fa-regular fa-heart"></i>
                 </div>
                 <div className="footer">
                   <div className="info">
-                    <span>{item.TodaysBestDeals_name}</span>
-                    <span className="Price">{item.TodaysBestDeals_price}</span>
+                    <Link to={item._id}>
+                      <span>{item.name}</span>
+                    </Link>
+                    <span className="Price">{item.price}'$</span>
                   </div>
-                  <p>{item.TodaysBestDeals_des}</p>
-                  <div className="stars">
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                  </div>
+                  <p>{item.description}</p>
+                  <Stars rate={item.rating.rate} />
                   <button>Add To Cart</button>
                 </div>
               </div>

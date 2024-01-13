@@ -2,7 +2,6 @@
 import Products_Model from "../Models/Products_Model.js";
 import Codes from "../utils/Codes.js";
 
-// distinct
 // get all products
 const Get_All_Products = async (Req, Res) => {
   const Page = Req.query.Page || 1;
@@ -36,14 +35,36 @@ const Get_All_Products = async (Req, Res) => {
   }
 };
 
-const Get_All_Category = async (Req, Res) => {
+// get Single products
+const Get_Product = async (Req, Res) => {
+  const _id = Req.params.id;
   try {
-    // GEt ALl Category From the Data Base
-    const Category = await Products_Model.distinct("category");
+    // GEt Single products From the Data Base
+    const Product = await Products_Model.findOne({ _id: _id }, { __v: 0 });
+
     Res.json({
       Status: Codes.SUCCESS,
       Status_Code: Codes.SUCCESS_CODE,
-      Data: Category,
+      Data: Product,
+    });
+  } catch (err) {
+    Res.json({
+      Status: Codes.FAILD,
+      Status_Code: Codes.FAILD_CODE,
+      message: "Page NOt Found",
+    });
+  }
+};
+
+// get all Category
+const Get_All_Category = async (Req, Res) => {
+  try {
+    // GEt ALl Category From the Data Base
+    const Distinct = await Products_Model.distinct("category");
+    Res.json({
+      Status: Codes.SUCCESS,
+      Status_Code: Codes.SUCCESS_CODE,
+      Data: Distinct,
     });
   } catch (err) {
     Res.json({
@@ -57,4 +78,5 @@ const Get_All_Category = async (Req, Res) => {
 export default {
   Get_All_Products,
   Get_All_Category,
+  Get_Product,
 };

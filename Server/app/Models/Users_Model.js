@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 
 const Users_Model = mongoose.Schema(
   {
-    Name: { type: String, require: true },
+    FirstName: { type: String, required: true },
+    LastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     Token: { type: String, required: true },

@@ -4,6 +4,13 @@ import mongoose from "mongoose";
 import "dotenv/config";
 import cors from "cors";
 import Users_Routes from "./App/Routes/Users_Routes.js";
+import Products_Routes from "./App/Routes/Products_Routes.js";
+
+//File System
+import path from "path";
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // make a conection to data base
 mongoose
@@ -15,7 +22,9 @@ const App = express();
 App.use(express.json());
 App.use(cors());
 
+App.use("/Uploads", express.static(path.join(__dirname, "/Uploads")));
 App.use("/API/Users", Users_Routes);
+App.use("/API/Products", Products_Routes);
 App.use("*", (Req, Res) => {
   Res.status(200).json({
     Status: "Faild",

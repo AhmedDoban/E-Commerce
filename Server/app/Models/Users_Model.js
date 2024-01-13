@@ -9,11 +9,11 @@ const Users_Model = mongoose.Schema(
     Role: { type: String, enum: ["ADMIN", "USER", "MANAGER"], default: "USER" },
     Avatar: { type: String, default: "Uploads/avatar.jpg" },
     Address: {
-      location: { type: String, default: " " },
-      ZipCode: { type: Number, default: " " },
-      City: { type: String, default: " " },
+      location: { type: String, default: "" },
+      ZipCode: { type: Number, default: "" },
+      City: { type: String, default: "" },
     },
-    Mobile: { type: Number, default: " " },
+    Mobile: { type: Number, default: "" },
   },
   {
     collection: "Users",

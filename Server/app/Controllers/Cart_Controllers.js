@@ -102,7 +102,50 @@ const Add_To_Cart = async (Req, Res) => {
   }
 };
 
+// Delete Single products From Cart
+const Delete_from_Cart = async (Req, Res) => {
+  const { User_Id, Product_ID } = Req.body;
+  // Body Validation Before Searching in the database to increase performance
+  const Errors = validationResult(Req);
+  if (!Errors.isEmpty()) {
+    return Res.json({
+      Status: Codes.FAILD,
+      Status_Code: Codes.FAILD_CODE,
+      message: "Can't login please Try again later",
+      Data: Errors.array().map((arr) => arr.msg),
+    });
+  }
+
+  try {
+    // GEt Single products From the Data Base
+    const Product = await Cart_Model.findOne({ User_Id, Product_ID });
+
+    if (Product !== null) {
+      await Cart_Model.deleteOne({ User_Id, Product_ID });
+      Res.json({
+        Status: Codes.SUCCESS,
+        Status_Code: Codes.SUCCESS_CODE,
+        message: "product Deleted !",
+      });
+    } else {
+      Res.json({
+        Status: Codes.FAILD,
+        Status_Code: Codes.FAILD_CODE,
+        message: "You want delete item not Founded in Cart !",
+      });
+    }
+  } catch (err) {
+    console.log(err);
+    Res.json({
+      Status: Codes.FAILD,
+      Status_Code: Codes.FAILD_CODE,
+      message: "product can't be Deleted !",
+    });
+  }
+};
+
 export default {
   Add_To_Cart,
   Get_All,
+  Delete_from_Cart,
 };

@@ -12,7 +12,7 @@ Router.route("/").post(
   [body("User_Id").notEmpty().withMessage("User Id is not Valid")],
   Cart_Controllers.Get_All
 );
-
+// Routes Handelar /API/Cart/Add
 Router.route("/Add").post(
   JWT.Verify_Token,
   [
@@ -20,6 +20,15 @@ Router.route("/Add").post(
     body("Product_ID").notEmpty().withMessage("Product_ID is not Valid"),
   ],
   Cart_Controllers.Add_To_Cart
+);
+// Routes Handelar /API/Cart/Delete
+Router.route("/Delete").post(
+  JWT.Verify_Token,
+  [
+    body("User_Id").notEmpty().withMessage("User Id is not Valid"),
+    body("Product_ID").notEmpty().withMessage("Product_ID is not Valid"),
+  ],
+  Cart_Controllers.Delete_from_Cart
 );
 
 export default Router;

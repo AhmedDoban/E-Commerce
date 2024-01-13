@@ -4,10 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   Get_All_Category,
   Get_All_Products,
+  HandleIsInCart,
 } from "../../../Toolkit/Slice/ProductsSlice";
 import { Link } from "react-router-dom";
 import Stars from "../../Products/Stars";
-import { AddProduct } from "../../../Toolkit/Slice/CartSlice";
+import {
+  AddProduct,
+  DeleteFromCartSync,
+  DeleteProduct,
+} from "../../../Toolkit/Slice/CartSlice";
 
 function TodaysBestDeals() {
   const [Chosen, SetChosen] = useState("");
@@ -73,8 +78,21 @@ function TodaysBestDeals() {
                   </div>
                   <p>{item.description}</p>
                   <Stars rate={item.rating.rate} />
-                  <button onClick={() => Dispatch(AddProduct(item._id))}>
-                    Add To Cart
+                  <button
+                    onClick={
+                      item.IsinCart
+                        ? () => {
+                            Dispatch(DeleteProduct(item._id));
+                            Dispatch(HandleIsInCart(item._id));
+                            Dispatch(DeleteFromCartSync(item._id));
+                          }
+                        : () => {
+                            Dispatch(AddProduct(item._id));
+                            Dispatch(HandleIsInCart(item._id));
+                          }
+                    }
+                  >
+                    {item.IsinCart ? "Remove" : "Add to Cart"}
                   </button>
                 </div>
               </div>

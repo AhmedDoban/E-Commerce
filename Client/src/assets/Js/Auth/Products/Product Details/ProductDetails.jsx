@@ -11,9 +11,13 @@ import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import "swiper/css";
 import "swiper/css/scrollbar";
 import { useDispatch, useSelector } from "react-redux";
-import { GetProduct } from "../../../Toolkit/Slice/SingleProductSlice";
+import {
+  GetProduct,
+  HandleIsInCart,
+} from "../../../Toolkit/Slice/SingleProductSlice";
 import { Player } from "@lottiefiles/react-lottie-player";
 import LoadingFetchData from "./../../../Components/Loading Fetch Data/LoadingFetchData";
+import { AddProduct, DeleteProduct } from "../../../Toolkit/Slice/CartSlice";
 
 function ProductDetails(props) {
   const params = useParams();
@@ -182,18 +186,32 @@ function ProductDetails(props) {
                     <div className="counter-items">
                       <Link
                         to="/Cart"
-                        onClick={() => props.HandleIsInCart(Product.id)}
+                        onClick={
+                          Product.IsinCart
+                            ? null
+                            : () => Dispatch(AddProduct(Product._id))
+                        }
                         className="btnStyle"
                       >
                         Buy Now
                       </Link>
                       <button
                         className={
-                          Product.isInCard ? "btnStyle active" : "btnStyle"
+                          Product.IsinCart ? "btnStyle active" : "btnStyle"
                         }
-                        onClick={() => props.HandleIsInCart(Product.id)}
+                        onClick={
+                          Product.IsinCart
+                            ? () => {
+                                Dispatch(DeleteProduct(Product._id));
+                                Dispatch(HandleIsInCart());
+                              }
+                            : () => {
+                                Dispatch(AddProduct(Product._id));
+                                Dispatch(HandleIsInCart());
+                              }
+                        }
                       >
-                        Add to Cart
+                        {Product.IsinCart ? "Remove" : "Add to Cart"}
                       </button>
                     </div>
                     <div className="box-1">

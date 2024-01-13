@@ -4,12 +4,12 @@ import axios from "axios";
 export const Get_All_Products = createAsyncThunk(
   "Products",
   async (arg, { getState }) => {
-    const { Token } = JSON.parse(localStorage.getItem("Token"));
+    const { Token, _id } = JSON.parse(localStorage.getItem("Token"));
     const State = getState();
 
     const Data = await axios.post(
       `${process.env.REACT_APP_API_URL}/Products?Page=${State.Products.CurentPage}&Limit=8`,
-      {},
+      { _id },
       {
         headers: {
           Authorization: Token,
@@ -57,6 +57,19 @@ const Products_Slice = createSlice({
         State.CurentPage = 1;
       }
     },
+    HandleIsInCart: (State, action) => {
+      const NewProductsState = [...State.Products];
+      const SingleProduct = NewProductsState.filter(
+        (product) => product._id == action.payload
+      )[0];
+      const ProudactId = NewProductsState.indexOf(SingleProduct);
+      NewProductsState[ProudactId] = {
+        ...SingleProduct,
+        IsinCart: !SingleProduct.IsinCart,
+      };
+      State.Products = [...NewProductsState];
+    },
+    
   },
   extraReducers: (builder) => {
     builder.addCase(Get_All_Products.pending, (State, action) => {
@@ -87,6 +100,6 @@ const Products_Slice = createSlice({
   },
 });
 
-export const { SeeNext, SeePrev } = Products_Slice.actions;
+export const { SeeNext, SeePrev, HandleIsInCart } = Products_Slice.actions;
 
 export default Products_Slice.reducer;

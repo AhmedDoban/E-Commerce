@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const GetProduct = createAsyncThunk("GetProduct", async (_id) => {
-  const { Token } = JSON.parse(localStorage.getItem("Token"));
+export const GetProduct = createAsyncThunk("GetProduct", async (Product_id) => {
+  const { Token, _id } = JSON.parse(localStorage.getItem("Token"));
   const Data = await axios.post(
-    `${process.env.REACT_APP_API_URL}/Products/${_id}`,
-    {},
+    `${process.env.REACT_APP_API_URL}/Products/${Product_id}`,
+    { User_Id: _id },
     {
       headers: {
         Authorization: Token,
@@ -21,7 +21,16 @@ const SingleProductSlice = createSlice({
     loading: false,
     Product: {},
   },
-  reducers: {},
+  reducers: {
+    HandleIsInCart: (State, action) => {
+      let NewProductState = { ...State.Product };
+      NewProductState = {
+        ...NewProductState,
+        IsinCart: !NewProductState.IsinCart,
+      };
+      State.Product = NewProductState;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(GetProduct.pending, (State, Action) => {
       State.loading = true;
@@ -36,6 +45,6 @@ const SingleProductSlice = createSlice({
   },
 });
 
-export const {} = SingleProductSlice.actions;
+export const { HandleIsInCart } = SingleProductSlice.actions;
 
 export default SingleProductSlice.reducer;

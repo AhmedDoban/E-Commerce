@@ -3,12 +3,20 @@ import Header from "./../../Components/Header/Header";
 import Footer from "./../../Components/Footer/Footer";
 import "./Cart.css";
 import { Player } from "@lottiefiles/react-lottie-player";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Customer from "./Customer/Customer";
 import Order from "./Order/Order";
+import {
+  DeleteFromCartSync,
+  DeleteProduct,
+  HandleDecrement,
+  HandleIncrement,
+} from "../../Toolkit/Slice/CartSlice";
+import { HandleIsInCart } from "../../Toolkit/Slice/ProductsSlice";
 
 function Cart(props) {
   const Products = useSelector((state) => state.Cart.Cart);
+  const Dispatch = useDispatch();
 
   return (
     <React.Fragment>
@@ -32,15 +40,23 @@ function Cart(props) {
                       ${data.price}
                       <i
                         className="fa-solid fa-trash"
-                        onClick={() => props.HandleIsInCart(data.id)}
+                        onClick={() => {
+                          Dispatch(DeleteProduct(data._id));
+                          Dispatch(DeleteFromCartSync(data._id));
+                          Dispatch(HandleIsInCart(data._id));
+                        }}
                       ></i>
                     </h2>
                     <p>
-                      <button onClick={() => props.HandleDecrement(data.id)}>
+                      <button
+                        onClick={() => Dispatch(HandleDecrement(data._id))}
+                      >
                         -
                       </button>
                       {data.Count}
-                      <button onClick={() => props.HandleIncrement(data.id)}>
+                      <button
+                        onClick={() => Dispatch(HandleIncrement(data._id))}
+                      >
                         +
                       </button>
                     </p>

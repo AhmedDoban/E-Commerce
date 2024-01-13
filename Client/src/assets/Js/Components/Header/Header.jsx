@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Handle_Logout } from "../../Toolkit/Slice/UserSlice";
 
 function Header() {
   const [Category, SetCategory] = useState(false);
   const [Togle, SetTogle] = useState(false);
+
   const Dispatch = useDispatch();
+
+  const User = useSelector((state) => state.User.user);
+  const CartCount = useSelector((state) => state.Cart.Cart);
 
   const HandleLogout = () => {
     Dispatch(Handle_Logout());
@@ -56,9 +60,6 @@ function Header() {
             <img src={require("../../../imgs/icon.svg").default} alt="icon" />
           </Link>
 
-          <div className="togle-menu" onClick={() => SetTogle(!Togle)}>
-            <i className="fa-solid fa-bars"></i>
-          </div>
           <div
             className={Togle ? "content d-ap-mob active" : "content d-ap-mob"}
           >
@@ -68,7 +69,10 @@ function Header() {
                 onClick={() => SetCategory(!Category)}
               >
                 <Link to="">
-                  Category
+                  <div className="left">
+                    <i className="fa-solid fa-layer-group"></i>
+                    <span> Category</span>
+                  </div>
                   <i
                     className={
                       Category
@@ -184,24 +188,20 @@ function Header() {
                 </div>
               </li>
               <li>
-                <Link to="">Deals</Link>
+                <NavLink to="/Products">
+                  <div className="left">
+                    <i className="fa-solid fa-store"></i>
+                    <span>Products</span>
+                  </div>
+                </NavLink>
               </li>
               <li>
-                <Link to="/Products">Products</Link>
-              </li>
-              <li>
-                <Link to="">Delivery</Link>
-              </li>
-              <li className="mob-des">
-                <Link to="">Account</Link>
-              </li>
-              <li className="mob-des">
-                <Link to="/Cart">Cart</Link>
-              </li>
-              <li>
-                <Link onClick={() => HandleLogout()} to="/">
-                  logout
-                </Link>
+                <NavLink to="/Delivery">
+                  <div className="left">
+                    <i className="fa-solid fa-truck"></i>
+                    <span>Delivery</span>
+                  </div>
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -209,15 +209,20 @@ function Header() {
             <input type="text" placeholder="Search proudact" />
             <i className="fa-solid fa-magnifying-glass"></i>
           </div>
-          <div className="content d-none2">
-            <Link to="">
-              <i className="fa-regular fa-user"></i>
-              <span>Account</span>
+          <div className="content actions_links">
+            <Link to="/Profile">
+              <img src={User.Avatar} alt="User" />
             </Link>
-            <Link to="/Cart">
+            <Link to="/Cart" className="Cart-icon">
               <i className="fa-solid fa-cart-shopping"></i>
-              <span>Cart</span>
+              <div className="count-cart">{CartCount.length}</div>
             </Link>
+            <Link onClick={() => HandleLogout()} to="/">
+              <i className="fa-solid fa-right-from-bracket"></i>
+            </Link>
+            <div className="togle-menu" onClick={() => SetTogle(!Togle)}>
+              <i className="fa-solid fa-bars"></i>
+            </div>
           </div>
         </div>
       </div>

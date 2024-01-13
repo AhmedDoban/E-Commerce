@@ -7,6 +7,7 @@ import {
 } from "../../../Toolkit/Slice/ProductsSlice";
 import { Link } from "react-router-dom";
 import Stars from "../../Products/Stars";
+import { AddProduct } from "../../../Toolkit/Slice/CartSlice";
 
 function TodaysBestDeals() {
   const [Chosen, SetChosen] = useState("");
@@ -26,11 +27,7 @@ function TodaysBestDeals() {
 
   return (
     <React.Fragment>
-      <div
-        className="TodaysBestDeals"
-        data-aos="fade-up"
-        data-aos-easing="ease-in-out"
-      >
+      <div className="TodaysBestDeals" data-aos="fade-up">
         <div className="container">
           <h1>Todays Best Deals For You!</h1>
           {/********************** Filter *******************************/}
@@ -60,28 +57,25 @@ function TodaysBestDeals() {
             {Products.filter((item) =>
               Chosen === "" ? item : item.category === Chosen
             ).map((item) => (
-              <div
-                className="card"
-                data-aos="zoom-in"
-                data-aos-easing="ease-in-out"
-                key={item._id}
-              >
+              <div className="card" data-aos="zoom-in" key={item._id}>
                 <div className="header">
-                  <Link to={item._id}>
+                  <Link to={`/Products/${item._id}`}>
                     <img src={item.image} alt="" />
                   </Link>
                   <i className="fa-regular fa-heart"></i>
                 </div>
                 <div className="footer">
                   <div className="info">
-                    <Link to={item._id}>
+                    <Link to={`/Products/${item._id}`}>
                       <span>{item.name}</span>
                     </Link>
                     <span className="Price">{item.price}'$</span>
                   </div>
                   <p>{item.description}</p>
                   <Stars rate={item.rating.rate} />
-                  <button>Add To Cart</button>
+                  <button onClick={() => Dispatch(AddProduct(item._id))}>
+                    Add To Cart
+                  </button>
                 </div>
               </div>
             ))}

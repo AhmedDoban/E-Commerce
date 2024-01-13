@@ -17,13 +17,8 @@ function BestDeals() {
   return (
     <React.Fragment>
       <div className="spikes-reverced"></div>
-      <div
-        className="BestDeals"
-        data-aos="fade-up"
-        data-aos-offset="300"
-        data-aos-easing="ease-in-out"
-      >
-        <div className="container">
+      <div className="BestDeals">
+        <div className="container" data-aos="fade-up">
           <h1>Todays Best Deals For You!</h1>
           <Swiper
             modules={[Navigation, Pagination, Scrollbar, A11y]}

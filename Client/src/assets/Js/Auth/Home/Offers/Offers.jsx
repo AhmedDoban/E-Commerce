@@ -4,12 +4,7 @@ import "./Offers.css";
 function Offers() {
   return (
     <React.Fragment>
-      <div
-        className="Offers"
-        data-aos="fade-up"
-        data-aos-offset="300"
-        data-aos-easing="ease-in-out"
-      >
+      <div className="Offers" data-aos="fade-up">
         <div className="container">
           <h1>Get Up To 70% Off</h1>
           <div className="card-container">

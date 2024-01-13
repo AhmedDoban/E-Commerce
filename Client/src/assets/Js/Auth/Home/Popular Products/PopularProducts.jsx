@@ -15,12 +15,7 @@ function PopularProducts() {
   }, []);
   return (
     <React.Fragment>
-      <div
-        className="PopularProducts"
-        data-aos="fade-up"
-        data-aos-offset="300"
-        data-aos-easing="ease-in-out"
-      >
+      <div className="PopularProducts" data-aos="fade-up">
         <div className="container">
           <h1>Weekly Popular Products</h1>
           <Swiper

@@ -4,14 +4,9 @@ import "./Services.css";
 function Services() {
   return (
     <React.Fragment>
-      <div
-        className="Services"
-        data-aos="fade-up"
-        data-aos-offset="300"
-        data-aos-easing="ease-in-out"
-      >
+      <div className="Services" data-aos="fade-up">
         <div className="container">
-          <h1>Trending Products For You!</h1>
+          <h1>Services To Help You Shop</h1>
           <div className="cards-container">
             <div className="card">
               <div className="header">

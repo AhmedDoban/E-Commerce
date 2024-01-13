@@ -28,6 +28,7 @@
 .ProductDetails .container .left {
   position: relative;
   width: 50%;
+  min-width: 50%;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -257,4 +258,27 @@
   font-size: 16px;
   font-weight: bold;
   letter-spacing: 1.2px;
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# ProductDetails no product
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.No-ProductDetails {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 50vh;
+}
+.No-ProductDetails .container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.No-ProductDetails .No-item-player {
+  width: 350px;
+  height: 350px;
 }

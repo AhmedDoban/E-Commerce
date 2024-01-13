@@ -7,12 +7,7 @@ function Landing() {
     <React.Fragment>
       <div className="lading">
         <div className="container">
-          <div
-            className="left"
-            data-aos="fade-up"
-            data-aos-offset="300"
-            data-aos-easing="ease-in-out"
-          >
+          <div className="left" data-aos="fade-up" data-aos-offset="300">
             <h1>
               Shopping And
               <br />

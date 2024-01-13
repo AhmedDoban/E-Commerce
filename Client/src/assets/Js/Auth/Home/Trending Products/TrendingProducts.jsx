@@ -5,7 +5,7 @@ import "./TrendingProducts.css";
 function TrendingProducts() {
   return (
     <React.Fragment>
-      <div className="TrendingProducts">
+      <div className="TrendingProducts" data-aos="fade-up">
         <div className="container">
           <h1>Trending Products For You!</h1>
           <div className="cards-container">

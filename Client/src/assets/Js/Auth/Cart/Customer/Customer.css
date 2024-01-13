@@ -1,0 +1,199 @@
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Cart return-customer
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Cart .container .left .return-customer {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.Cart .container .left .return-customer input {
+  opacity: 0;
+  display: none;
+}
+.Cart .container .left .return-customer label {
+  position: relative;
+  padding: 0 0 0 35px;
+  font-size: 16px;
+  font-weight: bold;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: var(--main-transition);
+}
+.Cart .container .left .return-customer label::before {
+  position: absolute;
+  content: "\f00c";
+  font-weight: 900;
+  font-family: var(--fa-style-family-classic);
+  left: 5px;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  border-radius: var(--main-border-radius);
+  border: 2px solid var(--white-alt-2);
+  transition: var(--main-transition);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  transform: translateY(-50%) scale(1) rotate(360deg);
+}
+.Cart .container .left .return-customer input:checked + label::before {
+  background-color: #0075ff;
+  transform: translateY(-50%) scale(1);
+  border: 0px solid var(--white-alt-2);
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+  # Cart delvery-information
+  ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Cart .container .left .delvery-information {
+  position: relative;
+  border: 3px solid var(--white-alt-1);
+  padding: 20px;
+  border-radius: var(--main-border-radius);
+  transition: var(--main-transition);
+}
+.Cart .container .left .delvery-information h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: capitalize;
+  margin-bottom: 15px;
+}
+
+.Cart .container .left .delvery-information h3 button {
+  background-color: var(--white-alt-1);
+  border: 0;
+  padding: 8px 12px;
+  border-radius: var(--main-border-radius);
+  font-size: 16px;
+  cursor: pointer;
+  letter-spacing: 1.3px;
+  font-weight: 500;
+  transition: var(--main-transition);
+}
+.Cart .container .left .delvery-information h3 button:hover {
+  background-color: #0075ff;
+  color: #fff;
+}
+@media (max-width: 992px) {
+  .Cart .container .left .delvery-information h3 {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .Cart .container .left .delvery-information h3 button {
+    width: 100%;
+  }
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+  # Cart delvery-information ReturnCustomer-true
+  ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Cart .container .left .delvery-information .ReturnCustomer-true {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  transition: var(--main-transition);
+}
+.Cart .container .left .delvery-information .ReturnCustomer-true h2 {
+  font-size: 18px;
+  position: relative;
+  color: var(--white-alt-2);
+  transition: var(--main-transition);
+  margin: 10px 0;
+}
+.Cart .container .left .delvery-information .ReturnCustomer-true p {
+  position: relative;
+  font-size: 16px;
+  transition: var(--main-transition);
+  margin: 0;
+  padding: 0;
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+  # Cart delvery-information ReturnCustomer-false
+  ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Cart .container .left .delvery-information .ReturnCustomer-false {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: var(--main-transition);
+}
+.Cart .container .left .delvery-information .ReturnCustomer-false .box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+@media (max-width: 772px) {
+  .Cart .container .left .delvery-information .ReturnCustomer-false .box {
+    flex-direction: column;
+  }
+}
+.Cart .container .left .delvery-information .ReturnCustomer-false .card-input {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
+}
+.Cart
+  .container
+  .left
+  .delvery-information
+  .ReturnCustomer-false
+  .card-input
+  input {
+  padding: 8px;
+  border: 2px solid var(--white-alt-1);
+  border-radius: calc(var(--main-border-radius) / 2);
+  transition: var(--main-transition);
+}
+.Cart
+  .container
+  .left
+  .delvery-information
+  .ReturnCustomer-false
+  .card-input
+  input::placeholder {
+  color: var(--white-alt-2);
+}
+.Cart
+  .container
+  .left
+  .delvery-information
+  .ReturnCustomer-false
+  .card-input
+  input:focus {
+  outline: 0;
+  border: 2px solid #0075ff;
+}
+.Cart
+  .container
+  .left
+  .delvery-information
+  .ReturnCustomer-false
+  .card-input
+  input:focus::placeholder {
+  opacity: 0;
+  transition: var(--main-transition);
+}
+.Cart
+  .container
+  .left
+  .delvery-information
+  .ReturnCustomer-false
+  .card-input
+  label {
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}

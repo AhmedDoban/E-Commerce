@@ -1,0 +1,315 @@
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Cart right
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Order {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  min-width: 350px;
+}
+.Order > .box {
+  position: relative;
+  padding: 20px;
+  border: 3px solid var(--white-alt-1);
+  border-radius: var(--main-border-radius);
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+  # Cart right card
+  ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Order > .box .card {
+  position: relative;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.Order > .box .card:first-child {
+  padding: 0 0 20px 0;
+}
+.Order > .box .card:not(:last-child) {
+  border-bottom: 3px solid var(--white-alt-1);
+}
+.Order > .box .card > h3 {
+  font-size: 25px;
+}
+.Order > .box .card > h4 {
+  font-size: 20px;
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+  # Cart right card.Coupon
+  ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+
+.Order > .box .card.Coupon input {
+  position: relative;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: calc(var(--main-border-radius) * 2);
+  transition: var(--main-transition);
+  border: 3px solid var(--white-alt-1);
+}
+.Order > .box .card.Coupon input::placeholder {
+  color: var(--white-alt-2);
+}
+.Order > .box .card.Coupon input:focus {
+  outline: 0;
+}
+.Order > .box .card.Coupon input:focus::placeholder {
+  opacity: 0;
+  transition: var(--main-transition);
+}
+.Order > .box .card.Coupon button {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--main-color);
+  color: var(--white-color);
+  padding: 4px 8px;
+  border-radius: calc(var(--main-border-radius) * 2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+  # Cart right card card-input
+  ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Order > .box .card > .card-input {
+  position: relative;
+  width: 100%;
+}
+.Order > .box .card .card-input > input[type="radio"] {
+  display: none;
+  opacity: 0;
+}
+.Order > .box .card .card-input > input[type="radio"] + label {
+  position: relative;
+  padding: 0 0 0 35px;
+  font-size: 16px;
+  font-weight: bold;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: var(--main-transition);
+}
+.Order > .box .card .card-input > input[type="radio"] + label::before,
+.Order > .box .card .card-input > input[type="radio"] + label::after {
+  position: absolute;
+  content: "";
+  left: 5px;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  border-radius: 50%;
+  transition: var(--main-transition);
+  border: 2px solid var(--white-alt-2);
+  color: #fff;
+  transform: translateY(-50%);
+}
+.Order > .box .card .card-input > input[type="radio"] + label::after {
+  border: 0;
+  width: calc(20px - 3px);
+  height: calc(20px - 3px);
+  left: 8px;
+  z-index: 22;
+}
+.Order > .box .card > .card-input > input[type="radio"]:checked + label::after {
+  background-color: #0075ff;
+}
+
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+  # Cart right card cards-Method
+  ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Order > .box .card .cards-Method {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  transition: var(--main-transition);
+}
+.Order > .box .card .cards-Method .card-input {
+  position: relative;
+  width: 100%;
+}
+.Order > .box .card .cards-Method input[type="radio"] {
+  display: none;
+  opacity: 0;
+}
+.Order > .box .card > .cards-Method input[type="radio"] + label {
+  position: relative;
+  font-size: 16px;
+  padding: 5px;
+  font-weight: bold;
+  height: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--main-transition);
+  color: var(--main-color);
+  font-size: 30px;
+  border-radius: var(--main-border-radius);
+}
+.Order > .box .card .cards-Method input[type="radio"] + label::before {
+  position: absolute;
+  content: "";
+  border-radius: var(--main-border-radius);
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  transform: translateY(0) translateX(0);
+  border: 2px solid var(--white-alt-2);
+  transition: var(--main-transition);
+}
+.Order > .box .card .cards-Method input[type="radio"]:checked + label::before {
+  border: 2px solid #0075ff;
+  transition: var(--main-transition);
+}
+.Order > .box .card .cards-Method input[type="radio"]:checked + label {
+  color: #0075ff;
+}
+
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+  # Cart right card card-fields
+  ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+
+.Order > .box .card .card-fields {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
+}
+.Order > .box .card .card-fields .p-ab {
+  width: 100%;
+  position: relative;
+}
+.Order > .box .card .card-fields .p-ab > input {
+  padding: 8px 8px 8px 30px;
+}
+
+.Order > .box .card .card-fields .p-ab i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  transition: var(--main-transition);
+}
+.Order > .box .card .card-fields .p-ab > input:focus + i {
+  color: #0075ff;
+}
+.Order > .box .card .box-fields {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+.Order > .box .card .card-fields input {
+  padding: 8px;
+  width: 100%;
+  border: 2px solid var(--white-alt-1);
+  border-radius: calc(var(--main-border-radius) / 2);
+  transition: var(--main-transition);
+}
+.Order > .box .card .card-fields input::placeholder {
+  color: var(--white-alt-2);
+}
+.Order > .box .card .card-fields input:focus {
+  outline: 0;
+  border: 2px solid #0075ff;
+}
+.Order > .box .card .card-fields input:focus::placeholder {
+  opacity: 0;
+  transition: var(--main-transition);
+}
+.Order > .box .card .card-fields label {
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+  # Cart right card box-price
+  ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Order > .box .card .box-price {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  gap: 15px;
+}
+.Order > .box .card .box-price h5 {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--main-transition);
+}
+.Order > .box .card .box-price h5 p {
+  font-size: 16px;
+  color: var(--main-color);
+  font-weight: bold;
+}
+.Order > .box .card .box-price h5 span {
+  font-size: 14px;
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+  # Cart right card box-total-price
+  ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Order > .box .total-price h3 {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--main-color);
+  font-size: 25px;
+}
+.Order > .box .total-price button {
+  position: relative;
+  padding: 8px 15px;
+  border: 0;
+  transition: var(--main-transition);
+  background-color: var(--main-color);
+  color: var(--white-color);
+  font-size: 16px;
+  border-radius: calc(var(--main-border-radius) * 2);
+  cursor: pointer;
+}
+.Order > .box .total-price button:hover {
+  background-color: #0075ff;
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Cart right box.cashback 
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Order > .box.cashback {
+  background-color: #fcffad;
+  border: 0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.Order > .box.cashback img {
+  width: 50px;
+  height: 50px;
+}
+.Order > .box.cashback .info {
+  background-color: transparent;
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  flex-direction: column;
+}
+.Order > .box.cashback .info h3 {
+  font-size: 14px;
+}

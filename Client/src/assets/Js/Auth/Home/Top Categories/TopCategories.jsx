@@ -10,12 +10,7 @@ function TopCategories() {
 
   return (
     <React.Fragment>
-      <div
-        className="TopCategories"
-        data-aos="fade-up"
-        data-aos-offset="300"
-        data-aos-easing="ease-in-out"
-      >
+      <div className="TopCategories" data-aos="fade-up">
         <div className="container">
           <h1>Shop Our Top Categories</h1>
           <div className="cards-container">

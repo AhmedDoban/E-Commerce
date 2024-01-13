@@ -11,12 +11,7 @@ function Brand() {
 
   return (
     <React.Fragment>
-      <div
-        className="Brand"
-        data-aos="fade-up"
-        data-aos-offset="300"
-        data-aos-easing="ease-in-out"
-      >
+      <div className="Brand" data-aos="fade-up">
         <div className="container">
           {Brands.length > 0 ? (
             <React.Fragment>

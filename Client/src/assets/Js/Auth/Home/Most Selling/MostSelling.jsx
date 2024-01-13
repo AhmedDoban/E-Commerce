@@ -15,12 +15,7 @@ function MostSelling() {
   }, []);
   return (
     <React.Fragment>
-      <div
-        className="MostSelling"
-        data-aos="fade-up"
-        data-aos-offset="300"
-        data-aos-easing="ease-in-out"
-      >
+      <div className="MostSelling" data-aos="fade-up">
         <div className="container">
           <h1>Most Selling Products</h1>
           <Swiper

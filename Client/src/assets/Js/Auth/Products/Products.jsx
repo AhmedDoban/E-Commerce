@@ -16,6 +16,7 @@ import {
   SeeNext,
   SeePrev,
 } from "../../Toolkit/Slice/ProductsSlice";
+import { AddProduct } from "../../Toolkit/Slice/CartSlice";
 
 function Products() {
   const [Chosen, SetChosen] = useState("");
@@ -91,12 +92,7 @@ function Products() {
               {Products.filter((data) =>
                 Chosen === "" ? data : data.category === Chosen
               ).map((item) => (
-                <div
-                  className="card"
-                  data-aos="zoom-in"
-                  data-aos-easing="ease-in-out"
-                  key={item._id}
-                >
+                <div className="card" data-aos="zoom-in" key={item._id}>
                   <div className="header">
                     <Link to={item._id}>
                       <img src={item.image} alt="" />
@@ -112,7 +108,9 @@ function Products() {
                     </div>
                     <p>{item.description}</p>
                     <Stars rate={item.rating.rate} />
-                    <button>Add To Cart</button>
+                    <button onClick={() => Dispatch(AddProduct(item._id))}>
+                      Add To Cart
+                    </button>
                   </div>
                 </div>
               ))}

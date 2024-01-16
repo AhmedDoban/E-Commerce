@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import "./Login.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Handle_RemmberMe, Login_Thunk } from "../../Toolkit/Slice/UserSlice";
@@ -28,18 +27,16 @@ function Login(props) {
     <React.Fragment>
       <div className="login">
         <div className="left">
-          <h1>Welcome Back</h1>
-          <p>
-            Manage your shop efficiently on shope with our shope seller center
-          </p>
-          <img src={require("../../../imgs/Guest.webp")} alt="" />
+          <img src={require("../../../imgs/Login.svg").default} alt="" />
         </div>
         <div className="right">
           <div className="card">
             <h1>Login</h1>
             <p>please fill your information bellow</p>
             <div className="card-input">
-              <label htmlFor="Email">Email ID</label>
+              <label htmlFor="Email">
+                <i className="fa-solid fa-envelope"></i>
+              </label>
               <input
                 id="Email"
                 type="email"
@@ -50,7 +47,9 @@ function Login(props) {
               />
             </div>
             <div className="card-input">
-              <label htmlFor="password">password</label>
+              <label htmlFor="password">
+                <i className="fa-solid fa-lock"></i>
+              </label>
               <input
                 id="password"
                 type="password"
@@ -76,10 +75,6 @@ function Login(props) {
               <button>Forgot password ?</button>
             </div>
             <button onClick={handleLogin}>login</button>
-            <div className="card-register">
-              <p>Don't have an account</p>
-              <Link to="/Register">Register</Link>
-            </div>
           </div>
         </div>
       </div>

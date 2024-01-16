@@ -10,9 +10,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  min-height: 100vh;
-  height: 100vh;
+  min-height: calc(100vh - 60px);
+  height: calc(100vh - 60px);
 }
 
 @media (max-width: 992px) {
@@ -47,16 +46,6 @@
   border-radius: 50%;
   filter: blur(150px);
 }
-.Register .left h1 {
-  color: var(--main-color);
-  font-size: 56px;
-  z-index: 1;
-}
-.Register .left p {
-  color: var(--main-color);
-  font-size: 18px;
-  z-index: 1;
-}
 .Register .left img {
   position: relative;
   width: 100%;
@@ -88,35 +77,44 @@
 .Register .card h1 {
   position: relative;
   font-size: 40px;
-  color: var(--main-color);
+  color: var(--blue-color);
 }
 .Register .card > p {
   position: relative;
   margin-bottom: 30px;
   color: var(--main-color);
 }
+.Register .card .card-flex {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.Register .card .card-flex label {
+  font-weight: bold;
+  text-wrap: nowrap;
+  color: var(--main-color);
+}
 .Register .card .card-input {
   position: relative;
   width: 100%;
-  padding: 10px 0;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  border-bottom: 1px solid #e7e6e5;
 }
 .Register .card .card-input label {
   font-weight: bold;
   text-wrap: nowrap;
-  min-width: 60px;
+
   color: var(--main-color);
 }
 .Register .card .card-input input {
   width: 100%;
-  padding: 5px 8px;
+  padding: 15px 8px;
   background-color: transparent;
   border: 0;
-
+  border-bottom: 1px solid #e7e6e5;
   transition: var(--main-transition);
 }
 .Register .card .card-input input:focus {
@@ -130,10 +128,9 @@
   position: relative;
   width: 100%;
   border: 0;
+  background-color: var(--blue-color);
+  color: var(--white-color);
   margin: 20px 0;
-  background-color: #ffbb21;
-  color: var(--white-alt-1);
-  transition: var(--main-transition);
   padding: 12px 8px;
   border-radius: var(--main-border-radius);
   cursor: pointer;
@@ -143,16 +140,103 @@
   justify-content: center;
   align-items: center;
   gap: 15px;
+  transition: var(--main-transition);
 }
 .Register .card button:hover {
-  background-color: #e4ac29;
+  background-color: var(--blue-color-hover);
+}
+.Register .card .card-input .error {
+  position: relative;
+  color: red;
+  cursor: pointer;
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Register Right error Message
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Register .card .card-input .error .Message {
+  position: absolute;
+  min-width: fit-content;
+  text-wrap: nowrap;
+  padding: 10px;
+  background-color: #e7e6e5;
+  font-size: 14px;
+  top: -60px;
+  right: 0px;
+  opacity: 0;
+  z-index: -99;
+  transition: var(--main-transition);
+  color: var(--main-color);
+  border-radius: var(--main-border-radius);
+}
+.Register .card .card-input .error .Message::before {
+  position: absolute;
+  content: "";
+  border-width: 10px;
+  right: 2px;
+  top: 97%;
+  border-color: #e7e6e5 transparent transparent transparent;
+  border-style: solid;
+}
+.Register .card .card-input .error:hover .Message {
+  opacity: 1;
+  z-index: 2;
 }
 
-.Register .card .card-register {
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Register Right See password
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Register .card .See-password {
   position: relative;
+  padding: 20px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
   flex-wrap: wrap;
+  gap: 10px;
+}
+
+.Register .card .See-password > input {
+  display: none;
+}
+.Register .card .See-password > label {
+  position: relative;
+  padding: 0 0 0 30px;
+  cursor: pointer;
+  font-weight: 450;
+}
+.Register .card .See-password > label::before {
+  position: absolute;
+  content: "\f06e";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  left: 0;
+  color: #e7e6e5;
+  border: 1px solid #e7e6e5;
+  border-radius: 1px;
+}
+.Register .card .See-password > label::after {
+  position: absolute;
+  content: "\f070";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--blue-color);
+  top: 1px;
+  width: 20px;
+  height: 20px;
+  left: 0.5px;
+  border-radius: 1px;
+  transform: scale(0) rotate(360deg);
+  transition: var(--main-transition);
+  border: 1px solid var(--blue-color);
+}
+.Register .card .See-password > input:checked + label::after {
+  transform: scale(1);
 }

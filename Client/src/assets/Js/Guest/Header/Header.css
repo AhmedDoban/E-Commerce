@@ -1,0 +1,49 @@
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Header
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Header-Guest {
+  position: relative;
+  width: 100%;
+  height: 60px;
+}
+.Header-Guest .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+
+.Header-Guest .container img {
+  width: 120px;
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Header Navigators
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Header-Guest .container .Navigators ul {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+}
+.Header-Guest .container .Navigators ul li a {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  padding: 12px 8px;
+  font-weight: 600;
+
+  color: var(--white-alt-2);
+  transition: var(--main-transition);
+}
+
+.Header-Guest .container .Navigators ul li a.active,
+.Header-Guest .container .Navigators ul li a:hover {
+  color: var(--white-color);
+  background-color: #ffbb21;
+  border-radius: 1.5em;
+}

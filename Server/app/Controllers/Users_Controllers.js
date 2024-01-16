@@ -110,7 +110,7 @@ const Get_Specific_User = async (Req, Res) => {
 
 // register user authentication and store him into database
 const User_Register = async (Req, Res) => {
-  const { name, email, password, Role } = Req.body;
+  const { FirstName, LastName, email, password, Role } = Req.body;
   const Errors = validationResult(Req);
   // Body Validation Before Searching in the database to increase performance
   if (!Errors.isEmpty()) {
@@ -138,7 +138,8 @@ const User_Register = async (Req, Res) => {
       );
 
       const USER = new Users_Model({
-        name: name,
+        FirstName: FirstName,
+        LastName: LastName,
         email: email,
         Role: Role,
         password: Hashed_Password,

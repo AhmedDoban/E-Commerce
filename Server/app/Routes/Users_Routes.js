@@ -19,6 +19,21 @@ Router.route("/Login").post(
   Users_controllers.User_Login
 );
 
+// Routes Handelar /API/Users/Register
+Router.route("/Register").post(
+  [
+    body("FirstName").notEmpty().withMessage("First Name is Required"),
+    body("LastName").notEmpty().withMessage("Last Name is Required"),
+    body("email")
+      .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/gi)
+      .withMessage("Email is not Valid"),
+    body("password")
+      .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gi)
+      .withMessage("Password is not Valid"),
+  ],
+  Users_controllers.User_Register
+);
+
 // Routes Handelar /API/Users/ID
 Router.route("/:User_id").post(
   JWT.Verify_Token,

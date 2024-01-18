@@ -13,6 +13,8 @@ function Login(props) {
     password: "",
   });
 
+  const [ShowPassword, SetshowPassword] = useState(false);
+
   // handle Change all input function
   const HandelChangeInput = (e) => {
     const { name, value } = e.target;
@@ -52,11 +54,17 @@ function Login(props) {
               </label>
               <input
                 id="password"
-                type="password"
+                type={ShowPassword ? "text" : "password"}
                 name="password"
                 placeholder="Enter Your password"
                 value={User.password}
                 onChange={(e) => HandelChangeInput(e)}
+              />
+              <i
+                onClick={() => SetshowPassword((prv) => !prv)}
+                className={
+                  ShowPassword ? "fa-regular fa-eye-slash" : "fa-regular fa-eye"
+                }
               />
             </div>
             <div className="card-save">

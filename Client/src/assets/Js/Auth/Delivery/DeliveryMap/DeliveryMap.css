@@ -1,0 +1,118 @@
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Delivery Map
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.DeliveryMap {
+  position: relative;
+  width: 100%;
+  padding-top: var(--main-padding-top);
+  padding-bottom: var(--main-padding-bottom);
+  min-height: calc(100vh - 92px);
+}
+.DeliveryMap .container {
+  position: relative;
+}
+.DeliveryMap .container::before {
+  position: absolute;
+  content: "";
+  width: 5px;
+  height: 100%;
+  background-color: var(--main-color);
+  left: 50%;
+  top: 0;
+}
+@media (max-width: 992px) {
+  .DeliveryMap .container::before {
+    left: 0%;
+  }
+}
+
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Delivery Map map
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.DeliveryMap .map {
+  position: relative;
+  width: 48%;
+  padding: 20px;
+  border-radius: var(--main-border-radius);
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 3px solid var(--white-alt-1);
+}
+.DeliveryMap .map.left {
+  float: left;
+}
+.DeliveryMap .map.right {
+  float: right;
+}
+.DeliveryMap .clear {
+  clear: both;
+}
+.DeliveryMap .map::before {
+  position: absolute;
+  content: "";
+  width: 25px;
+  height: 25px;
+  background-color: var(--main-color);
+  border-radius: 50%;
+  right: -38px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.DeliveryMap .map.left::before {
+  right: -38px;
+}
+.DeliveryMap .map.right::before {
+  left: -35px;
+}
+.DeliveryMap .map.left::after {
+  position: absolute;
+  content: "";
+  border-style: solid;
+  border-width: 10px;
+  border-color: transparent transparent transparent var(--main-color);
+  top: 50%;
+  right: -20px;
+  transform: translateY(-50%);
+}
+.DeliveryMap .map.right::after {
+  position: absolute;
+  content: "";
+  border-style: solid;
+  border-width: 10px;
+  border-color: transparent var(--main-color) transparent transparent;
+  top: 50%;
+  left: -20px;
+  transform: translateY(-50%);
+}
+@media (max-width: 992px) {
+  .DeliveryMap .map,
+  .DeliveryMap .map.left {
+    width: 95%;
+    float: right;
+  }
+  .DeliveryMap .map.left::before,
+  .DeliveryMap .map.right::before {
+    left: -60px !important;
+  }
+  .DeliveryMap .map.left::after {
+    border-color: transparent var(--main-color) transparent transparent;
+    right: auto;
+    left: -20px;
+  }
+}
+.DeliveryMap .map .logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #333;
+}
+
+.DeliveryMap .map p {
+  position: relative;
+  padding-left: 25px;
+  color: var(--main-color);
+  font-weight: 400;
+}

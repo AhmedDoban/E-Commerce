@@ -1,0 +1,111 @@
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Contact
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.Contact {
+  position: relative;
+  padding-top: var(--main-padding-top);
+  padding-bottom: var(--main-padding-bottom);
+  z-index: 2;
+}
+.Contact::before {
+  position: absolute;
+  content: "";
+  width: 200px;
+  height: 200px;
+  box-shadow: 0 0 500px #e4ac29, 0 0 4000px #e4ac29;
+  background-color: #e4ac29;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  filter: blur(150px);
+}
+.Contact .container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-direction: column;
+}
+.Contact .container .head h1 {
+  position: relative;
+  margin: 0 0 30px 0;
+  color: var(--main-color);
+}
+.Contact .container .head p {
+  position: relative;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 10px 0;
+}
+.Contact .container .form-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+.Contact .container .left,
+.Contact .container .right {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  transition: var(--main-transition);
+}
+
+.Contact .container input,
+.Contact .container textarea {
+  padding: 15px;
+  border: 1px solid #bebebe;
+  color: #3d3d3d;
+  caret-color: var(--main-color);
+  border-radius: 5px;
+  width: 100%;
+  transition: var(--main-transition);
+}
+.Contact .container textarea {
+  width: 100%;
+  height: 115px;
+  resize: none;
+}
+.Contact .container input::placeholder,
+.Contact .container textarea::placeholder {
+  text-transform: capitalize;
+  font-size: 15px;
+  transition: var(--main-transition);
+}
+.Contact .container input:focus,
+.Contact .container textarea:focus {
+  outline: none;
+}
+.Contact .container input:focus::placeholder,
+.Contact .container textarea:focus::placeholder {
+  opacity: 0;
+}
+.Contact .container input[type="button"] {
+  background-color: var(--white-alt-2);
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  transition: var(--main-transition);
+  cursor: pointer;
+  box-shadow: var(--main-box-shadow-red);
+}
+.Contact .container input[type="button"]:hover {
+  background-color: var(--blue-color);
+}
+@media (max-width: 992px) {
+  .Contact .container .form-container {
+    flex-direction: column-reverse;
+  }
+}
+.Contact .container .right img {
+  width: 100%;
+  height: 450px;
+  object-fit: contain;
+}

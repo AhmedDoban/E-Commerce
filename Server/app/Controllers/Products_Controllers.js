@@ -2,6 +2,7 @@
 import { validationResult } from "express-validator";
 import Products_Model from "../Models/Products_Model.js";
 import Cart_Model from "../Models/Cart_Model.js";
+import Rate_Model from "../Models/Rate_Model.js";
 import Codes from "../utils/Codes.js";
 
 // get all products
@@ -50,7 +51,6 @@ const Get_All_Products = async (Req, Res) => {
       });
     }
   } catch (err) {
-    console.log(err);
     Res.json({
       Status: Codes.FAILD,
       Status_Code: Codes.FAILD_CODE,
@@ -67,6 +67,10 @@ const Get_Product = async (Req, Res) => {
     // GEt Single products From the Data Base
     const Product = await Products_Model.findOne({ _id: _id }, { __v: 0 });
     const Cart = await Cart_Model.find({ User_Id: User_Id });
+    const Rate = await Rate_Model.findOne({
+      User_Id: User_Id,
+      Product_ID: _id,
+    });
     let Values = [];
     await Cart.map((ele) => Values.push(ele.Product_ID.toString()));
 
@@ -76,6 +80,7 @@ const Get_Product = async (Req, Res) => {
       Data: {
         ...Product._doc,
         IsinCart: Values.includes(Product._id.toString()) ? true : false,
+        User_Rate: Rate === null ? 0 : Rate.Rate,
       },
     });
   } catch (err) {

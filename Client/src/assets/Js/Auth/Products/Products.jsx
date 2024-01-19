@@ -2,10 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./Products.css";
 import Header from "./../../Components/Header/Header";
 import Footer from "./../../Components/Footer/Footer";
-import { Link } from "react-router-dom";
 import PopularProducts from "../Home/Popular Products/PopularProducts";
 import Services from "../Home/Services/Services";
-import Stars from "./Stars";
 import LoadingFetchData from "./../../Components/Loading Fetch Data/LoadingFetchData";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -22,6 +20,7 @@ import {
   DeleteFromCartSync,
   DeleteProduct,
 } from "../../Toolkit/Slice/CartSlice";
+import Card from "../../Components/Card/Card";
 
 function Products() {
   const [Chosen, SetChosen] = useState("");
@@ -97,40 +96,27 @@ function Products() {
               {Products.filter((data) =>
                 Chosen === "" ? data : data.category === Chosen
               ).map((item) => (
-                <div className="card" data-aos="zoom-in" key={item._id}>
-                  <div className="header">
-                    <Link to={item._id}>
-                      <img src={item.image} alt="" />
-                    </Link>
-                    <i className="fa-regular fa-heart"></i>
-                  </div>
-                  <div className="footer">
-                    <div className="info">
-                      <Link to={item._id}>
-                        <span>{item.name}</span>
-                      </Link>
-                      <span className="Price">{item.price}'$</span>
-                    </div>
-                    <p>{item.description}</p>
-                    <Stars rate={item.rating.rate} />
-                    <button
-                      onClick={
-                        item.IsinCart
-                          ? () => {
-                              Dispatch(DeleteProduct(item._id));
-                              Dispatch(HandleIsInCart(item._id));
-                              Dispatch(DeleteFromCartSync(item._id));
-                            }
-                          : () => {
-                              Dispatch(AddProduct(item._id));
-                              Dispatch(HandleIsInCart(item._id));
-                            }
-                      }
-                    >
-                      {item.IsinCart ? "Remove" : "Add to Cart"}
-                    </button>
-                  </div>
-                </div>
+                <Card
+                  _id={item._id}
+                  IMAGE={item.image}
+                  NAME={item.name}
+                  PRICE={item.price}
+                  RATE={item.rating.rate}
+                  RATE_COUNT={item.rating.rate_Count}
+                  ACTION={
+                    item.IsinCart
+                      ? () => {
+                          Dispatch(DeleteProduct(item._id));
+                          Dispatch(HandleIsInCart(item._id));
+                          Dispatch(DeleteFromCartSync(item._id));
+                        }
+                      : () => {
+                          Dispatch(AddProduct(item._id));
+                          Dispatch(HandleIsInCart(item._id));
+                        }
+                  }
+                  ACTION_NAME={item.IsinCart ? "Remove" : "Add to Cart"}
+                />
               ))}
             </div>
 

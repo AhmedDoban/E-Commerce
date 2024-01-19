@@ -109,9 +109,7 @@
 .ProductDetails .container .right .box p {
   font-size: 14px;
 }
-.ProductDetails .container .right .box .stars i {
-  color: #47c20a;
-}
+
 .ProductDetails .container .right .box .color-box {
   position: relative;
   display: flex;

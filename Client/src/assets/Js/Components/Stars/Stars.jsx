@@ -1,4 +1,6 @@
 import React from "react";
+import "./Stars.css";
+
 function Stars(props) {
   const totalStars = 5;
   const activeStars = props.rate;
@@ -13,6 +15,7 @@ function Stars(props) {
             <i className="fa-regular fa-star" key={index}></i>
           );
         })}
+        <p>({props.rate_Count})</p>
       </div>
     </React.Fragment>
   );

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "./../../../Components/Header/Header";
 import { Link, useParams } from "react-router-dom";
 
-import Stars from "../Stars";
+import Stars from "../../../Components/Stars/Stars";
 import "./ProductDetails.css";
 import PopularProducts from "../../Home/Popular Products/PopularProducts";
 import Footer from "./../../../Components/Footer/Footer";
@@ -18,8 +18,9 @@ import {
 import { Player } from "@lottiefiles/react-lottie-player";
 import LoadingFetchData from "./../../../Components/Loading Fetch Data/LoadingFetchData";
 import { AddProduct, DeleteProduct } from "../../../Toolkit/Slice/CartSlice";
+import Rate from "../../../Components/Rate/Rate";
 
-function ProductDetails(props) {
+function ProductDetails() {
   const params = useParams();
   const Dispatch = useDispatch();
   const Product = useSelector((state) => state.SingleProduct.Product);
@@ -114,7 +115,10 @@ function ProductDetails(props) {
                   <div className="box">
                     <h2>{Product.name}</h2>
                     <p>{Product.description}</p>
-                    <Stars rate={Product.rating?.rate} />
+                    <Stars
+                      rate={Product.rating?.rate}
+                      rate_Count={Product.rating?.rate_Count}
+                    />
                   </div>
                   <div className="box">
                     <h3>
@@ -213,6 +217,13 @@ function ProductDetails(props) {
                       >
                         {Product.IsinCart ? "Remove" : "Add to Cart"}
                       </button>
+                    </div>
+                    <div className="box-1">
+                      <i className="fa-solid fa-face-smile"></i>
+                      <div className="data">
+                        <h5>Rate This Product</h5>
+                        <Rate />
+                      </div>
                     </div>
                     <div className="box-1">
                       <i className="fa-solid fa-truck-fast"></i>

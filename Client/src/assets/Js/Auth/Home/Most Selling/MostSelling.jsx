@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 import "./MostSelling.css";
 import { Most_Selling_Product } from "../../../../../dummyData";
+import Stars from "./../../../Components/Stars/Stars";
 
 function MostSelling() {
   const [SlideProgress, SetSlideProgress] = useState(1);
@@ -49,13 +50,7 @@ function MostSelling() {
                       </span>
                     </div>
                     <p>{item.Weekly_Popular_Products_des}</p>
-                    <div className="stars">
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                      <i className="fa-solid fa-star"></i>
-                    </div>
+                    <Stars />
                     <button>Add To Cart</button>
                   </div>
                 </div>

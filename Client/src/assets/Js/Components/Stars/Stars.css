@@ -1,0 +1,13 @@
+.stars {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.stars p {
+  position: relative;
+  letter-spacing: 1px;
+  padding-left: 10px;
+}
+.stars i {
+  color: #47c20a;
+}

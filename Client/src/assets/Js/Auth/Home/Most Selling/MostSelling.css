@@ -103,17 +103,7 @@
   font-size: 14px;
   margin: 10px 0;
 }
-.MostSelling .card .footer .stars {
-  position: relative;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 2px;
-  margin: 10px 0;
-}
-.MostSelling .card .footer .stars i {
-  color: #47c20a;
-}
+
 .MostSelling .card .footer button {
   position: relative;
   border-radius: calc(var(--main-border-radius) * 5);

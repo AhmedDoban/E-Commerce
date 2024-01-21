@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 
 import Stars from "../../../Components/Stars/Stars";
 import "./ProductDetails.css";
-import PopularProducts from "../../Home/Popular Products/PopularProducts";
+import WeeklyProducts from "../../Home/Weekly Products/WeeklyProducts";
 import Footer from "./../../../Components/Footer/Footer";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
@@ -243,7 +243,7 @@ function ProductDetails() {
                 </div>
               </div>
             </div>
-            <PopularProducts />
+            <WeeklyProducts />
           </>
         )
       ) : (

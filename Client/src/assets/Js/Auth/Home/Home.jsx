@@ -5,7 +5,7 @@ import TopCategories from "./Top Categories/TopCategories";
 import BestRate from "./Best Rate/BestRate";
 import Brand from "./Brand/Brand";
 import Offers from "./Offers/Offers";
-import PopularProducts from "./Popular Products/PopularProducts";
+import WeeklyProducts from "./Weekly Products/WeeklyProducts";
 import CashBack from "./Cash Back/CashBack";
 import TodaysBestDeals from "./Todays Best Deals/TodaysBestDeals";
 import CardCashback from "./Card Cashback/CardCashback";
@@ -31,7 +31,7 @@ function Home(props) {
       {/**************** Offers *************************/}
       <Offers />
       {/**************** Popular Products *************************/}
-      <PopularProducts />
+      <WeeklyProducts />
       {/****************  Cash Back  *************************/}
       <CashBack />
       {/****************  Todays Best Deals  *************************/}

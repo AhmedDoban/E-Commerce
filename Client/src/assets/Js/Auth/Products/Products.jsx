@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./Products.css";
 import Header from "./../../Components/Header/Header";
 import Footer from "./../../Components/Footer/Footer";
-import PopularProducts from "../Home/Popular Products/PopularProducts";
 import Services from "../Home/Services/Services";
 import LoadingFetchData from "./../../Components/Loading Fetch Data/LoadingFetchData";
-
+import Card from "../../Components/Card/Card";
+import WeeklyProducts from "../Home/Weekly Products/WeeklyProducts";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -20,7 +20,6 @@ import {
   DeleteFromCartSync,
   DeleteProduct,
 } from "../../Toolkit/Slice/CartSlice";
-import Card from "../../Components/Card/Card";
 
 function Products() {
   const [Chosen, SetChosen] = useState("");
@@ -140,7 +139,7 @@ function Products() {
         </div>
       )}
 
-      <PopularProducts />
+      <WeeklyProducts />
       <Services />
       <Footer />
     </React.Fragment>

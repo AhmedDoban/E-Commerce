@@ -69,7 +69,6 @@ const Products_Slice = createSlice({
       };
       State.Products = [...NewProductsState];
     },
-    
   },
   extraReducers: (builder) => {
     builder.addCase(Get_All_Products.pending, (State, action) => {

@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./../../Components/Header/Header";
 import Landing from "./../Home/Landing/Landing";
 import TopCategories from "./Top Categories/TopCategories";
-import BestDeals from "./Best Deals/BestDeals";
+import BestRate from "./Best Rate/BestRate";
 import Brand from "./Brand/Brand";
 import Offers from "./Offers/Offers";
 import PopularProducts from "./Popular Products/PopularProducts";
@@ -13,7 +13,7 @@ import MostSelling from "./Most Selling/MostSelling";
 import TrendingProducts from "./Trending Products/TrendingProducts";
 import BestSelling from "./Best Selling/BestSelling";
 import Services from "./Services/Services";
-import Footer from './../../Components/Footer/Footer';
+import Footer from "./../../Components/Footer/Footer";
 
 function Home(props) {
   return (
@@ -24,8 +24,8 @@ function Home(props) {
       <Landing />
       {/**************** Top Categories *************************/}
       <TopCategories />
-      {/**************** Best Deals*************************/}
-      <BestDeals />
+      {/**************** Best Rate*************************/}
+      <BestRate />
       {/**************** Brand *************************/}
       <Brand />
       {/**************** Offers *************************/}

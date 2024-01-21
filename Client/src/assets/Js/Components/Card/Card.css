@@ -16,6 +16,9 @@
   overflow: hidden;
   background-color: var(--white-alt-1);
 }
+.MainCard .card .header.WHITE {
+  background-color: #fff;
+}
 .MainCard .card .header img {
   position: relative;
   width: 250px;

@@ -7,7 +7,11 @@ function Card(props) {
   return (
     <div className="MainCard">
       <div className="card" data-aos="zoom-in" key={props._id}>
-        <div className="header">
+        <div
+          className={
+            props.HEADER_STYLE ? `header ${props.HEADER_STYLE}` : "header"
+          }
+        >
           <Link to={`/Products/${props._id}`}>
             <img src={props.IMAGE} alt="" />
           </Link>

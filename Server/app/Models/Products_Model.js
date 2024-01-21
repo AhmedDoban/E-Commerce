@@ -13,11 +13,13 @@ const Products_Model = mongoose.Schema(
       rate_Count: { type: Number, require: true, default: 0 },
       count: { type: Number, require: true, default: 0 },
       N_of_Watches: { type: Number, require: true, default: 0 },
+      N_of_Buy: { type: Number, require: true, default: 0 },
       N_of_Likes: { type: Number, require: true, default: 0 },
     },
   },
   {
     collection: "Products",
+    timestamps: true,
   }
 );
 

@@ -7,10 +7,12 @@ import Codes from "../utils/Codes.js";
 
 // get all products
 const Get_All_Products = async (Req, Res) => {
-  const Page = Req.query.Page || 1;
-  const Limit = Req.query.Limit || 10;
+  const Page = +Req.query.Page || 1;
+  const Limit = +Req.query.Limit || 10;
   const Skip = (Page - 1) * Limit;
+  const Filter = Req.query.Filter || null;
   const { _id } = Req.body;
+
   const Errors = validationResult(Req);
   // Body Validation Before Searching in the database to increase performance
   if (!Errors.isEmpty()) {
@@ -23,32 +25,72 @@ const Get_All_Products = async (Req, Res) => {
   }
   try {
     // GEt ALl products From the Data Base
-    const Products = await Products_Model.find({}, { __v: 0 })
-      .limit(Limit)
-      .skip(Skip);
     const Cart = await Cart_Model.find({ User_Id: _id });
-    let Values = [];
-    await Cart.map((ele) => Values.push(ele.Product_ID.toString()));
+    let CartProductsID = new Array();
+    await Cart.map((ele) => CartProductsID.push(ele.Product_ID));
 
-    const InCartProducts = await Products.map((product) => ({
-      ...product._doc,
-      IsinCart: Values.includes(product._id.toString()) ? true : false,
-    }));
+    if (Filter !== null) {
+      const Products = await Products_Model.aggregate([
+        {
+          $sort:
+            Filter === "RATE"
+              ? { "rating.rate": -1 }
+              : Filter === "WEEK"
+              ? { "rating.N_of_Watches": -1 }
+              : Filter === "TODAY"
+              ? { "rating.N_of_Buy": -1 }
+              : { "rating.N_of_Likes": -1 },
+        },
+        { $skip: Skip },
+        { $limit: Limit },
+        {
+          $addFields: {
+            IsinCart: { $in: ["$_id", CartProductsID] },
+          },
+        },
+      ]);
 
-    // if the page or imit greater than number of document in the database
-    if ([...Products] != 0) {
-      Res.json({
-        Status: Codes.SUCCESS,
-        Status_Code: Codes.SUCCESS_CODE,
-        Data: InCartProducts,
-        No_Pages: Math.ceil((await Products_Model.find({}).count()) / Limit),
-      });
+      // if the page or imit greater than number of document in the database
+      if ([...Products] != 0) {
+        Res.json({
+          Status: Codes.SUCCESS,
+          Status_Code: Codes.SUCCESS_CODE,
+          Data: Products,
+          No_Pages: Math.ceil((await Products_Model.find({}).count()) / Limit),
+        });
+      } else {
+        Res.json({
+          Status: Codes.FAILD,
+          Status_Code: Codes.FAILD_CODE,
+          message: "Page NOt Found",
+        });
+      }
     } else {
-      Res.json({
-        Status: Codes.FAILD,
-        Status_Code: Codes.FAILD_CODE,
-        message: "Page NOt Found",
-      });
+      const Products = await Products_Model.aggregate([
+        { $skip: Skip },
+        { $limit: Limit },
+        {
+          $addFields: {
+            IsinCart: { $in: ["$_id", CartProductsID] },
+          },
+        },
+      ]);
+
+      // if the page or imit greater than number of document in the database
+      if ([...Products] != 0) {
+        Res.json({
+          Status: Codes.SUCCESS,
+          Status_Code: Codes.SUCCESS_CODE,
+          Data: Products,
+          No_Pages: Math.ceil((await Products_Model.find({}).count()) / Limit),
+        });
+      } else {
+        Res.json({
+          Status: Codes.FAILD,
+          Status_Code: Codes.FAILD_CODE,
+          message: "Page NOt Found",
+        });
+      }
     }
   } catch (err) {
     Res.json({
@@ -92,15 +134,31 @@ const Get_Product = async (Req, Res) => {
   }
 };
 
-// get all Category
+// get Some Category or all Category
 const Get_All_Category = async (Req, Res) => {
+  const Page = +Req.query.Page || 1;
+  const Limit = +Req.query.Limit || 10;
+  const Skip = (Page - 1) * Limit;
+
   try {
-    // GEt ALl Category From the Data Base
-    const Distinct = await Products_Model.distinct("category");
+    // GEt ALl Products From the Data Base
+    const SomeProducts = await Products_Model.aggregate([
+      { $skip: Skip },
+      { $limit: Limit },
+    ]);
+    const Category = new Array();
+    const SetProducts = new Set();
+
+    await SomeProducts.map((ele) => {
+      return SetProducts.add(ele.category);
+    });
+
+    SetProducts.forEach((ele) => Category.push(ele));
+
     Res.json({
       Status: Codes.SUCCESS,
       Status_Code: Codes.SUCCESS_CODE,
-      Data: Distinct,
+      Data: Category,
     });
   } catch (err) {
     Res.json({

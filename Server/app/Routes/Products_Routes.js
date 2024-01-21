@@ -13,11 +13,13 @@ Router.route("/").post(
   Products_Controllers.Get_All_Products
 );
 
+// Routes Handelar /API/Products/Category
 Router.route("/Category").post(
   JWT.Verify_Token,
   Products_Controllers.Get_All_Category
 );
 
+// Routes Handelar /API/Products?Page=1&Limit=10
 Router.route("/:id").post(
   JWT.Verify_Token,
   [body("User_Id").notEmpty().withMessage("_id is not Valid")],

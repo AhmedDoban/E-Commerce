@@ -7,12 +7,14 @@ import RegisterSlice from "./Slice/RegisterSlice";
 import BestRateSlice from "./Slice/BestRateSlice";
 import WeekProductsSlice from "./Slice/WeekProductsSlice";
 import MostSellingSlice from "./Slice/MostSellingSlice";
+import TodayProductsSlice from "./Slice/TodayProductsSlice";
 
 const Store = configureStore({
   reducer: {
     Register: RegisterSlice,
     User: UserSlice,
     Products: ProductsSlice,
+    TodayProducts: TodayProductsSlice,
     BestRate: BestRateSlice,
     WeeklyProducts: WeekProductsSlice,
     MostSelling: MostSellingSlice,

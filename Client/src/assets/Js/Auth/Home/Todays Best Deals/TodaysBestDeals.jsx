@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./TodaysBestDeals.css";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Get_All_Category,
-  Get_All_Products,
-  HandleIsInCart,
-} from "../../../Toolkit/Slice/ProductsSlice";
 
 import {
   AddProduct,
@@ -14,17 +9,22 @@ import {
 } from "../../../Toolkit/Slice/CartSlice";
 
 import Card from "../../../Components/Card/Card";
+import {
+  Get_Today_Category,
+  Get_Today_Products,
+  HandleIsInCart,
+} from "../../../Toolkit/Slice/TodayProductsSlice";
 
 function TodaysBestDeals() {
   const [Chosen, SetChosen] = useState("");
 
   const Dispatch = useDispatch();
-  const Products = useSelector((state) => state.Products.Products);
-  const Category = useSelector((state) => state.Products.Category);
+  const Products = useSelector((state) => state.TodayProducts.Products);
+  const Category = useSelector((state) => state.TodayProducts.Category);
 
   useEffect(() => {
-    Dispatch(Get_All_Products());
-    Dispatch(Get_All_Category());
+    Dispatch(Get_Today_Products());
+    Dispatch(Get_Today_Category());
   }, []);
 
   const HandleFilter = (data) => {

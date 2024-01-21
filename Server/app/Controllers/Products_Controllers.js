@@ -36,10 +36,12 @@ const Get_All_Products = async (Req, Res) => {
             Filter === "RATE"
               ? { "rating.rate": -1 }
               : Filter === "WEEK"
+              ? { "rating.N_of_Buy": -1 }
+              : Filter === "MOST"
               ? { "rating.N_of_Watches": -1 }
               : Filter === "TODAY"
-              ? { "rating.N_of_Buy": -1 }
-              : { "rating.N_of_Likes": -1 },
+              ? { "rating.N_of_Likes": -1 }
+              : { name: -1 },
         },
         { $skip: Skip },
         { $limit: Limit },
@@ -107,7 +109,13 @@ const Get_Product = async (Req, Res) => {
   const { User_Id } = Req.body;
   try {
     // GEt Single products From the Data Base
-    const Product = await Products_Model.findOne({ _id: _id }, { __v: 0 });
+    const Product = await Products_Model.findOneAndUpdate(
+      { _id: _id },
+      {
+        $inc: { "rating.N_of_Watches": 1 },
+      }
+    );
+    console.log(Product);
     const Cart = await Cart_Model.find({ User_Id: User_Id });
     const Rate = await Rate_Model.findOne({
       User_Id: User_Id,

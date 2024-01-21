@@ -6,16 +6,8 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 import "./BestRate.css";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Get_Rate_Products,
-  HandleIsInCart,
-} from "../../../Toolkit/Slice/BestRateSlice";
+import { Get_Rate_Products } from "../../../Toolkit/Slice/BestRateSlice";
 import Card from "../../../Components/Card/Card";
-import {
-  AddProduct,
-  DeleteFromCartSync,
-  DeleteProduct,
-} from "../../../Toolkit/Slice/CartSlice";
 
 function BestRate() {
   const [SlideProgress, SetSlideProgress] = useState(1);
@@ -58,19 +50,8 @@ function BestRate() {
                   PRICE={item.price}
                   RATE={item.rating.rate}
                   RATE_COUNT={item.rating.rate_Count}
-                  ACTION={
-                    item.IsinCart
-                      ? () => {
-                          Dispatch(DeleteProduct(item._id));
-                          Dispatch(HandleIsInCart(item._id));
-                          Dispatch(DeleteFromCartSync(item._id));
-                        }
-                      : () => {
-                          Dispatch(AddProduct(item._id));
-                          Dispatch(HandleIsInCart(item._id));
-                        }
-                  }
-                  ACTION_NAME={item.IsinCart ? "Remove" : "Add to Cart"}
+                  ISINCART={item.IsinCart}
+                  PRODUCT={item}
                 />
               </SwiperSlide>
             ))}

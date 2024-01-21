@@ -11,15 +11,9 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   Get_All_Category,
   Get_All_Products,
-  HandleIsInCart,
   SeeNext,
   SeePrev,
 } from "../../Toolkit/Slice/ProductsSlice";
-import {
-  AddProduct,
-  DeleteFromCartSync,
-  DeleteProduct,
-} from "../../Toolkit/Slice/CartSlice";
 
 function Products() {
   const [Chosen, SetChosen] = useState("");
@@ -102,19 +96,8 @@ function Products() {
                   PRICE={item.price}
                   RATE={item.rating.rate}
                   RATE_COUNT={item.rating.rate_Count}
-                  ACTION={
-                    item.IsinCart
-                      ? () => {
-                          Dispatch(DeleteProduct(item._id));
-                          Dispatch(HandleIsInCart(item._id));
-                          Dispatch(DeleteFromCartSync(item._id));
-                        }
-                      : () => {
-                          Dispatch(AddProduct(item._id));
-                          Dispatch(HandleIsInCart(item._id));
-                        }
-                  }
-                  ACTION_NAME={item.IsinCart ? "Remove" : "Add to Cart"}
+                  ISINCART={item.IsinCart}
+                  PRODUCT={item}
                 />
               ))}
             </div>

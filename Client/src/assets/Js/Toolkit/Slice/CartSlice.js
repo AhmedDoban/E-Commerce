@@ -127,13 +127,13 @@ const CartSlice = createSlice({
         State.Cart = [...NewCartState];
       }
     },
+    HandleAddProduct: (State, action) => {
+      const NewCartState = [...State.Cart];
+      NewCartState.push({ ...action.payload.product, Count: 1 });
+      State.Cart = [...NewCartState];
+    },
   },
   extraReducers: (builder) => {
-    builder.addCase(AddProduct.fulfilled, (State, action) => {
-      if (action.payload !== undefined) {
-        State.Cart = [...State.Cart, { ...action.payload, Count: 1 }];
-      }
-    });
     builder.addCase(GetCartProducts.pending, (State, action) => {
       State.Loading = true;
     });
@@ -149,7 +149,11 @@ const CartSlice = createSlice({
   },
 });
 
-export const { DeleteFromCartSync, HandleDecrement, HandleIncrement } =
-  CartSlice.actions;
+export const {
+  DeleteFromCartSync,
+  HandleDecrement,
+  HandleIncrement,
+  HandleAddProduct,
+} = CartSlice.actions;
 
 export default CartSlice.reducer;

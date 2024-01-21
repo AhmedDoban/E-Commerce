@@ -5,16 +5,8 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 import "./WeeklyProducts.css";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Get_Week_Products,
-  HandleIsInCart,
-} from "../../../Toolkit/Slice/WeekProductsSlice";
+import { Get_Week_Products } from "../../../Toolkit/Slice/WeekProductsSlice";
 import Card from "../../../Components/Card/Card";
-import {
-  AddProduct,
-  DeleteFromCartSync,
-  DeleteProduct,
-} from "../../../Toolkit/Slice/CartSlice";
 
 function WeeklyProducts() {
   const [SlideProgress, SetSlideProgress] = useState(1);
@@ -55,19 +47,8 @@ function WeeklyProducts() {
                   PRICE={item.price}
                   RATE={item.rating.rate}
                   RATE_COUNT={item.rating.rate_Count}
-                  ACTION={
-                    item.IsinCart
-                      ? () => {
-                          Dispatch(DeleteProduct(item._id));
-                          Dispatch(HandleIsInCart(item._id));
-                          Dispatch(DeleteFromCartSync(item._id));
-                        }
-                      : () => {
-                          Dispatch(AddProduct(item._id));
-                          Dispatch(HandleIsInCart(item._id));
-                        }
-                  }
-                  ACTION_NAME={item.IsinCart ? "Remove" : "Add to Cart"}
+                  ISINCART={item.IsinCart}
+                  PRODUCT={item}
                 />
               </SwiperSlide>
             ))}

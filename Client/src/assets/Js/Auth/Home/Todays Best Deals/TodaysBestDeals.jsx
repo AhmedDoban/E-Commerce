@@ -2,17 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./TodaysBestDeals.css";
 import { useDispatch, useSelector } from "react-redux";
 
-import {
-  AddProduct,
-  DeleteFromCartSync,
-  DeleteProduct,
-} from "../../../Toolkit/Slice/CartSlice";
-
 import Card from "../../../Components/Card/Card";
 import {
   Get_Today_Category,
   Get_Today_Products,
-  HandleIsInCart,
 } from "../../../Toolkit/Slice/TodayProductsSlice";
 
 function TodaysBestDeals() {
@@ -70,19 +63,8 @@ function TodaysBestDeals() {
                 PRICE={item.price}
                 RATE={item.rating.rate}
                 RATE_COUNT={item.rating.rate_Count}
-                ACTION={
-                  item.IsinCart
-                    ? () => {
-                        Dispatch(DeleteProduct(item._id));
-                        Dispatch(HandleIsInCart(item._id));
-                        Dispatch(DeleteFromCartSync(item._id));
-                      }
-                    : () => {
-                        Dispatch(AddProduct(item._id));
-                        Dispatch(HandleIsInCart(item._id));
-                      }
-                }
-                ACTION_NAME={item.IsinCart ? "Remove" : "Add to Cart"}
+                ISINCART={item.IsinCart}
+                PRODUCT={item}
               />
             ))}
           </div>

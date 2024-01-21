@@ -7,12 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import Customer from "./Customer/Customer";
 import Order from "./Order/Order";
 import {
-  DeleteFromCartSync,
-  DeleteProduct,
   HandleDecrement,
   HandleIncrement,
 } from "../../Toolkit/Slice/CartSlice";
-import { HandleIsInCart } from "../../Toolkit/Slice/ProductsSlice";
+import DeleteCartAction from "../../Components/DeleteCartAction";
 
 function Cart(props) {
   const Products = useSelector((state) => state.Cart.Cart);
@@ -38,14 +36,10 @@ function Cart(props) {
                   <div className="price">
                     <h2>
                       ${data.price}
-                      <i
-                        className="fa-solid fa-trash"
-                        onClick={() => {
-                          Dispatch(DeleteProduct(data._id));
-                          Dispatch(DeleteFromCartSync(data._id));
-                          Dispatch(HandleIsInCart(data._id));
-                        }}
-                      ></i>
+                      <DeleteCartAction
+                        _id={data._id}
+                        IsinCart={data.IsinCart}
+                      />
                     </h2>
                     <p>
                       <button

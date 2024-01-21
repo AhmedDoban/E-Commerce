@@ -57,15 +57,15 @@ const Products_Slice = createSlice({
         State.CurentPage = 1;
       }
     },
-    HandleIsInCart: (State, action) => {
+    HandleProductIsInCart: (State, action) => {
       const NewProductsState = [...State.Products];
       const SingleProduct = NewProductsState.filter(
-        (product) => product._id == action.payload
+        (product) => product._id == action.payload._id
       )[0];
       const ProudactId = NewProductsState.indexOf(SingleProduct);
       NewProductsState[ProudactId] = {
         ...SingleProduct,
-        IsinCart: !SingleProduct.IsinCart,
+        IsinCart: action.payload.IsinCart,
       };
       State.Products = [...NewProductsState];
     },
@@ -99,6 +99,7 @@ const Products_Slice = createSlice({
   },
 });
 
-export const { SeeNext, SeePrev, HandleIsInCart } = Products_Slice.actions;
+export const { SeeNext, SeePrev, HandleProductIsInCart } =
+  Products_Slice.actions;
 
 export default Products_Slice.reducer;

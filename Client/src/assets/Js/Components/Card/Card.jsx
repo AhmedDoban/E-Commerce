@@ -2,6 +2,7 @@ import React from "react";
 import "./Card.css";
 import Stars from "./../Stars/Stars";
 import { Link } from "react-router-dom";
+import ButtonAction from "../ButtonAction";
 
 function Card(props) {
   return (
@@ -26,7 +27,11 @@ function Card(props) {
           </div>
           <p>{props.DESCRIPTION}</p>
           <Stars rate_Count={props.RATE_COUNT} rate={props.RATE} />
-          <button onClick={props.ACTION}>{props.ACTION_NAME}</button>
+          <ButtonAction
+            _id={props._id}
+            IsinCart={props.ISINCART}
+            PRODUCT={props.PRODUCT}
+          />
         </div>
       </div>
     </div>

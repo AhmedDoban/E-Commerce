@@ -29,15 +29,15 @@ const WeekProductsSlice = createSlice({
     CurentPage: 1,
   },
   reducers: {
-    HandleIsInCart: (State, action) => {
+    HandleWeeklyIsInCart: (State, action) => {
       const NewProductsState = [...State.Products];
       const SingleProduct = NewProductsState.filter(
-        (product) => product._id == action.payload
+        (product) => product._id == action.payload._id
       )[0];
       const ProudactId = NewProductsState.indexOf(SingleProduct);
       NewProductsState[ProudactId] = {
         ...SingleProduct,
-        IsinCart: !SingleProduct.IsinCart,
+        IsinCart: action.payload.IsinCart,
       };
       State.Products = [...NewProductsState];
     },
@@ -61,6 +61,6 @@ const WeekProductsSlice = createSlice({
   },
 });
 
-export const { HandleIsInCart } = WeekProductsSlice.actions;
+export const { HandleWeeklyIsInCart } = WeekProductsSlice.actions;
 
 export default WeekProductsSlice.reducer;

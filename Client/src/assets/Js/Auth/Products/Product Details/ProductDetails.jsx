@@ -25,7 +25,7 @@ function ProductDetails() {
   const Dispatch = useDispatch();
   const Product = useSelector((state) => state.SingleProduct.Product);
   const IsLoading = useSelector((state) => state.SingleProduct.loading);
-
+  console.log(Product);
   useEffect(() => {
     Dispatch(GetProduct(params.productId));
   }, []);

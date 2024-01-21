@@ -13,7 +13,7 @@ function Card(props) {
           }
         >
           <Link to={`/Products/${props._id}`}>
-            <img src={props.IMAGE} alt="" />
+            <img src={props.IMAGE} alt={props.NAME} />
           </Link>
           <i className="fa-regular fa-heart"></i>
         </div>

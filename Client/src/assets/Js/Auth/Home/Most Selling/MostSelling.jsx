@@ -4,16 +4,27 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/scrollbar";
 import "./MostSelling.css";
-import { Most_Selling_Product } from "../../../../../dummyData";
-import Stars from "./../../../Components/Stars/Stars";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  Get_MostSelling_Products,
+  HandleIsInCart,
+} from "../../../Toolkit/Slice/MostSellingSlice";
+import Card from "../../../Components/Card/Card";
+import {
+  AddProduct,
+  DeleteFromCartSync,
+  DeleteProduct,
+} from "../../../Toolkit/Slice/CartSlice";
 
 function MostSelling() {
   const [SlideProgress, SetSlideProgress] = useState(1);
-  const [MostSelling_data, SetMostSelling_data] = useState([]);
+  const Dispatch = useDispatch();
+  const Products = useSelector((state) => state.MostSelling.Products);
 
   useEffect(() => {
-    SetMostSelling_data(Most_Selling_Product);
+    Dispatch(Get_MostSelling_Products());
   }, []);
+
   return (
     <React.Fragment>
       <div className="MostSelling" data-aos="fade-up">
@@ -35,25 +46,29 @@ function MostSelling() {
             spaceBetween={10}
             onSlideChange={(e) => SetSlideProgress(e.progress * 100)}
           >
-            {MostSelling_data.map((item, index) => (
+            {Products.map((item, index) => (
               <SwiperSlide key={index}>
-                <div className="card">
-                  <div className="header">
-                    <img src={item.Weekly_Popular_Products_img} alt="" />
-                    <i className="fa-regular fa-heart"></i>
-                  </div>
-                  <div className="footer">
-                    <div className="info">
-                      <span>{item.Weekly_Popular_Products_name}</span>
-                      <span className="Price">
-                        {item.Weekly_Popular_Products_price}
-                      </span>
-                    </div>
-                    <p>{item.Weekly_Popular_Products_des}</p>
-                    <Stars />
-                    <button>Add To Cart</button>
-                  </div>
-                </div>
+                <Card
+                  _id={item._id}
+                  IMAGE={item.image}
+                  NAME={item.name}
+                  PRICE={item.price}
+                  RATE={item.rating.rate}
+                  RATE_COUNT={item.rating.rate_Count}
+                  ACTION={
+                    item.IsinCart
+                      ? () => {
+                          Dispatch(DeleteProduct(item._id));
+                          Dispatch(HandleIsInCart(item._id));
+                          Dispatch(DeleteFromCartSync(item._id));
+                        }
+                      : () => {
+                          Dispatch(AddProduct(item._id));
+                          Dispatch(HandleIsInCart(item._id));
+                        }
+                  }
+                  ACTION_NAME={item.IsinCart ? "Remove" : "Add to Cart"}
+                />
               </SwiperSlide>
             ))}
 

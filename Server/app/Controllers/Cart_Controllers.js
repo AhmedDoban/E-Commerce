@@ -93,7 +93,6 @@ const Add_To_Cart = async (Req, Res) => {
       });
     }
   } catch (err) {
-    console.log(err);
     Res.json({
       Status: Codes.FAILD,
       Status_Code: Codes.FAILD_CODE,
@@ -135,7 +134,6 @@ const Delete_from_Cart = async (Req, Res) => {
       });
     }
   } catch (err) {
-    console.log(err);
     Res.json({
       Status: Codes.FAILD,
       Status_Code: Codes.FAILD_CODE,

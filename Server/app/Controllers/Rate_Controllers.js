@@ -75,7 +75,6 @@ const Update_Rate = async (Req, Res) => {
       });
     }
   } catch (err) {
-    console.log(err);
     Res.json({
       Status: Codes.FAILD,
       Status_Code: Codes.FAILD_CODE,

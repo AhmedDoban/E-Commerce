@@ -115,7 +115,6 @@ const Get_Product = async (Req, Res) => {
         $inc: { "rating.N_of_Watches": 1 },
       }
     );
-    console.log(Product);
     const Cart = await Cart_Model.find({ User_Id: User_Id });
     const Rate = await Rate_Model.findOne({
       User_Id: User_Id,

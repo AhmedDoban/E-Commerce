@@ -69,7 +69,7 @@ export const Brands_data = [
   },
 ];
 
-/****************************    Best Selling*****************************************************/
+/****************************    Best Selling *****************************************************/
 export const Best_Selling_Data = [
   {
     BestSelling_name: "Staples",

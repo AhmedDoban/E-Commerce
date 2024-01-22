@@ -6,8 +6,8 @@ import ButtonAction from "../ButtonAction";
 
 function Card(props) {
   return (
-    <div className="MainCard">
-      <div className="card" data-aos="zoom-in" key={props._id}>
+    <div className="MainCard" key={props._id}>
+      <div className="card" data-aos="zoom-in">
         <div
           className={
             props.HEADER_STYLE ? `header ${props.HEADER_STYLE}` : "header"
@@ -16,7 +16,7 @@ function Card(props) {
           <Link to={`/Products/${props._id}`}>
             <img src={props.IMAGE} alt={props.NAME} />
           </Link>
-          <i className="fa-regular fa-heart"></i>
+          <div className={props.USERLIKE ? "Heart activeHeart" : "Heart"}></div>
         </div>
         <div className="footer">
           <div className="info">

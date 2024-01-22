@@ -40,7 +40,7 @@ function TodaysBestDeals() {
               </span>
             </li>
             {Category &&
-              Category.slice(0, 5).map((Catego, index) => (
+              Category.map((Catego, index) => (
                 <li key={index}>
                   <span
                     className={Chosen === Catego ? "active" : ""}

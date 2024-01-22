@@ -17,7 +17,11 @@ import {
 } from "../../../Toolkit/Slice/SingleProductSlice";
 import { Player } from "@lottiefiles/react-lottie-player";
 import LoadingFetchData from "./../../../Components/Loading Fetch Data/LoadingFetchData";
-import { AddProduct, DeleteProduct } from "../../../Toolkit/Slice/CartSlice";
+import {
+  AddProduct,
+  DeleteProduct,
+  HandleAddProduct,
+} from "../../../Toolkit/Slice/CartSlice";
 import Rate from "../../../Components/Rate/Rate";
 
 function ProductDetails() {
@@ -51,7 +55,7 @@ function ProductDetails() {
     const paymentsPerMonth = (Price / 6 + Price * 0.01).toFixed(2);
     return paymentsPerMonth;
   };
-
+  console.log(Product);
   return (
     <React.Fragment>
       <Header />
@@ -193,7 +197,12 @@ function ProductDetails() {
                         onClick={
                           Product.IsinCart
                             ? null
-                            : () => Dispatch(AddProduct(Product._id))
+                            : () => {
+                                Dispatch(AddProduct(Product._id));
+                                Dispatch(
+                                  HandleAddProduct({ product: Product })
+                                );
+                              }
                         }
                         className="btnStyle"
                       >

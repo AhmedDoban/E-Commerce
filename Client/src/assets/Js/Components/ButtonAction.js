@@ -55,9 +55,7 @@ function ButtonAction(props) {
   const HandelAdd = () => {
     const ISINCART = !props.IsinCart;
     Dispatch(AddProduct(props._id));
-    console.log("yes 1")
     Dispatch(HandleAddProduct({ product: props.PRODUCT }));
-    console.log("yes 2")
     Dispatch(
       HandleProductIsInCart({
         _id: props._id,

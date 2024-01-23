@@ -41,8 +41,12 @@ const Products_Slice = createSlice({
     Category: [],
     Pages: 1,
     CurentPage: 1,
+    Search: "",
   },
   reducers: {
+    HandelSearch: (State, action) => {
+      State.Search = action.payload;
+    },
     SeeNext: (State, action) => {
       if (State.CurentPage < State.Pages) {
         State.CurentPage += 1;
@@ -99,7 +103,7 @@ const Products_Slice = createSlice({
   },
 });
 
-export const { SeeNext, SeePrev, HandleProductIsInCart } =
+export const { SeeNext, SeePrev, HandleProductIsInCart, HandelSearch } =
   Products_Slice.actions;
 
 export default Products_Slice.reducer;

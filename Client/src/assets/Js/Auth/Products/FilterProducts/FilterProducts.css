@@ -1,0 +1,70 @@
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Filter Products 
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.FilterProducts {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Filter Products action
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.FilterProducts .action {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: auto;
+}
+
+.FilterProducts input {
+  position: relative;
+  width: 200px;
+  padding: 4px 15px;
+  border-radius: calc(var(--main-border-radius) * 3);
+  border: 2px solid #eee;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: 0;
+  height: 40px;
+  transition: var(--main-transition);
+}
+.FilterProducts input:focus {
+  outline: 0;
+  border: 2px solid var(--blue-color);
+  border-right: 0;
+}
+.FilterProducts input:focus::placeholder {
+  opacity: 0;
+  transition: var(--main-transition);
+}
+.FilterProducts input::placeholder {
+  color: var(--white-alt-2);
+}
+.FilterProducts .action button {
+  position: relative;
+  height: 40px;
+  padding: 4px 15px;
+  border-radius: calc(var(--main-border-radius) * 3);
+  border: 0;
+  cursor: pointer;
+  border: 2px solid #eee;
+  border-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  color: var(--main-color);
+  transition: var(--main-transition);
+}
+.FilterProducts .action button:hover {
+  background-color: var(--blue-color);
+  color: #fff;
+  border: 2px solid var(--blue-color);
+  border-left: 0;
+}
+.FilterProducts input:focus + button {
+  background-color: var(--blue-color);
+  color: #fff;
+  outline: 0;
+  border: 2px solid var(--blue-color);
+  border-left: 0;
+}

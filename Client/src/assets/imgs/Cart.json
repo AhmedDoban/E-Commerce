@@ -1,0 +1,997 @@
+{
+  "v": "4.10.2",
+  "fr": 25,
+  "ip": 0,
+  "op": 37,
+  "w": 1280,
+  "h": 1280,
+  "nm": "Chart",
+  "ddd": 0,
+  "assets": [],
+  "layers": [
+    {
+      "ddd": 0,
+      "ind": 1,
+      "ty": 4,
+      "nm": "Nero",
+      "sr": 1,
+      "ks": {
+        "o": { "a": 0, "k": 100, "ix": 11 },
+        "r": { "a": 0, "k": 0, "ix": 10 },
+        "p": { "a": 0, "k": [640, 640, 0], "ix": 2 },
+        "a": { "a": 0, "k": [0, 0, 0], "ix": 1 },
+        "s": { "a": 0, "k": [100, 100, 100], "ix": 6 }
+      },
+      "ao": 0,
+      "hasMask": true,
+      "masksProperties": [
+        {
+          "inv": false,
+          "mode": "f",
+          "pt": {
+            "a": 0,
+            "k": {
+              "i": [
+                [0, 40.2],
+                [40.2, 0],
+                [0, -40.2],
+                [-40.2, 0]
+              ],
+              "o": [
+                [0, -40.2],
+                [-40.2, 0],
+                [0, 40.2],
+                [40.2, 0]
+              ],
+              "v": [
+                [-90.341, 351.977],
+                [-163.135, 279.183],
+                [-235.928, 351.977],
+                [-163.135, 424.771]
+              ],
+              "c": true
+            },
+            "ix": 1
+          },
+          "o": { "a": 0, "k": 100, "ix": 3 },
+          "x": { "a": 0, "k": 0, "ix": 4 },
+          "nm": "Maschera 1"
+        },
+        {
+          "inv": false,
+          "mode": "f",
+          "pt": {
+            "a": 0,
+            "k": {
+              "i": [
+                [0, 40.2],
+                [40.2, 0],
+                [0, -40.2],
+                [-40.2, 0]
+              ],
+              "o": [
+                [0, -40.2],
+                [-40.2, 0],
+                [0, 40.2],
+                [40.2, 0]
+              ],
+              "v": [
+                [422.095, 351.977],
+                [349.302, 279.183],
+                [276.508, 351.977],
+                [349.302, 424.771]
+              ],
+              "c": true
+            },
+            "ix": 1
+          },
+          "o": { "a": 0, "k": 100, "ix": 3 },
+          "x": { "a": 0, "k": 0, "ix": 4 },
+          "nm": "Maschera 2"
+        },
+        {
+          "inv": false,
+          "mode": "f",
+          "pt": {
+            "a": 0,
+            "k": {
+              "i": [
+                [0, 0],
+                [0, 0]
+              ],
+              "o": [
+                [0, 0],
+                [0, 0]
+              ],
+              "v": [
+                [-163.134, 279.183],
+                [349.302, 279.183]
+              ],
+              "c": false
+            },
+            "ix": 1
+          },
+          "o": { "a": 0, "k": 100, "ix": 3 },
+          "x": { "a": 0, "k": 0, "ix": 4 },
+          "nm": "Maschera 3"
+        },
+        {
+          "inv": false,
+          "mode": "f",
+          "pt": {
+            "a": 0,
+            "k": {
+              "i": [
+                [0, 0],
+                [0, 0],
+                [-2.844, 10.775],
+                [0, 0],
+                [11.375, 1.86],
+                [0, 0]
+              ],
+              "o": [
+                [0, 0],
+                [12.486, -0.77],
+                [0, 0],
+                [2.552, -11.24],
+                [0, 0],
+                [0, 0]
+              ],
+              "v": [
+                [-171.919, 133.667],
+                [324.401, 134.962],
+                [350.19, 115.54],
+                [417.928, -182.864],
+                [401.652, -207.029],
+                [-260.028, -315.228]
+              ],
+              "c": false
+            },
+            "ix": 1
+          },
+          "o": { "a": 0, "k": 100, "ix": 3 },
+          "x": { "a": 0, "k": 0, "ix": 4 },
+          "nm": "Maschera 4"
+        },
+        {
+          "inv": false,
+          "mode": "f",
+          "pt": {
+            "a": 0,
+            "k": {
+              "i": [
+                [0, 0],
+                [0, 0],
+                [9.212, 0],
+                [0, 0]
+              ],
+              "o": [
+                [0, 0],
+                [-2.193, -8.947],
+                [0, 0],
+                [0, 0]
+              ],
+              "v": [
+                [-163.135, 133.667],
+                [-296.037, -408.532],
+                [-315.462, -423.771],
+                [-421.095, -423.771]
+              ],
+              "c": false
+            },
+            "ix": 1
+          },
+          "o": { "a": 0, "k": 100, "ix": 3 },
+          "x": { "a": 0, "k": 0, "ix": 4 },
+          "nm": "Maschera 5"
+        },
+        {
+          "inv": false,
+          "mode": "f",
+          "pt": {
+            "a": 0,
+            "k": {
+              "i": [
+                [0, 0],
+                [0, -40.2],
+                [-40.2, 0]
+              ],
+              "o": [
+                [-40.2, 0],
+                [0, 40.2],
+                [0, 0]
+              ],
+              "v": [
+                [-163.135, 133.667],
+                [-235.928, 206.461],
+                [-163.135, 279.254]
+              ],
+              "c": false
+            },
+            "ix": 1
+          },
+          "o": { "a": 0, "k": 100, "ix": 3 },
+          "x": { "a": 0, "k": 0, "ix": 4 },
+          "nm": "Maschera 6"
+        }
+      ],
+      "ef": [
+        {
+          "ty": 22,
+          "nm": "Tratto",
+          "np": 13,
+          "mn": "ADBE Stroke",
+          "ix": 1,
+          "en": 1,
+          "ef": [
+            {
+              "ty": 10,
+              "nm": "Tracciato",
+              "mn": "ADBE Stroke-0001",
+              "ix": 1,
+              "v": { "a": 0, "k": 0, "ix": 1 }
+            },
+            {
+              "ty": 7,
+              "nm": "Tutte le maschere",
+              "mn": "ADBE Stroke-0010",
+              "ix": 2,
+              "v": { "a": 0, "k": 1, "ix": 2 }
+            },
+            {
+              "ty": 7,
+              "nm": "Tratto sequenziale",
+              "mn": "ADBE Stroke-0011",
+              "ix": 3,
+              "v": { "a": 0, "k": 0, "ix": 3 }
+            },
+            {
+              "ty": 2,
+              "nm": "Colore",
+              "mn": "ADBE Stroke-0002",
+              "ix": 4,
+              "v": {
+                "a": 0,
+                "k": [0.149019613862, 0.149019613862, 0.149019613862, 1],
+                "ix": 4
+              }
+            },
+            {
+              "ty": 0,
+              "nm": "Dimensione pennello",
+              "mn": "ADBE Stroke-0003",
+              "ix": 5,
+              "v": { "a": 0, "k": 40, "ix": 5 }
+            },
+            {
+              "ty": 0,
+              "nm": "Durezza pennello",
+              "mn": "ADBE Stroke-0004",
+              "ix": 6,
+              "v": { "a": 0, "k": 0.75, "ix": 6 }
+            },
+            {
+              "ty": 0,
+              "nm": "Opacità",
+              "mn": "ADBE Stroke-0005",
+              "ix": 7,
+              "v": { "a": 0, "k": 1, "ix": 7 }
+            },
+            {
+              "ty": 0,
+              "nm": "Inizio",
+              "mn": "ADBE Stroke-0008",
+              "ix": 8,
+              "v": { "a": 0, "k": 0, "ix": 8 }
+            },
+            {
+              "ty": 0,
+              "nm": "Fine",
+              "mn": "ADBE Stroke-0009",
+              "ix": 9,
+              "v": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0.19], "y": [1] },
+                    "o": { "x": [0.167], "y": [0.208] },
+                    "n": ["0p19_1_0p167_0p208"],
+                    "t": 2,
+                    "s": [0],
+                    "e": [100]
+                  },
+                  { "t": 37 }
+                ],
+                "ix": 9
+              }
+            },
+            {
+              "ty": 7,
+              "nm": "Spaziatura",
+              "mn": "ADBE Stroke-0006",
+              "ix": 10,
+              "v": { "a": 0, "k": 10, "ix": 10 }
+            },
+            {
+              "ty": 7,
+              "nm": "Stile pennello",
+              "mn": "ADBE Stroke-0007",
+              "ix": 11,
+              "v": { "a": 0, "k": 1, "ix": 11 }
+            }
+          ]
+        },
+        {
+          "ty": 5,
+          "nm": "Controllo sfocatura",
+          "np": 6,
+          "mn": "ADBE Gaussian Blur 2",
+          "ix": 2,
+          "en": 1,
+          "ef": [
+            {
+              "ty": 0,
+              "nm": "Sfocatura",
+              "mn": "ADBE Gaussian Blur 2-0001",
+              "ix": 1,
+              "v": { "a": 0, "k": 20, "ix": 1 }
+            },
+            {
+              "ty": 7,
+              "nm": "Dimensioni sfocatura",
+              "mn": "ADBE Gaussian Blur 2-0002",
+              "ix": 2,
+              "v": { "a": 0, "k": 1, "ix": 2 }
+            },
+            {
+              "ty": 7,
+              "nm": "Ripeti pixel del bordo",
+              "mn": "ADBE Gaussian Blur 2-0003",
+              "ix": 3,
+              "v": { "a": 0, "k": 0, "ix": 3 }
+            },
+            {
+              "ty": 7,
+              "nm": "Rendering GPU",
+              "mn": "ADBE Force CPU GPU",
+              "ix": 4,
+              "v": { "a": 0, "k": 1, "ix": 4 }
+            }
+          ]
+        },
+        {
+          "ty": 5,
+          "nm": "Dispersione",
+          "np": 5,
+          "mn": "ADBE Scatter",
+          "ix": 3,
+          "en": 0,
+          "ef": [
+            {
+              "ty": 0,
+              "nm": "Valore di dispersione",
+              "mn": "ADBE Scatter-0001",
+              "ix": 1,
+              "v": { "a": 0, "k": 50, "ix": 1 }
+            },
+            {
+              "ty": 7,
+              "nm": "Granulosità",
+              "mn": "ADBE Scatter-0002",
+              "ix": 2,
+              "v": { "a": 0, "k": 1, "ix": 2 }
+            },
+            {
+              "ty": 7,
+              "nm": "Casualità dispersione",
+              "mn": "ADBE Scatter-0003",
+              "ix": 3,
+              "v": { "a": 0, "k": 0, "ix": 3 }
+            }
+          ]
+        },
+        {
+          "ty": 5,
+          "nm": "CC Griddler",
+          "np": 7,
+          "mn": "CC Griddler",
+          "ix": 4,
+          "en": 0,
+          "ef": [
+            {
+              "ty": 0,
+              "nm": "Horizontal Scale",
+              "mn": "CC Griddler-0001",
+              "ix": 1,
+              "v": { "a": 0, "k": 140, "ix": 1 }
+            },
+            {
+              "ty": 0,
+              "nm": "Vertical Scale",
+              "mn": "CC Griddler-0002",
+              "ix": 2,
+              "v": { "a": 0, "k": 140, "ix": 2 }
+            },
+            {
+              "ty": 0,
+              "nm": "Tile Size",
+              "mn": "CC Griddler-0003",
+              "ix": 3,
+              "v": { "a": 0, "k": 1.5, "ix": 3 }
+            },
+            {
+              "ty": 0,
+              "nm": "Rotation",
+              "mn": "CC Griddler-0004",
+              "ix": 4,
+              "v": { "a": 0, "k": 5, "ix": 4 }
+            },
+            {
+              "ty": 7,
+              "nm": "Cut Tiles",
+              "mn": "CC Griddler-0005",
+              "ix": 5,
+              "v": { "a": 0, "k": 1, "ix": 5 }
+            }
+          ]
+        },
+        {
+          "ty": 5,
+          "nm": "Riduzione mascherino",
+          "np": 9,
+          "mn": "ADBE Matte Choker",
+          "ix": 5,
+          "en": 1,
+          "ef": [
+            {
+              "ty": 0,
+              "nm": "Morbidezza geometrica 1",
+              "mn": "ADBE Matte Choker-0001",
+              "ix": 1,
+              "v": { "a": 0, "k": 20, "ix": 1 }
+            },
+            {
+              "ty": 0,
+              "nm": "Riduzione 1",
+              "mn": "ADBE Matte Choker-0002",
+              "ix": 2,
+              "v": { "a": 0, "k": 20, "ix": 2 }
+            },
+            {
+              "ty": 0,
+              "nm": "Morbidezza livello di grigio 1",
+              "mn": "ADBE Matte Choker-0003",
+              "ix": 3,
+              "v": { "a": 0, "k": 0.01, "ix": 3 }
+            },
+            {
+              "ty": 0,
+              "nm": "Morbidezza geometrica 2",
+              "mn": "ADBE Matte Choker-0004",
+              "ix": 4,
+              "v": { "a": 0, "k": 0, "ix": 4 }
+            },
+            {
+              "ty": 0,
+              "nm": "Riduzione 2",
+              "mn": "ADBE Matte Choker-0005",
+              "ix": 5,
+              "v": { "a": 0, "k": 0, "ix": 5 }
+            },
+            {
+              "ty": 0,
+              "nm": "Morbidezza livello di grigio 2",
+              "mn": "ADBE Matte Choker-0006",
+              "ix": 6,
+              "v": { "a": 0, "k": 1, "ix": 6 }
+            },
+            {
+              "ty": 0,
+              "nm": "Iterazioni",
+              "mn": "ADBE Matte Choker-0007",
+              "ix": 7,
+              "v": { "a": 0, "k": 1, "ix": 7 }
+            }
+          ]
+        }
+      ],
+      "shapes": [],
+      "ip": 0,
+      "op": 105,
+      "st": 0,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 2,
+      "ty": 4,
+      "nm": "Colore 1",
+      "sr": 1,
+      "ks": {
+        "o": { "a": 0, "k": 100, "ix": 11 },
+        "r": { "a": 0, "k": 0, "ix": 10 },
+        "p": { "a": 0, "k": [640, 640, 0], "ix": 2 },
+        "a": { "a": 0, "k": [0, 0, 0], "ix": 1 },
+        "s": { "a": 0, "k": [100, 100, 100], "ix": 6 }
+      },
+      "ao": 0,
+      "hasMask": true,
+      "masksProperties": [
+        {
+          "inv": false,
+          "mode": "f",
+          "pt": {
+            "a": 0,
+            "k": {
+              "i": [
+                [0, 40.2],
+                [40.2, 0],
+                [0, -40.2],
+                [-40.2, 0]
+              ],
+              "o": [
+                [0, -40.2],
+                [-40.2, 0],
+                [0, 40.2],
+                [40.2, 0]
+              ],
+              "v": [
+                [-90.341, 351.977],
+                [-163.135, 279.183],
+                [-235.928, 351.977],
+                [-163.135, 424.771]
+              ],
+              "c": true
+            },
+            "ix": 1
+          },
+          "o": { "a": 0, "k": 100, "ix": 3 },
+          "x": { "a": 0, "k": 0, "ix": 4 },
+          "nm": "Maschera 1"
+        },
+        {
+          "inv": false,
+          "mode": "f",
+          "pt": {
+            "a": 0,
+            "k": {
+              "i": [
+                [0, 40.2],
+                [40.2, 0],
+                [0, -40.2],
+                [-40.2, 0]
+              ],
+              "o": [
+                [0, -40.2],
+                [-40.2, 0],
+                [0, 40.2],
+                [40.2, 0]
+              ],
+              "v": [
+                [422.095, 351.977],
+                [349.302, 279.183],
+                [276.508, 351.977],
+                [349.302, 424.771]
+              ],
+              "c": true
+            },
+            "ix": 1
+          },
+          "o": { "a": 0, "k": 100, "ix": 3 },
+          "x": { "a": 0, "k": 0, "ix": 4 },
+          "nm": "Maschera 2"
+        },
+        {
+          "inv": false,
+          "mode": "f",
+          "pt": {
+            "a": 0,
+            "k": {
+              "i": [
+                [0, 0],
+                [0, 0]
+              ],
+              "o": [
+                [0, 0],
+                [0, 0]
+              ],
+              "v": [
+                [-163.134, 279.183],
+                [349.302, 279.183]
+              ],
+              "c": false
+            },
+            "ix": 1
+          },
+          "o": { "a": 0, "k": 100, "ix": 3 },
+          "x": { "a": 0, "k": 0, "ix": 4 },
+          "nm": "Maschera 3"
+        },
+        {
+          "inv": false,
+          "mode": "f",
+          "pt": {
+            "a": 0,
+            "k": {
+              "i": [
+                [0, 0],
+                [0, 0],
+                [-2.844, 10.775],
+                [0, 0],
+                [11.375, 1.86],
+                [0, 0]
+              ],
+              "o": [
+                [0, 0],
+                [12.486, -0.77],
+                [0, 0],
+                [2.552, -11.24],
+                [0, 0],
+                [0, 0]
+              ],
+              "v": [
+                [-171.919, 133.667],
+                [324.401, 134.962],
+                [350.19, 115.54],
+                [417.928, -182.864],
+                [401.652, -207.029],
+                [-260.028, -315.228]
+              ],
+              "c": false
+            },
+            "ix": 1
+          },
+          "o": { "a": 0, "k": 100, "ix": 3 },
+          "x": { "a": 0, "k": 0, "ix": 4 },
+          "nm": "Maschera 4"
+        },
+        {
+          "inv": false,
+          "mode": "f",
+          "pt": {
+            "a": 0,
+            "k": {
+              "i": [
+                [0, 0],
+                [0, 0],
+                [9.212, 0],
+                [0, 0]
+              ],
+              "o": [
+                [0, 0],
+                [-2.193, -8.947],
+                [0, 0],
+                [0, 0]
+              ],
+              "v": [
+                [-163.135, 133.667],
+                [-296.037, -408.532],
+                [-315.462, -423.771],
+                [-421.095, -423.771]
+              ],
+              "c": false
+            },
+            "ix": 1
+          },
+          "o": { "a": 0, "k": 100, "ix": 3 },
+          "x": { "a": 0, "k": 0, "ix": 4 },
+          "nm": "Maschera 5"
+        },
+        {
+          "inv": false,
+          "mode": "f",
+          "pt": {
+            "a": 0,
+            "k": {
+              "i": [
+                [0, 0],
+                [0, -40.2],
+                [-40.2, 0]
+              ],
+              "o": [
+                [-40.2, 0],
+                [0, 40.2],
+                [0, 0]
+              ],
+              "v": [
+                [-163.135, 133.667],
+                [-235.928, 206.461],
+                [-163.135, 279.254]
+              ],
+              "c": false
+            },
+            "ix": 1
+          },
+          "o": { "a": 0, "k": 100, "ix": 3 },
+          "x": { "a": 0, "k": 0, "ix": 4 },
+          "nm": "Maschera 6"
+        }
+      ],
+      "ef": [
+        {
+          "ty": 22,
+          "nm": "Tratto",
+          "np": 13,
+          "mn": "ADBE Stroke",
+          "ix": 1,
+          "en": 1,
+          "ef": [
+            {
+              "ty": 10,
+              "nm": "Tracciato",
+              "mn": "ADBE Stroke-0001",
+              "ix": 1,
+              "v": { "a": 0, "k": 0, "ix": 1 }
+            },
+            {
+              "ty": 7,
+              "nm": "Tutte le maschere",
+              "mn": "ADBE Stroke-0010",
+              "ix": 2,
+              "v": { "a": 0, "k": 1, "ix": 2 }
+            },
+            {
+              "ty": 7,
+              "nm": "Tratto sequenziale",
+              "mn": "ADBE Stroke-0011",
+              "ix": 3,
+              "v": { "a": 0, "k": 0, "ix": 3 }
+            },
+            {
+              "ty": 2,
+              "nm": "Colore",
+              "mn": "ADBE Stroke-0002",
+              "ix": 4,
+              "v": {
+                "a": 0,
+                "k": [0.997150719166, 0.759136915207, 0.153910726309, 1],
+                "ix": 4
+              }
+            },
+            {
+              "ty": 0,
+              "nm": "Dimensione pennello",
+              "mn": "ADBE Stroke-0003",
+              "ix": 5,
+              "v": { "a": 0, "k": 40, "ix": 5 }
+            },
+            {
+              "ty": 0,
+              "nm": "Durezza pennello",
+              "mn": "ADBE Stroke-0004",
+              "ix": 6,
+              "v": { "a": 0, "k": 0.75, "ix": 6 }
+            },
+            {
+              "ty": 0,
+              "nm": "Opacità",
+              "mn": "ADBE Stroke-0005",
+              "ix": 7,
+              "v": { "a": 0, "k": 1, "ix": 7 }
+            },
+            {
+              "ty": 0,
+              "nm": "Inizio",
+              "mn": "ADBE Stroke-0008",
+              "ix": 8,
+              "v": { "a": 0, "k": 0, "ix": 8 }
+            },
+            {
+              "ty": 0,
+              "nm": "Fine",
+              "mn": "ADBE Stroke-0009",
+              "ix": 9,
+              "v": {
+                "a": 1,
+                "k": [
+                  {
+                    "i": { "x": [0.19], "y": [1] },
+                    "o": { "x": [0.167], "y": [0.185] },
+                    "n": ["0p19_1_0p167_0p185"],
+                    "t": 0,
+                    "s": [0],
+                    "e": [100]
+                  },
+                  { "t": 31 }
+                ],
+                "ix": 9
+              }
+            },
+            {
+              "ty": 7,
+              "nm": "Spaziatura",
+              "mn": "ADBE Stroke-0006",
+              "ix": 10,
+              "v": { "a": 0, "k": 10, "ix": 10 }
+            },
+            {
+              "ty": 7,
+              "nm": "Stile pennello",
+              "mn": "ADBE Stroke-0007",
+              "ix": 11,
+              "v": { "a": 0, "k": 1, "ix": 11 }
+            }
+          ]
+        },
+        {
+          "ty": 5,
+          "nm": "Controllo sfocatura",
+          "np": 6,
+          "mn": "ADBE Gaussian Blur 2",
+          "ix": 2,
+          "en": 1,
+          "ef": [
+            {
+              "ty": 0,
+              "nm": "Sfocatura",
+              "mn": "ADBE Gaussian Blur 2-0001",
+              "ix": 1,
+              "v": { "a": 0, "k": 20, "ix": 1 }
+            },
+            {
+              "ty": 7,
+              "nm": "Dimensioni sfocatura",
+              "mn": "ADBE Gaussian Blur 2-0002",
+              "ix": 2,
+              "v": { "a": 0, "k": 1, "ix": 2 }
+            },
+            {
+              "ty": 7,
+              "nm": "Ripeti pixel del bordo",
+              "mn": "ADBE Gaussian Blur 2-0003",
+              "ix": 3,
+              "v": { "a": 0, "k": 0, "ix": 3 }
+            },
+            {
+              "ty": 7,
+              "nm": "Rendering GPU",
+              "mn": "ADBE Force CPU GPU",
+              "ix": 4,
+              "v": { "a": 0, "k": 1, "ix": 4 }
+            }
+          ]
+        },
+        {
+          "ty": 5,
+          "nm": "Dispersione",
+          "np": 5,
+          "mn": "ADBE Scatter",
+          "ix": 3,
+          "en": 0,
+          "ef": [
+            {
+              "ty": 0,
+              "nm": "Valore di dispersione",
+              "mn": "ADBE Scatter-0001",
+              "ix": 1,
+              "v": { "a": 0, "k": 50, "ix": 1 }
+            },
+            {
+              "ty": 7,
+              "nm": "Granulosità",
+              "mn": "ADBE Scatter-0002",
+              "ix": 2,
+              "v": { "a": 0, "k": 1, "ix": 2 }
+            },
+            {
+              "ty": 7,
+              "nm": "Casualità dispersione",
+              "mn": "ADBE Scatter-0003",
+              "ix": 3,
+              "v": { "a": 0, "k": 0, "ix": 3 }
+            }
+          ]
+        },
+        {
+          "ty": 5,
+          "nm": "CC Griddler",
+          "np": 7,
+          "mn": "CC Griddler",
+          "ix": 4,
+          "en": 0,
+          "ef": [
+            {
+              "ty": 0,
+              "nm": "Horizontal Scale",
+              "mn": "CC Griddler-0001",
+              "ix": 1,
+              "v": { "a": 0, "k": 140, "ix": 1 }
+            },
+            {
+              "ty": 0,
+              "nm": "Vertical Scale",
+              "mn": "CC Griddler-0002",
+              "ix": 2,
+              "v": { "a": 0, "k": 140, "ix": 2 }
+            },
+            {
+              "ty": 0,
+              "nm": "Tile Size",
+              "mn": "CC Griddler-0003",
+              "ix": 3,
+              "v": { "a": 0, "k": 1.5, "ix": 3 }
+            },
+            {
+              "ty": 0,
+              "nm": "Rotation",
+              "mn": "CC Griddler-0004",
+              "ix": 4,
+              "v": { "a": 0, "k": 5, "ix": 4 }
+            },
+            {
+              "ty": 7,
+              "nm": "Cut Tiles",
+              "mn": "CC Griddler-0005",
+              "ix": 5,
+              "v": { "a": 0, "k": 1, "ix": 5 }
+            }
+          ]
+        },
+        {
+          "ty": 5,
+          "nm": "Riduzione mascherino",
+          "np": 9,
+          "mn": "ADBE Matte Choker",
+          "ix": 5,
+          "en": 1,
+          "ef": [
+            {
+              "ty": 0,
+              "nm": "Morbidezza geometrica 1",
+              "mn": "ADBE Matte Choker-0001",
+              "ix": 1,
+              "v": { "a": 0, "k": 20, "ix": 1 }
+            },
+            {
+              "ty": 0,
+              "nm": "Riduzione 1",
+              "mn": "ADBE Matte Choker-0002",
+              "ix": 2,
+              "v": { "a": 0, "k": 20, "ix": 2 }
+            },
+            {
+              "ty": 0,
+              "nm": "Morbidezza livello di grigio 1",
+              "mn": "ADBE Matte Choker-0003",
+              "ix": 3,
+              "v": { "a": 0, "k": 0.01, "ix": 3 }
+            },
+            {
+              "ty": 0,
+              "nm": "Morbidezza geometrica 2",
+              "mn": "ADBE Matte Choker-0004",
+              "ix": 4,
+              "v": { "a": 0, "k": 0, "ix": 4 }
+            },
+            {
+              "ty": 0,
+              "nm": "Riduzione 2",
+              "mn": "ADBE Matte Choker-0005",
+              "ix": 5,
+              "v": { "a": 0, "k": 0, "ix": 5 }
+            },
+            {
+              "ty": 0,
+              "nm": "Morbidezza livello di grigio 2",
+              "mn": "ADBE Matte Choker-0006",
+              "ix": 6,
+              "v": { "a": 0, "k": 1, "ix": 6 }
+            },
+            {
+              "ty": 0,
+              "nm": "Iterazioni",
+              "mn": "ADBE Matte Choker-0007",
+              "ix": 7,
+              "v": { "a": 0, "k": 1, "ix": 7 }
+            }
+          ]
+        }
+      ],
+      "shapes": [],
+      "ip": 0,
+      "op": 105,
+      "st": 0,
+      "bm": 0
+    }
+  ]
+}

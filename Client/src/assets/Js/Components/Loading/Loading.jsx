@@ -9,7 +9,7 @@ function Loading() {
         autoplay={true}
         loop={true}
         controls={false}
-        src="https://assets10.lottiefiles.com/packages/lf20_p8bfn5to.json"
+        src={require("../../../imgs/Loading.json")}
         className="palyer"
       />
       <p>Loading</p>

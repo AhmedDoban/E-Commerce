@@ -12,7 +12,7 @@ import {
 } from "../../Toolkit/Slice/CartSlice";
 import DeleteCartAction from "../../Components/DeleteCartAction";
 
-function Cart(props) {
+function Cart() {
   const Products = useSelector((state) => state.Cart.Cart);
   const Dispatch = useDispatch();
 
@@ -70,7 +70,7 @@ function Cart(props) {
               autoplay={true}
               loop={true}
               controls={false}
-              src="https://assets1.lottiefiles.com/packages/lf20_iluqidyb.json"
+              src={require("../../../imgs/Cart.json")}
               className="No-item-player"
             />
             <p>there is no items in cart</p>

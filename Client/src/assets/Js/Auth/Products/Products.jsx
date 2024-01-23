@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./Products.css";
 import Header from "./../../Components/Header/Header";
 import Footer from "./../../Components/Footer/Footer";
@@ -14,12 +14,11 @@ import {
   SeeNext,
   SeePrev,
 } from "../../Toolkit/Slice/ProductsSlice";
+import FilterProducts from "./FilterProducts/FilterProducts";
 
 function Products() {
-  const [Chosen, SetChosen] = useState("");
   const Dispatch = useDispatch();
   const Products = useSelector((state) => state.Products.Products);
-  const Category = useSelector((state) => state.Products.Category);
   const Loading = useSelector((state) => state.Products.Loading);
   const Pages = useSelector((state) => state.Products.Pages);
   const CurentPage = useSelector((state) => state.Products.CurentPage);
@@ -28,10 +27,6 @@ function Products() {
     Dispatch(Get_All_Products());
     Dispatch(Get_All_Category());
   }, []);
-
-  const HandleFilter = (data) => {
-    SetChosen(data);
-  };
 
   const HandleNext = () => {
     Dispatch(SeeNext());
@@ -64,31 +59,9 @@ function Products() {
             </div>
           </div>
           <div className="container">
-            <ul className="nav-menu">
-              <li>
-                <span
-                  className={Chosen === "" ? "active" : ""}
-                  onClick={() => HandleFilter("")}
-                >
-                  All
-                </span>
-              </li>
-              {Category.map((Catego, index) => (
-                <li key={index}>
-                  <span
-                    className={Chosen === Catego ? "active" : ""}
-                    onClick={() => HandleFilter(Catego)}
-                  >
-                    {Catego}
-                  </span>
-                </li>
-              ))}
-            </ul>
-
+            <FilterProducts />
             <div className="cards-container">
-              {Products.filter((data) =>
-                Chosen === "" ? data : data.category === Chosen
-              ).map((item) => (
+              {Products.map((item) => (
                 <Card
                   _id={item._id}
                   IMAGE={item.image}

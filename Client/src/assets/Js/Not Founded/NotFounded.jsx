@@ -12,7 +12,7 @@ const NotFounded = () => {
             autoplay={true}
             loop={true}
             controls={false}
-            src="https://assets4.lottiefiles.com/packages/lf20_RaWlll5IJz.json"
+            src={require("../../imgs/NotFound.json")}
             className="palyer"
           />
           <h4 className="not founded">Page Not Founded</h4>

@@ -21,13 +21,26 @@
   flex-wrap: wrap;
   width: 100%;
 }
+.FilterProducts .Filter .select-box {
+  position: relative;
+  display: flex;
+  gap: 10px;
+}
 .FilterProducts .Filter .SelectELEMENT {
   position: relative;
   min-width: 200px;
   max-width: 100%;
   width: 100%;
 }
-
+@media (max-width: 992px) {
+  .FilterProducts .Filter .select-box {
+    flex-direction: column;
+    width: 100%;
+  }
+  .FilterProducts .Filter .SelectELEMENT {
+    min-width: 100%;
+  }
+}
 .FilterProducts .Filter .SelectELEMENT .StarRateFilter {
   position: relative;
   display: flex;
@@ -47,10 +60,29 @@
 .FilterProducts .Filter .SelectELEMENT .StarRateFilter i.active {
   color: orange;
 }
+
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Filter Products input-actions
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.FilterProducts .Filter .input-action {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .FilterProducts .Filter .input-box {
   position: relative;
   height: 100%;
   background-color: transparent;
+}
+@media (max-width: 992px) {
+  .FilterProducts .Filter .input-action {
+    width: 100%;
+  }
+  .FilterProducts .Filter .input-box {
+    width: 100%;
+  }
 }
 .FilterProducts .Filter .input-box input {
   position: relative;
@@ -76,17 +108,35 @@
 /*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 # Filter Products action
 ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
-
 .FilterProducts .action {
   position: relative;
   display: flex;
   align-items: center;
+  flex: 1;
+  gap: 10px;
   height: auto;
+  transition: var(--main-transition);
+}
+.FilterProducts .action > i {
+  position: relative;
+  cursor: pointer;
+  color: var(--blue-color);
+  transition: var(--main-transition);
 }
 
+.FilterProducts .action .Search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  height: auto;
+  width: 100%;
+}
 .FilterProducts .action input {
   position: relative;
-  width: 200px;
+  min-width: 200px;
+  max-width: 100%;
+  width: 100%;
   padding: 4px 15px;
   border-radius: calc(var(--main-border-radius) * 3);
   border: 2px solid #eee;

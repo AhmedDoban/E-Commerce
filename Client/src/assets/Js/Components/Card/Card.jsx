@@ -7,7 +7,7 @@ import ButtonAction from "../ButtonAction";
 function Card(props) {
   return (
     <div className="MainCard" key={props._id}>
-      <div className="card" data-aos="zoom-in">
+      <div className="card">
         <div
           className={
             props.HEADER_STYLE ? `header ${props.HEADER_STYLE}` : "header"

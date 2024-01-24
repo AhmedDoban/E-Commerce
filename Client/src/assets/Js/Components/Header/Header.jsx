@@ -1,21 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Handle_Logout } from "../../Toolkit/Slice/UserSlice";
+import { HandelSearch } from "../../Toolkit/Slice/ProductsSlice";
 
 function Header() {
-  const [Category, SetCategory] = useState(false);
-  const [Togle, SetTogle] = useState(false);
-
-  const Dispatch = useDispatch();
-
   const User = useSelector((state) => state.User.user);
   const CartCount = useSelector((state) => state.Cart.Cart);
+  const Search = useSelector((state) => state.Products.Search);
+
+  const [Category, SetCategory] = useState(false);
+  const [Togle, SetTogle] = useState(false);
+  const [SearchInput, SetSearchInput] = useState(Search);
+
+  const Dispatch = useDispatch();
 
   const HandleLogout = () => {
     Dispatch(Handle_Logout());
   };
+
+  useEffect(() => {
+    Dispatch(HandelSearch(SearchInput));
+  }, [SearchInput]);
 
   return (
     <React.Fragment>
@@ -206,7 +213,12 @@ function Header() {
             </ul>
           </div>
           <div className="content d-none">
-            <input type="text" placeholder="Search proudact" />
+            <input
+              type="text"
+              placeholder="Search proudact"
+              value={SearchInput}
+              onChange={(e) => SetSearchInput(e.target.value)}
+            />
             <i className="fa-solid fa-magnifying-glass"></i>
           </div>
           <div className="content actions_links">

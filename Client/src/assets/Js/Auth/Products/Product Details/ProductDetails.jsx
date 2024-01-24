@@ -29,7 +29,7 @@ function ProductDetails() {
   const Dispatch = useDispatch();
   const Product = useSelector((state) => state.SingleProduct.Product);
   const IsLoading = useSelector((state) => state.SingleProduct.loading);
-  console.log(Product);
+
   useEffect(() => {
     Dispatch(GetProduct(params.productId));
   }, []);
@@ -55,7 +55,7 @@ function ProductDetails() {
     const paymentsPerMonth = (Price / 6 + Price * 0.01).toFixed(2);
     return paymentsPerMonth;
   };
-  console.log(Product);
+
   return (
     <React.Fragment>
       <Header />

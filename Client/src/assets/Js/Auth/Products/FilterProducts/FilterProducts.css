@@ -6,10 +6,77 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
+}
+@media (max-width: 1200px) {
+  .FilterProducts {
+    flex-direction: column;
+  }
+}
+.FilterProducts .Filter {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.FilterProducts .Filter .SelectELEMENT {
+  position: relative;
+  min-width: 200px;
+  max-width: 100%;
+  width: 100%;
+}
+
+.FilterProducts .Filter .SelectELEMENT .StarRateFilter {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.FilterProducts .Filter .SelectELEMENT .CategoryFilter {
+  position: relative;
+  padding: 5px 0;
+  font-size: 16px;
+  font-weight: 400;
+}
+.FilterProducts .Filter .SelectELEMENT .StarRateFilter i {
+  color: #ccc;
+  padding: 5px 0;
+}
+.FilterProducts .Filter .SelectELEMENT .StarRateFilter i.active {
+  color: orange;
+}
+.FilterProducts .Filter .input-box {
+  position: relative;
+  height: 100%;
+  background-color: transparent;
+}
+.FilterProducts .Filter .input-box input {
+  position: relative;
+  background-color: transparent;
+  border: 0;
+  padding: 10px;
+  height: 36px;
+  border-radius: 0.2em;
+  width: 100%;
+  border: 1px solid #ccc;
+  transition: var(--main-transition);
+}
+.FilterProducts .Filter .input-box input:focus {
+  outline: 0;
+  border: 1px solid var(--blue-color);
+}
+.FilterProducts .Filter .input-box input::placeholder {
+  transition: var(--main-transition);
+}
+.FilterProducts .Filter .input-box input:focus::placeholder {
+  opacity: 0;
 }
 /*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 # Filter Products action
 ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+
 .FilterProducts .action {
   position: relative;
   display: flex;
@@ -17,7 +84,7 @@
   height: auto;
 }
 
-.FilterProducts input {
+.FilterProducts .action input {
   position: relative;
   width: 200px;
   padding: 4px 15px;
@@ -29,16 +96,24 @@
   height: 40px;
   transition: var(--main-transition);
 }
-.FilterProducts input:focus {
+@media (max-width: 1200px) {
+  .FilterProducts .action {
+    width: 100%;
+  }
+  .FilterProducts .action input {
+    width: 100%;
+  }
+}
+.FilterProducts .action input:focus {
   outline: 0;
   border: 2px solid var(--blue-color);
   border-right: 0;
 }
-.FilterProducts input:focus::placeholder {
+.FilterProducts .action input:focus::placeholder {
   opacity: 0;
   transition: var(--main-transition);
 }
-.FilterProducts input::placeholder {
+.FilterProducts .action input::placeholder {
   color: var(--white-alt-2);
 }
 .FilterProducts .action button {

@@ -3,12 +3,12 @@ import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Handle_Logout } from "../../Toolkit/Slice/UserSlice";
-import { HandelSearch } from "../../Toolkit/Slice/ProductsSlice";
+import { HandelFilter } from "../../Toolkit/Slice/ProductsSlice";
 
 function Header() {
   const User = useSelector((state) => state.User.user);
   const CartCount = useSelector((state) => state.Cart.Cart);
-  const Search = useSelector((state) => state.Products.Search);
+  const Search = useSelector((state) => state.Products.Filter.Search);
 
   const [Category, SetCategory] = useState(false);
   const [Togle, SetTogle] = useState(false);
@@ -21,7 +21,15 @@ function Header() {
   };
 
   useEffect(() => {
-    Dispatch(HandelSearch(SearchInput));
+    Dispatch(
+      HandelFilter({
+        Search: SearchInput,
+        Min: "",
+        Max: "",
+        StarRate: "",
+        CategoryFilter: "",
+      })
+    );
   }, [SearchInput]);
 
   return (

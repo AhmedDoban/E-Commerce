@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { HandelSearch } from "../../../Toolkit/Slice/ProductsSlice";
+import {
+  Get_All_Products,
+  HandelFilter,
+  ResetCurrentPage,
+} from "../../../Toolkit/Slice/ProductsSlice";
 import "./FilterProducts.css";
 import { Select } from "react-dropdown-select";
 
 function FilterProducts() {
   const Category = useSelector((state) => state.Products.Category);
-  const Search = useSelector((state) => state.Products.Search);
+  const Search = useSelector((state) => state.Products.Filter.Search);
   const Dispatch = useDispatch();
-  const [SearchInput, SetSearchInput] = useState(Search);
   const [ShowFilter, SetShowFilter] = useState(true);
 
-  const [Value, SetValue] = useState({
-    CategoryFilter: "",
-    StarRate: "",
+  const [Filter, SetFilter] = useState({
+    Search: Search,
     Min: "",
     Max: "",
+    StarRate: "",
+    CategoryFilter: "",
   });
 
   const CategoryOptions = Category.map((item) => ({
@@ -87,8 +91,8 @@ function FilterProducts() {
   ];
 
   useEffect(() => {
-    Dispatch(HandelSearch(SearchInput));
-  }, [SearchInput]);
+    Dispatch(HandelFilter(Filter));
+  }, [Filter]);
 
   return (
     <React.Fragment>
@@ -99,8 +103,8 @@ function FilterProducts() {
               <Select
                 options={CategoryOptions}
                 onChange={(OptionValue) =>
-                  SetValue({
-                    ...Value,
+                  SetFilter({
+                    ...Filter,
                     CategoryFilter:
                       OptionValue[0] === undefined ? "" : OptionValue[0].value,
                   })
@@ -115,8 +119,8 @@ function FilterProducts() {
               <Select
                 options={StarRate}
                 onChange={(OptionValue) =>
-                  SetValue({
-                    ...Value,
+                  SetFilter({
+                    ...Filter,
                     StarRate:
                       OptionValue[0] === undefined ? "" : OptionValue[0].value,
                   })
@@ -134,8 +138,10 @@ function FilterProducts() {
                 <input
                   type="number"
                   placeholder="MIN"
-                  value={Value.Min}
-                  onChange={(e) => SetValue({ ...Value, Min: e.target.value })}
+                  value={Filter.Min}
+                  onChange={(e) =>
+                    SetFilter({ ...Filter, Min: e.target.value })
+                  }
                   min={0}
                 />
               </div>
@@ -143,8 +149,10 @@ function FilterProducts() {
                 <input
                   type="number"
                   placeholder="MAX"
-                  value={Value.Max}
-                  onChange={(e) => SetValue({ ...Value, Max: e.target.value })}
+                  value={Filter.Max}
+                  onChange={(e) =>
+                    SetFilter({ ...Filter, Max: e.target.value })
+                  }
                   min={1}
                 />
               </div>
@@ -166,11 +174,18 @@ function FilterProducts() {
               type="search"
               name="Search"
               id="Search"
-              value={SearchInput}
+              value={Filter.Search}
               placeholder="Search Product"
-              onChange={(e) => SetSearchInput(e.target.value)}
+              onChange={(e) => SetFilter({ ...Filter, Search: e.target.value })}
             />
-            <button>Search</button>
+            <button
+              onClick={() => {
+                Dispatch(ResetCurrentPage());
+                Dispatch(Get_All_Products());
+              }}
+            >
+              Search
+            </button>
           </div>
         </div>
       </div>

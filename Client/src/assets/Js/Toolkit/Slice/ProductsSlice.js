@@ -4,12 +4,18 @@ import axios from "axios";
 export const Get_All_Products = createAsyncThunk(
   "Products",
   async (arg, { getState }) => {
-    const { Token, _id } = JSON.parse(localStorage.getItem("Token"));
     const State = getState();
-
+    const { Token, _id } = JSON.parse(localStorage.getItem("Token"));
     const Data = await axios.post(
-      `${process.env.REACT_APP_API_URL}/Products?Page=${State.Products.CurentPage}&Limit=8`,
-      { _id },
+      `${process.env.REACT_APP_API_URL}/Products/Filter?Page=${State.Products.CurentPage}&Limit=8`,
+      {
+        SEARCH: State.Products.Filter.Search,
+        MIN: State.Products.Filter.Min,
+        MAX: State.Products.Filter.Max,
+        RATE: State.Products.Filter.StarRate,
+        CATEGORY: State.Products.Filter.CategoryFilter,
+        _id: _id,
+      },
       {
         headers: {
           Authorization: Token,
@@ -22,7 +28,7 @@ export const Get_All_Products = createAsyncThunk(
 export const Get_All_Category = createAsyncThunk("Category", async () => {
   const { Token } = JSON.parse(localStorage.getItem("Token"));
   const Data = await axios.post(
-    `${process.env.REACT_APP_API_URL}/Products/Category`,
+    `${process.env.REACT_APP_API_URL}/Products/Category?ALL=true`,
     {},
     {
       headers: {
@@ -41,11 +47,21 @@ const Products_Slice = createSlice({
     Category: [],
     Pages: 1,
     CurentPage: 1,
-    Search: "",
+    Filter: {
+      Search: "",
+      Min: "",
+      Max: "",
+      StarRate: "",
+      CategoryFilter: "",
+    },
   },
   reducers: {
-    HandelSearch: (State, action) => {
-      State.Search = action.payload;
+    HandelFilter: (State, action) => {
+      State.Filter = action.payload;
+      console.log(action.payload);
+    },
+    ResetCurrentPage: (State, action) => {
+      State.CurentPage = 1;
     },
     SeeNext: (State, action) => {
       if (State.CurentPage < State.Pages) {
@@ -80,6 +96,7 @@ const Products_Slice = createSlice({
     });
     builder.addCase(Get_All_Products.fulfilled, (State, action) => {
       State.Loading = false;
+      console.log(action.payload);
       if (action.payload.Status === "Faild") {
         return;
       } else {
@@ -88,7 +105,7 @@ const Products_Slice = createSlice({
       }
     });
     builder.addCase(Get_All_Products.rejected, (State, action) => {
-      State.Loading = true;
+      State.Loading = false;
     });
     builder.addCase(Get_All_Category.pending, (State, action) => {
       State.Loading = true;
@@ -103,7 +120,12 @@ const Products_Slice = createSlice({
   },
 });
 
-export const { SeeNext, SeePrev, HandleProductIsInCart, HandelSearch } =
-  Products_Slice.actions;
+export const {
+  SeeNext,
+  SeePrev,
+  HandleProductIsInCart,
+  HandelFilter,
+  ResetCurrentPage,
+} = Products_Slice.actions;
 
 export default Products_Slice.reducer;

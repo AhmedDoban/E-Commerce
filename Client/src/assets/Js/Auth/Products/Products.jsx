@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Products.css";
 import Header from "./../../Components/Header/Header";
 import Footer from "./../../Components/Footer/Footer";
@@ -60,7 +60,7 @@ function Products() {
           </div>
           <div className="container">
             <FilterProducts />
-            <div className="cards-container">
+            <div className="cards-container" data-aos="fade-up">
               {Products.map((item) => (
                 <Card
                   _id={item._id}

@@ -19,6 +19,18 @@ Router.route("/Category").post(
   Products_Controllers.Get_All_Category
 );
 
+// Routes Handelar /API/Products/Filter?Page=1&Limit=10
+Router.route("/Filter").post(
+  JWT.Verify_Token,
+  [body("MIN").notEmpty().withMessage("MIN is not Valid")],
+  [body("MAX").notEmpty().withMessage("MAX is not Valid")],
+  [body("SEARCH").notEmpty().withMessage("SEARCH is not Valid")],
+  [body("RATE").notEmpty().withMessage("RATE is not Valid")],
+  [body("CATEGORY").notEmpty().withMessage("CATEGORY is not Valid")],
+  [body("_id").notEmpty().withMessage("_id is not Valid")],
+  Products_Controllers.Get_Filter_Products
+);
+
 // Routes Handelar /API/Products/:id
 Router.route("/:id").post(
   JWT.Verify_Token,

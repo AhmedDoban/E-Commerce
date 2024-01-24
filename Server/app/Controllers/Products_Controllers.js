@@ -145,27 +145,87 @@ const Get_Product = async (Req, Res) => {
 const Get_All_Category = async (Req, Res) => {
   const Page = +Req.query.Page || 1;
   const Limit = +Req.query.Limit || 10;
+  const ALL = Req.query.ALL || false;
   const Skip = (Page - 1) * Limit;
 
   try {
+    if (ALL) {
+      // GEt All Products From the Data Base
+      const CATEGORY = await Products_Model.distinct("category");
+      Res.json({
+        Status: Codes.SUCCESS,
+        Status_Code: Codes.SUCCESS_CODE,
+        Data: CATEGORY,
+      });
+    } else {
+      // GEt Some Products From the Data Base
+      const SomeProducts = await Products_Model.aggregate([
+        { $skip: Skip },
+        { $limit: Limit },
+      ]);
+      const Category = new Array();
+      const SetProducts = new Set();
+
+      await SomeProducts.map((ele) => {
+        return SetProducts.add(ele.category);
+      });
+
+      SetProducts.forEach((ele) => Category.push(ele));
+
+      Res.json({
+        Status: Codes.SUCCESS,
+        Status_Code: Codes.SUCCESS_CODE,
+        Data: Category,
+      });
+    }
+  } catch (err) {
+    Res.json({
+      Status: Codes.FAILD,
+      Status_Code: Codes.FAILD_CODE,
+      message: "Page NOt Found",
+    });
+  }
+};
+
+// get Filter Products
+const Get_Filter_Products = async (Req, Res) => {
+  const { MIN, MAX, SEARCH, RATE, CATEGORY, _id } = Req.body;
+  const Page = +Req.query.Page || 1;
+  const Limit = +Req.query.Limit || 10;
+  const Skip = (Page - 1) * Limit;
+  try {
+    const Cart = await Cart_Model.find({ User_Id: _id });
+    let CartProductsID = new Array();
+    await Cart.map((ele) => CartProductsID.push(ele.Product_ID));
     // GEt ALl Products From the Data Base
     const SomeProducts = await Products_Model.aggregate([
+      { $match: SEARCH == "" ? {} : { name: SEARCH } },
+      { $match: CATEGORY == "" ? {} : { category: CATEGORY } },
+      { $match: RATE == 0 ? {} : { "rating.rate": RATE } },
+      { $match: MIN == 0 ? {} : { price: { $gte: MIN } } },
+      { $match: MAX == 0 ? {} : { price: { $lte: MAX } } },
       { $skip: Skip },
       { $limit: Limit },
+      {
+        $addFields: {
+          IsinCart: { $in: ["$_id", CartProductsID] },
+        },
+      },
     ]);
-    const Category = new Array();
-    const SetProducts = new Set();
-
-    await SomeProducts.map((ele) => {
-      return SetProducts.add(ele.category);
-    });
-
-    SetProducts.forEach((ele) => Category.push(ele));
+    const ProductsCount = await Products_Model.aggregate([
+      { $match: SEARCH == "" ? {} : { name: SEARCH } },
+      { $match: CATEGORY == "" ? {} : { category: CATEGORY } },
+      { $match: RATE == 0 ? {} : { "rating.rate": RATE } },
+      { $match: MIN == 0 ? {} : { price: { $gte: MIN } } },
+      { $match: MAX == 0 ? {} : { price: { $lte: MAX } } },
+      { $count: "Count" },
+    ]);
 
     Res.json({
       Status: Codes.SUCCESS,
       Status_Code: Codes.SUCCESS_CODE,
-      Data: Category,
+      Data: SomeProducts,
+      No_Pages: Math.ceil(ProductsCount[0].Count / Limit),
     });
   } catch (err) {
     Res.json({
@@ -180,4 +240,5 @@ export default {
   Get_All_Products,
   Get_All_Category,
   Get_Product,
+  Get_Filter_Products,
 };

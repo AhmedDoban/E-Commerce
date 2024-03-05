@@ -9,6 +9,7 @@ import Order from "./Order/Order";
 import {
   HandleDecrement,
   HandleIncrement,
+  UpdateCount,
 } from "../../Toolkit/Slice/CartSlice";
 import DeleteCartAction from "../../Components/DeleteCartAction";
 
@@ -16,6 +17,14 @@ function Cart() {
   const Products = useSelector((state) => state.Cart.Cart);
   const Dispatch = useDispatch();
 
+  let HandleDecrementProduct = (_id) => {
+    Dispatch(UpdateCount({ _id: _id, type: "REMOVE" }));
+    Dispatch(HandleDecrement(_id));
+  };
+  let HandleIncrementProduct = (_id) => {
+    Dispatch(UpdateCount({ _id: _id, type: "ADD" }));
+    Dispatch(HandleIncrement(_id));
+  };
   return (
     <React.Fragment>
       <Header />
@@ -42,15 +51,11 @@ function Cart() {
                       />
                     </h2>
                     <p>
-                      <button
-                        onClick={() => Dispatch(HandleDecrement(data._id))}
-                      >
+                      <button onClick={() => HandleDecrementProduct(data._id)}>
                         -
                       </button>
                       {data.Count}
-                      <button
-                        onClick={() => Dispatch(HandleIncrement(data._id))}
-                      >
+                      <button onClick={() => HandleIncrementProduct(data._id)}>
                         +
                       </button>
                     </p>

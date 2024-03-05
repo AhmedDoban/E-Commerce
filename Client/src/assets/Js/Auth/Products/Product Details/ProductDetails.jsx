@@ -13,6 +13,8 @@ import "swiper/css/scrollbar";
 import { useDispatch, useSelector } from "react-redux";
 import {
   GetProduct,
+  HandleDecrementSingleProduct,
+  HandleIncrementSingleProduct,
   HandleIsInCart,
 } from "../../../Toolkit/Slice/SingleProductSlice";
 import { Player } from "@lottiefiles/react-lottie-player";
@@ -21,6 +23,9 @@ import {
   AddProduct,
   DeleteProduct,
   HandleAddProduct,
+  HandleDecrement,
+  HandleIncrement,
+  UpdateCount,
 } from "../../../Toolkit/Slice/CartSlice";
 import Rate from "../../../Components/Rate/Rate";
 
@@ -36,13 +41,17 @@ function ProductDetails() {
 
   const [color, SetColor] = useState("red");
   const [SlideProgress, SetSlideProgress] = useState(1);
-  const [Counter, SetCounter] = useState(0);
 
-  const HandleDecrement = (index) => {
-    SetCounter(Counter > 0 ? Counter - 1 : 0);
+  const Decrement = () => {
+    Dispatch(UpdateCount({ _id: Product._id, type: "REMOVE" }));
+    Dispatch(HandleDecrementSingleProduct());
+    Dispatch(HandleDecrement(Product._id));
   };
-  const HandleIncrement = (index) => {
-    SetCounter(Counter + 1);
+
+  const Increment = () => {
+    Dispatch(UpdateCount({ _id: Product._id, type: "ADD" }));
+    Dispatch(HandleIncrementSingleProduct());
+    Dispatch(HandleIncrement(Product._id));
   };
 
   const GetPrice = () => {
@@ -173,14 +182,14 @@ function ProductDetails() {
                     <div className="counter-items">
                       <div className="counter">
                         <button
-                          onClick={() => HandleDecrement(Product.id)}
+                          onClick={() => Decrement(Product.id)}
                           className="btnStyle"
                         >
                           -
                         </button>
-                        {Counter}
+                        {Product.CountInCart}
                         <button
-                          onClick={() => HandleIncrement(Product.id)}
+                          onClick={() => Increment(Product.id)}
                           className="btnStyle"
                         >
                           +

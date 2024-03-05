@@ -64,6 +64,30 @@ export const DeleteProduct = createAsyncThunk(
   }
 );
 
+// update single product in cart
+export const UpdateCount = createAsyncThunk("UpdateCount", async (action) => {
+  const { _id, Token } = JSON.parse(localStorage.getItem("Token"));
+  const Data = await axios
+    .post(
+      `${process.env.REACT_APP_API_URL}/Cart/UpdateCount?type=${action.type}`,
+      {
+        User_Id: _id,
+        Product_ID: action._id,
+      },
+      {
+        headers: {
+          Authorization: Token,
+        },
+      }
+    )
+    .then((res) => {
+      if (res.data.Status !== "Success") {
+        Toast_Handelar("info", res.data.message);
+      }
+    });
+  return Data;
+});
+
 // Get all products in Cart
 export const GetCartProducts = createAsyncThunk("GetCartProducts", async () => {
   const { _id, Token } = JSON.parse(localStorage.getItem("Token"));

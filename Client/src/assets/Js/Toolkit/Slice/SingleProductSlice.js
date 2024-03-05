@@ -49,6 +49,22 @@ const SingleProductSlice = createSlice({
       };
       State.Product = NewProductState;
     },
+    HandleIncrementSingleProduct: (State, action) => {
+      let NewProductState = { ...State.Product };
+      NewProductState = {
+        ...NewProductState,
+        CountInCart: NewProductState.CountInCart + 1,
+      };
+      State.Product = NewProductState;
+    },
+    HandleDecrementSingleProduct: (State, action) => {
+      let NewProductState = { ...State.Product };
+      NewProductState = {
+        ...NewProductState,
+        CountInCart: NewProductState.CountInCart - 1,
+      };
+      State.Product = NewProductState;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(GetProduct.pending, (State, Action) => {
@@ -86,6 +102,10 @@ const SingleProductSlice = createSlice({
   },
 });
 
-export const { HandleIsInCart } = SingleProductSlice.actions;
+export const {
+  HandleIsInCart,
+  HandleIncrementSingleProduct,
+  HandleDecrementSingleProduct,
+} = SingleProductSlice.actions;
 
 export default SingleProductSlice.reducer;

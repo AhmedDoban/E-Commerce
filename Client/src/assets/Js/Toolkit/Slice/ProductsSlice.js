@@ -58,7 +58,6 @@ const Products_Slice = createSlice({
   reducers: {
     HandelFilter: (State, action) => {
       State.Filter = action.payload;
-      console.log(action.payload);
     },
     ResetCurrentPage: (State, action) => {
       State.CurentPage = 1;
@@ -96,7 +95,6 @@ const Products_Slice = createSlice({
     });
     builder.addCase(Get_All_Products.fulfilled, (State, action) => {
       State.Loading = false;
-      console.log(action.payload);
       if (action.payload.Status === "Faild") {
         return;
       } else {

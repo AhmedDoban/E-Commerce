@@ -30,5 +30,14 @@ Router.route("/Delete").post(
   ],
   Cart_Controllers.Delete_from_Cart
 );
+// Routes Handelar /API/Cart/UpdateCount?type= ( ADD || Remove )
+Router.route("/UpdateCount").post(
+  JWT.Verify_Token,
+  [
+    body("User_Id").notEmpty().withMessage("User Id is not Valid"),
+    body("Product_ID").notEmpty().withMessage("Product_ID is not Valid"),
+  ],
+  Cart_Controllers.Update_Count
+);
 
 export default Router;

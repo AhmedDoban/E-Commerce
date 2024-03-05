@@ -14,7 +14,7 @@ const Get_All = async (Req, Res) => {
     return Res.json({
       Status: Codes.FAILD,
       Status_Code: Codes.FAILD_CODE,
-      message: "Can't login please Try again later",
+      message: "Can't get All products please Try again later",
       Data: Errors.array().map((arr) => arr.msg),
     });
   }
@@ -68,7 +68,7 @@ const Add_To_Cart = async (Req, Res) => {
     return Res.json({
       Status: Codes.FAILD,
       Status_Code: Codes.FAILD_CODE,
-      message: "Can't login please Try again later",
+      message: "Can't Add to cart please Try again later",
       Data: Errors.array().map((arr) => arr.msg),
     });
   }
@@ -110,7 +110,7 @@ const Delete_from_Cart = async (Req, Res) => {
     return Res.json({
       Status: Codes.FAILD,
       Status_Code: Codes.FAILD_CODE,
-      message: "Can't login please Try again later",
+      message: "Can't Delete please Try again later",
       Data: Errors.array().map((arr) => arr.msg),
     });
   }
@@ -142,8 +142,48 @@ const Delete_from_Cart = async (Req, Res) => {
   }
 };
 
+// update count
+const Update_Count = async (Req, Res) => {
+  const type = Req.query.type == "ADD" ? 1 : -1;
+  const { User_Id, Product_ID } = Req.body;
+  // Body Validation Before Searching in the database to increase performance
+  const Errors = validationResult(Req);
+  if (!Errors.isEmpty()) {
+    return Res.json({
+      Status: Codes.FAILD,
+      Status_Code: Codes.FAILD_CODE,
+      message: "Can't update please Try again later",
+      Data: Errors.array().map((arr) => arr.msg),
+    });
+  }
+  try {
+    const Find_Product = await Cart_Model.findOne({ User_Id, Product_ID });
+    if ((Find_Product.Count >= 1 && type == 1) || Find_Product.Count > 1) {
+      await Cart_Model.updateOne(
+        { User_Id, Product_ID },
+        { $inc: { Count: type } }
+      );
+    } else {
+      await Cart_Model.updateOne({ User_Id, Product_ID }, { Count: 1 });
+    }
+    Res.json({
+      Status: Codes.SUCCESS,
+      Status_Code: Codes.SUCCESS_CODE,
+      message: "product updated !",
+      Data: Find_Product,
+    });
+  } catch (err) {
+    Res.json({
+      Status: Codes.FAILD,
+      Status_Code: Codes.FAILD_CODE,
+      message: "product can't be updated !",
+    });
+  }
+};
+
 export default {
   Add_To_Cart,
   Get_All,
   Delete_from_Cart,
+  Update_Count,
 };

@@ -122,6 +122,7 @@ const Get_Product = async (Req, Res) => {
     });
     let Values = [];
     await Cart.map((ele) => Values.push(ele.Product_ID.toString()));
+    let CountProduct = await Cart.filter((ele) => ele.Product_ID == _id)[0];
 
     Res.json({
       Status: Codes.SUCCESS,
@@ -130,6 +131,7 @@ const Get_Product = async (Req, Res) => {
         ...Product._doc,
         IsinCart: Values.includes(Product._id.toString()) ? true : false,
         User_Rate: Rate === null ? 0 : Rate.Rate,
+        CountInCart: CountProduct.Count,
       },
     });
   } catch (err) {

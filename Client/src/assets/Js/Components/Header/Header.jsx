@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Header.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Handle_Logout } from "../../Toolkit/Slice/UserSlice";
-import { HandelFilter } from "../../Toolkit/Slice/ProductsSlice";
+import {
+  Get_All_Products,
+  HandelFilter,
+  ResetCurrentPage,
+} from "../../Toolkit/Slice/ProductsSlice";
 
 function Header() {
   const User = useSelector((state) => state.User.user);
   const CartCount = useSelector((state) => state.Cart.Cart);
   const Search = useSelector((state) => state.Products.Filter.Search);
+  const Navigate = useNavigate();
 
   const [Category, SetCategory] = useState(false);
   const [Togle, SetTogle] = useState(false);
@@ -18,6 +23,12 @@ function Header() {
 
   const HandleLogout = () => {
     Dispatch(Handle_Logout());
+  };
+
+  const HandleSearch = () => {
+    Dispatch(ResetCurrentPage());
+    Dispatch(Get_All_Products());
+    Navigate("/Products");
   };
 
   useEffect(() => {
@@ -227,7 +238,10 @@ function Header() {
               value={SearchInput}
               onChange={(e) => SetSearchInput(e.target.value)}
             />
-            <i className="fa-solid fa-magnifying-glass"></i>
+            <i
+              className="fa-solid fa-magnifying-glass"
+              onClick={() => HandleSearch()}
+            ></i>
           </div>
           <div className="content actions_links">
             <Link to="/Profile">

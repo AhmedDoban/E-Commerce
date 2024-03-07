@@ -33,6 +33,39 @@ export const Login_Local_Thunk = createAsyncThunk(
   }
 );
 
+export const Change_User_Avatar = createAsyncThunk(
+  "Change_User_Avatar",
+  async (ImageFile) => {
+    const { Token, _id } = JSON.parse(localStorage.getItem("Token"));
+    try {
+      await axios
+        .post(
+          `${process.env.REACT_APP_API_URL}/Users/Setting/Upload_Avatar`,
+          {
+            User_id: _id,
+            Token: Token,
+            Avatar: ImageFile,
+          },
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: Token,
+            },
+          }
+        )
+        .then((res) => {
+          if (res.data.Status === "Faild") {
+            Toast_Handelar("error", res.data.message);
+          } else {
+            Toast_Handelar("success", res.data.message);
+          }
+        });
+    } catch (err) {
+      Toast_Handelar("error", "Something happens wrong !");
+    }
+  }
+);
+
 const UserSlice = createSlice({
   name: "User",
   initialState: {

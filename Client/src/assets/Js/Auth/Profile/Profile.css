@@ -1,0 +1,146 @@
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Profile 
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.profile {
+  position: relative;
+  padding-top: var(--main-padding-top);
+  padding-bottom: var(--main-padding-bottom);
+}
+.profile .container {
+  position: relative;
+  display: flex;
+  gap: 10px;
+}
+@media (max-width: 992px) {
+  .profile .container {
+    flex-direction: column;
+  }
+}
+.profile .buttonStyle {
+  position: relative;
+  min-width: 250px;
+  max-width: 100%;
+  height: 100%;
+  padding: 7px;
+  border: 0;
+  border-radius: 0.5em;
+  cursor: pointer;
+  transition: var(--main-transition);
+  background-color: var(--white-alt-1);
+  color: var(--main-color);
+}
+.profile .buttonStyle:hover {
+  background-color: var(--main-color);
+  color: var(--white-alt-1);
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Profile left
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.profile .left {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 350px;
+  max-width: 100%;
+  padding: 10px;
+  border: 2px solid var(--white-alt-1);
+  height: fit-content;
+  transition: var(--main-transition);
+}
+.profile .left .imgHandler label {
+  position: relative;
+  cursor: pointer;
+}
+.profile .left .imgHandler label::before {
+  position: absolute;
+  content: "Upload";
+  width: 350px;
+  height: 350px;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white-alt-1);
+  color: var(--main-color);
+  font-weight: bold;
+  z-index: 1;
+  opacity: 0;
+  transition: var(--main-transition);
+}
+.profile .left .imgHandler label:hover:before {
+  opacity: 0.7;
+}
+
+.profile .left img {
+  position: relative;
+  width: 350px;
+  height: 350px;
+  max-width: 100%;
+  transition: var(--main-transition);
+  object-fit: cover;
+}
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# Profile right
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.profile .right {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.profile .container .right .StyleBoxProfile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: var(--main-transition);
+}
+.profile .container .right .StyleBoxProfile .box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+@media (max-width: 772px) {
+  .profile .container .right .StyleBoxProfile .box {
+    flex-direction: column;
+  }
+}
+.profile .container .right .StyleBoxProfile .card-input {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
+}
+.profile .container .right .StyleBoxProfile .card-input input {
+  padding: 8px;
+  border: 2px solid var(--white-alt-1);
+  border-radius: calc(var(--main-border-radius) / 2);
+  transition: var(--main-transition);
+}
+.profile .container .right .StyleBoxProfile .card-input input::placeholder {
+  color: var(--white-alt-2);
+}
+.profile .container .right .StyleBoxProfile .card-input input:focus {
+  outline: 0;
+  border: 2px solid #0075ff;
+}
+.profile
+  .container
+  .right
+  .StyleBoxProfile
+  .card-input
+  input:focus::placeholder {
+  opacity: 0;
+  transition: var(--main-transition);
+}
+.profile .container .right .StyleBoxProfile .card-input label {
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}

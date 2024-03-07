@@ -72,7 +72,6 @@ const SingleProductSlice = createSlice({
     });
     builder.addCase(GetProduct.fulfilled, (State, Action) => {
       State.loading = false;
-      console.log(Action.payload);
       State.Product = Action.payload.Data;
     });
     builder.addCase(GetProduct.rejected, (State, Action) => {

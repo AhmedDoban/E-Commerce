@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from "react";
 import { Outlet, Route, Routes } from "react-router-dom";
 import Loading from "./../Components/Loading/Loading";
+import Profile from "./Profile/Profile";
 // Home Page
 const Home = lazy(() => import("../Auth/Home/Home"));
 // Delivery Page
@@ -30,6 +31,7 @@ function Auth(props) {
                   <Route path=":productId" element={<ProductDetails />} />
                 </Route>
                 <Route path="/Delivery" element={<Delivery />} />
+                <Route path="/Profile" element={<Profile />} />
               </Route>
               {/******************************* Cart *****************************************/}
               <Route path="/Cart" element={<Cart />} />

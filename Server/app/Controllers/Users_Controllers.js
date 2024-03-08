@@ -4,6 +4,8 @@ import { validationResult } from "express-validator";
 import bcrypt from "bcrypt";
 import Codes from "../utils/Codes.js";
 import JWT from "../Utils/JWT.js";
+import fs from "fs";
+import mongoose from "mongoose";
 
 // login user authentication
 const User_Login = async (Req, Res) => {
@@ -166,8 +168,61 @@ const User_Register = async (Req, Res) => {
   }
 };
 
+// change user avatar
+const Update_Avatar = async (Req, Res) => {
+  const { _id, Token } = Req.body;
+  // Body Validation Before Searching in the database to increase performance
+  const Errors = validationResult(Req);
+  if (!Errors.isEmpty()) {
+    return Res.json({
+      Status: Codes.FAILD,
+      Status_Code: Codes.FAILD_CODE,
+      message: "Some data that was supposed to be sent is missing !",
+      Data: Errors.array().map((arr) => arr.msg),
+    });
+  }
+  try {
+    const User = await Users_Model.findOne({ _id, Token });
+    if (User !== null) {
+      const { Avatar } = User;
+      if (!Avatar.includes("Uploads/avatar.jpg")) {
+        const Link = Avatar.split("http://localhost:3001/")[1];
+        await fs.unlinkSync(Link);
+      }
+      // update the user data
+      await Users_Model.updateOne(
+        { _id: _id, Token: Token },
+        {
+          $set: {
+            Avatar: `http://localhost:3001/Uploads/Avatars/${Req.file.filename}`,
+          },
+        }
+      );
+      await Res.json({
+        Status: Codes.SUCCESS,
+        Status_Code: Codes.SUCCESS_CODE,
+        message: "Avatar Updated !",
+      });
+    } else {
+      return Res.json({
+        Status: Codes.FAILD,
+        Status_Code: Codes.FAILD_CODE,
+        message: "User Not Founded !",
+      });
+    }
+  } catch (err) {
+    // Error in serching handelar
+    return Res.json({
+      Status: Codes.FAILD,
+      Status_Code: Codes.FAILD_CODE,
+      message: "Sorry Something went wrong please try again later !",
+    });
+  }
+};
+
 export default {
   User_Login,
   User_Register,
   Get_Specific_User,
+  Update_Avatar,
 };

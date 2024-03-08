@@ -13,7 +13,7 @@ const Storage = multer.diskStorage({
   },
 });
 
-const FileFilter = (Req, File, Callback) => {
+const FileFilter = (Req, File, cb) => {
   const TYPE = File.mimetype.split("/")[0];
   if (TYPE === "image") {
     cb(null, true);

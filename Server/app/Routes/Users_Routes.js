@@ -3,6 +3,7 @@ import express from "express";
 import Users_controllers from "../Controllers/Users_controllers.js";
 import { body } from "express-validator";
 import JWT from "../Utils/JWT.js";
+import upload_Avatar from "../Multer/Multer_Avatars.js";
 
 const Router = express.Router();
 
@@ -32,6 +33,17 @@ Router.route("/Register").post(
       .withMessage("Password is not Valid"),
   ],
   Users_controllers.User_Register
+);
+
+// Routes Handelar /API/Users/Setting/Upload_Avatar
+Router.route("/Setting/Upload_Avatar").post(
+  JWT.Verify_Token,
+  upload_Avatar.single("Avatar"),
+  [
+    body("_id").notEmpty().withMessage("_id is not Valid"),
+    body("Token").notEmpty().withMessage("Token is not Valid"),
+  ],
+  Users_controllers.Update_Avatar
 );
 
 // Routes Handelar /API/Users/ID

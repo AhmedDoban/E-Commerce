@@ -42,7 +42,7 @@ export const Change_User_Avatar = createAsyncThunk(
         .post(
           `${process.env.REACT_APP_API_URL}/Users/Setting/Upload_Avatar`,
           {
-            User_id: _id,
+            _id: _id,
             Token: Token,
             Avatar: ImageFile,
           },
@@ -74,6 +74,10 @@ const UserSlice = createSlice({
     Token: "",
     IsLogin: false,
     RememberMe: false,
+    changeAvatar: {
+      status: false,
+      path: "",
+    },
   },
   reducers: {
     Handle_RemmberMe: (State, action) => {
@@ -107,6 +111,16 @@ const UserSlice = createSlice({
       State.Token = "";
       sessionStorage.clear();
       localStorage.clear();
+    },
+    ChangeStatus: (State, action) => {
+      State.changeAvatar.status = action.payload;
+    },
+    HandleChandeAvatar: (State, action) => {
+      if (State.changeAvatar.status) {
+        State.changeAvatar.path = action.payload;
+      } else {
+        State.user.Avatar = action.payload;
+      }
     },
   },
   extraReducers: (builder) => {
@@ -166,7 +180,12 @@ const UserSlice = createSlice({
   },
 });
 
-export const { Login_Local, Handle_RemmberMe, Handle_Logout } =
-  UserSlice.actions;
+export const {
+  Login_Local,
+  Handle_RemmberMe,
+  Handle_Logout,
+  ChangeStatus,
+  HandleChandeAvatar,
+} = UserSlice.actions;
 
 export default UserSlice.reducer;

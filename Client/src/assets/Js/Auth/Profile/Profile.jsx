@@ -2,15 +2,19 @@ import React, { useEffect, useState } from "react";
 import Header from "../../Components/Header/Header";
 import Toast_Handelar from "../../Components/Toast_Handelar";
 import { useDispatch, useSelector } from "react-redux";
-import { Change_User_Avatar } from "../../Toolkit/Slice/UserSlice";
+import {
+  ChangeStatus,
+  Change_User_Avatar,
+  HandleChandeAvatar,
+} from "../../Toolkit/Slice/UserSlice";
 import "./Profile.css";
 import Footer from "../../Components/Footer/Footer";
 
 function Profile() {
   const UserData = useSelector((User) => User.User.user);
+  const ChangedAvatar = useSelector((user) => user.User.changeAvatar);
   const [USER, Setuser] = useState({});
   const [ImageFile, SetImageFile] = useState(null);
-  const [NewAvatarUrl, SetNewAvatarUrl] = useState(false);
   const Dispatch = useDispatch();
   const [NewPassword, SetNewPassword] = useState({
     OldPassword: "",
@@ -42,11 +46,19 @@ function Profile() {
         Toast_Handelar("error", "File size cannot exceed more than 1MB");
       } else {
         SetImageFile(File);
-        SetNewAvatarUrl(URL.createObjectURL(File));
+        Dispatch(ChangeStatus(true));
+        Dispatch(HandleChandeAvatar(URL.createObjectURL(File)));
       }
     } else {
       Toast_Handelar("error", "File Must be an image !");
     }
+  };
+
+  const HandeAvatarGlobal = () => {
+    Dispatch(Change_User_Avatar(ImageFile));
+    Dispatch(ChangeStatus(false));
+    Dispatch(HandleChandeAvatar(URL.createObjectURL(ImageFile)));
+
   };
 
   // Handel Change password inputs
@@ -75,14 +87,16 @@ function Profile() {
               />
               <label htmlFor="UserImage">
                 <img
-                  src={NewAvatarUrl ? NewAvatarUrl : UserData.Avatar}
+                  src={
+                    ChangedAvatar.status ? ChangedAvatar.path : UserData.Avatar
+                  }
                   alt="User"
                 />
               </label>
             </div>
-            {NewAvatarUrl && (
+            {ChangedAvatar.status && (
               <button
-                onClick={() => Dispatch(Change_User_Avatar(ImageFile))}
+                onClick={() => HandeAvatarGlobal()}
                 className="buttonStyle"
               >
                 Update

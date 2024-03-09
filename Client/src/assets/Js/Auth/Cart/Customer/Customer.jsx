@@ -57,7 +57,7 @@ function Customer() {
             </h2>
             <p>
               {USER.Address?.location.trim() !== ""
-                ? USER.Address?.location - USER.Address?.City
+                ? `${USER.Address?.location} - ${USER.Address?.City}`
                 : "Address is required*"}
             </p>
             <p>

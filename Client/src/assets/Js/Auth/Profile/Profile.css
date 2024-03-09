@@ -117,6 +117,43 @@
   width: 100%;
   gap: 5px;
 }
+.profile .container .right .StyleBoxProfile .card-input .react-tel-input {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.profile
+  .container
+  .right
+  .StyleBoxProfile
+  .card-input
+  .react-tel-input
+  .form-control {
+  padding-left: 48px;
+  width: 100%;
+}
+.profile
+  .container
+  .right
+  .StyleBoxProfile
+  .card-input
+  .react-tel-input
+  .flag-dropdown {
+  border: 2px solid var(--white-alt-1);
+  transition: var(--main-transition);
+}
+.profile
+  .container
+  .right
+  .StyleBoxProfile
+  .card-input
+  .react-tel-input
+  .form-control:focus
+  + .flag-dropdown {
+  border: 2px solid #0075ff;
+  border-right: 2px solid var(--white-alt-1);
+}
 .profile .container .right .StyleBoxProfile .card-input input {
   padding: 8px;
   border: 2px solid var(--white-alt-1);
@@ -129,6 +166,13 @@
 .profile .container .right .StyleBoxProfile .card-input input:focus {
   outline: 0;
   border: 2px solid #0075ff;
+}
+.profile .container .right .StyleBoxProfile .card-input input.Error {
+  border: 2px solid rgb(233, 195, 195);
+}
+.profile .container .right .StyleBoxProfile .card-input input.Error:focus {
+  outline: 0;
+  border: 2px solid #ff1e00;
 }
 .profile
   .container
@@ -143,4 +187,13 @@
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.profile .container .right .StyleBoxProfile .card-input label .errors {
+  font-weight: 400;
+  font-size: 14px;
+  color: red;
+  padding-left: 5px;
 }

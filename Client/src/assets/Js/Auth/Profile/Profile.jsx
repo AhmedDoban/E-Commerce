@@ -2,10 +2,15 @@ import React, { useEffect, useState } from "react";
 import Header from "../../Components/Header/Header";
 import Toast_Handelar from "../../Components/Toast_Handelar";
 import { useDispatch, useSelector } from "react-redux";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+
 import {
   ChangeStatus,
   Change_User_Avatar,
   HandleChandeAvatar,
+  UpdateLocalData,
+  UpdateUserChanges,
 } from "../../Toolkit/Slice/UserSlice";
 import "./Profile.css";
 import Footer from "../../Components/Footer/Footer";
@@ -13,6 +18,8 @@ import Footer from "../../Components/Footer/Footer";
 function Profile() {
   const UserData = useSelector((User) => User.User.user);
   const ChangedAvatar = useSelector((user) => user.User.changeAvatar);
+  const Errors = useSelector((data) => data.User.UpdateErrors);
+
   const [USER, Setuser] = useState({});
   const [ImageFile, SetImageFile] = useState(null);
   const Dispatch = useDispatch();
@@ -22,9 +29,51 @@ function Profile() {
     ReNewPassword: "",
   });
 
+  const handleNotNull = () => {
+    const { FirstName, LastName, Mobile, email } = USER;
+    if (
+      [
+        FirstName,
+        LastName,
+        Mobile,
+        email,
+        USER.Address?.City,
+        USER.Address?.ZipCode,
+        USER.Address?.location,
+      ].includes(null) ||
+      [
+        FirstName,
+        LastName,
+        Mobile,
+        email,
+        USER.Address?.City,
+        USER.Address?.ZipCode,
+        USER.Address?.location,
+      ].includes("")
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  // update user data from API
+  const Update_Changes = () => {
+    if (handleNotNull()) {
+      Toast_Handelar("error", "Some fields must be filled !");
+      return;
+    }
+    Dispatch(UpdateUserChanges(USER));
+    Dispatch(UpdateLocalData(USER));
+  };
+
   const HandleChangeInput = (e) => {
     const { name, value } = e.target;
     Setuser({ ...USER, [name]: value });
+  };
+
+  const HandleChangePhoneNumber = (e) => {
+    Setuser({ ...USER, Mobile: e });
   };
 
   const HandleChangeAddress = (e) => {
@@ -58,7 +107,6 @@ function Profile() {
     Dispatch(Change_User_Avatar(ImageFile));
     Dispatch(ChangeStatus(false));
     Dispatch(HandleChandeAvatar(URL.createObjectURL(ImageFile)));
-
   };
 
   // Handel Change password inputs
@@ -107,8 +155,14 @@ function Profile() {
             <div className="StyleBoxProfile BasicUserInfo">
               <div className="box">
                 <div className="card-input">
-                  <label htmlFor="FirstName">First Name *</label>
+                  <label htmlFor="FirstName">
+                    First Name *
+                    {Errors.includes("FirstName") && (
+                      <span className="errors">First Name is required !</span>
+                    )}
+                  </label>
                   <input
+                    className={Errors.includes("FirstName") ? "Error" : ""}
                     type="text"
                     name="FirstName"
                     id="FirstName"
@@ -118,8 +172,14 @@ function Profile() {
                   />
                 </div>
                 <div className="card-input">
-                  <label htmlFor="LastName">Last Name *</label>
+                  <label htmlFor="LastName">
+                    Last Name *
+                    {Errors.includes("LastName") && (
+                      <span className="errors">Last Name is required !</span>
+                    )}
+                  </label>
                   <input
+                    className={Errors.includes("LastName") ? "Error" : ""}
                     type="text"
                     name="LastName"
                     id="LastName"
@@ -130,8 +190,14 @@ function Profile() {
                 </div>
               </div>
               <div className="card-input">
-                <label htmlFor="location">Address *</label>
+                <label htmlFor="location">
+                  Address *
+                  {Errors.includes("location") && (
+                    <span className="errors">Location is required !</span>
+                  )}
+                </label>
                 <input
+                  className={Errors.includes("location") ? "Error" : ""}
                   type="text"
                   name="location"
                   id="location"
@@ -142,8 +208,14 @@ function Profile() {
               </div>
               <div className="box">
                 <div className="card-input">
-                  <label htmlFor="City">City / Town *</label>
+                  <label htmlFor="City">
+                    City / Town *
+                    {Errors.includes("City") && (
+                      <span className="errors">City is required !</span>
+                    )}
+                  </label>
                   <input
+                    className={Errors.includes("City") ? "Error" : ""}
                     type="text"
                     name="City"
                     id="City"
@@ -153,32 +225,51 @@ function Profile() {
                   />
                 </div>
                 <div className="card-input">
-                  <label htmlFor="ZipCode">Zip Code *</label>
+                  <label htmlFor="ZipCode">
+                    Zip Code *
+                    {Errors.includes("ZipCode") && (
+                      <span className="errors">must be from 5-10 numbers</span>
+                    )}
+                  </label>
                   <input
+                    className={Errors.includes("ZipCode") ? "Error" : ""}
                     type="text"
                     name="ZipCode"
                     id="ZipCode"
                     placeholder="Zip Code"
                     value={USER.Address?.ZipCode}
                     onChange={(e) => HandleChangeAddress(e)}
+                    maxlength="10"
+                    pattern="[0-9]{10}"
                   />
                 </div>
               </div>
               <div className="box">
                 <div className="card-input">
-                  <label htmlFor="Mobile">Mobile *</label>
-                  <input
-                    type="text"
-                    name="Mobile"
-                    id="Mobile"
-                    placeholder="Mobile"
-                    value={USER.Mobile}
-                    onChange={(e) => HandleChangeInput(e)}
+                  <label htmlFor="Mobile">
+                    Mobile *
+                    {Errors.includes("Mobile") && (
+                      <span className="errors">must be 11 numbers</span>
+                    )}
+                  </label>
+
+                  <PhoneInput
+                    className={Errors.includes("Mobile") ? "Error" : ""}
+                    value={`${USER.Mobile}`}
+                    onChange={(e) => HandleChangePhoneNumber(e)}
                   />
                 </div>
                 <div className="card-input">
-                  <label htmlFor="email">Email *</label>
+                  <label htmlFor="email">
+                    Email *
+                    {Errors.includes("email") && (
+                      <span className="errors">
+                        email is required and you can't change it
+                      </span>
+                    )}
+                  </label>
                   <input
+                    className={Errors.includes("email") ? "Error" : ""}
                     type="email"
                     name="email"
                     id="email"
@@ -188,7 +279,9 @@ function Profile() {
                   />
                 </div>
               </div>
-              <button className="buttonStyle">Save Changes</button>
+              <button className="buttonStyle" onClick={() => Update_Changes()}>
+                Save Changes
+              </button>
             </div>
             <div className="StyleBoxProfile ChangePassword">
               <div className="card-input">

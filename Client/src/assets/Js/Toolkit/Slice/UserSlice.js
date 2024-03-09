@@ -66,6 +66,37 @@ export const Change_User_Avatar = createAsyncThunk(
   }
 );
 
+export const UpdateUserChanges = createAsyncThunk(
+  "UpdateUserChanges",
+  async (USER) => {
+    const { Token, _id } = JSON.parse(localStorage.getItem("Token"));
+    try {
+      const Data = await axios.post(
+        `${process.env.REACT_APP_API_URL}/Users/Setting/Upload_Changes`,
+        {
+          _id: _id,
+          Token: Token,
+          email: USER.email,
+          Mobile: USER.Mobile,
+          LastName: USER.LastName,
+          FirstName: USER.FirstName,
+          City: USER.Address?.City,
+          ZipCode: USER.Address?.ZipCode,
+          location: USER.Address?.location,
+        },
+        {
+          headers: {
+            Authorization: Token,
+          },
+        }
+      );
+      return Data.data;
+    } catch (err) {
+      Toast_Handelar("error", "Something happens wrong !");
+    }
+  }
+);
+
 const UserSlice = createSlice({
   name: "User",
   initialState: {
@@ -78,6 +109,7 @@ const UserSlice = createSlice({
       status: false,
       path: "",
     },
+    UpdateErrors: [],
   },
   reducers: {
     Handle_RemmberMe: (State, action) => {
@@ -121,6 +153,9 @@ const UserSlice = createSlice({
       } else {
         State.user.Avatar = action.payload;
       }
+    },
+    UpdateLocalData: (State, action) => {
+      State.user = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -177,6 +212,15 @@ const UserSlice = createSlice({
     builder.addCase(Login_Local_Thunk.rejected, (State, action) => {
       State.loading = true;
     });
+    builder.addCase(UpdateUserChanges.fulfilled, (State, action) => {
+      if (action.payload.Status === "Faild") {
+        State.UpdateErrors = action.payload.data;
+        Toast_Handelar("error", action.payload.message);
+      } else {
+        Toast_Handelar("success", action.payload.message);
+        State.UpdateErrors = [];
+      }
+    });
   },
 });
 
@@ -186,6 +230,7 @@ export const {
   Handle_Logout,
   ChangeStatus,
   HandleChandeAvatar,
+  UpdateLocalData,
 } = UserSlice.actions;
 
 export default UserSlice.reducer;

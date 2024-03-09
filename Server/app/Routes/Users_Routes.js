@@ -46,6 +46,28 @@ Router.route("/Setting/Upload_Avatar").post(
   Users_controllers.Update_Avatar
 );
 
+// Routes Handelar /API/Users/Setting/Upload_Changes
+Router.route("/Setting/Upload_Changes").post(
+  JWT.Verify_Token,
+  [
+    body("_id").notEmpty().withMessage("_id is not Valid"),
+    body("Token").notEmpty().withMessage("Token is not Valid"),
+    body("email")
+      .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/gi)
+      .withMessage("email is not Valid"),
+    body("Mobile").notEmpty().withMessage("Mobile is not Valid"),
+    body("LastName").notEmpty().withMessage("LastName is not Valid"),
+    body("FirstName").notEmpty().withMessage("FirstName is not Valid"),
+    body("City").notEmpty().withMessage("City is not Valid"),
+    body("ZipCode")
+      .matches(/^\d{5,10}$/gi)
+      .notEmpty()
+      .withMessage("ZipCode is not Valid"),
+    body("location").notEmpty().withMessage("location is not Valid"),
+  ],
+  Users_controllers.Update_User_Data
+);
+
 // Routes Handelar /API/Users/ID
 Router.route("/:User_id").post(
   JWT.Verify_Token,

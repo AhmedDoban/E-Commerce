@@ -14,7 +14,7 @@ const Users_Model = mongoose.Schema(
       ZipCode: { type: Number, default: "" },
       City: { type: String, default: "" },
     },
-    Mobile: { type: Number, default: "" },
+    Mobile: { type: String, default: "" },
   },
   {
     collection: "Users",

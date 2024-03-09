@@ -220,9 +220,68 @@ const Update_Avatar = async (Req, Res) => {
   }
 };
 
+// update user data
+const Update_User_Data = async (Req, Res) => {
+  const {
+    _id,
+    Token,
+    email,
+    Mobile,
+    LastName,
+    FirstName,
+    City,
+    ZipCode,
+    location,
+  } = Req.body;
+  const Errors = validationResult(Req);
+  // Body Validation Before Searching in the database to increase performance
+  if (!Errors.isEmpty()) {
+    return Res.json({
+      Status: Codes.FAILD,
+      Status_Code: Codes.FAILD_CODE,
+      message: "some data filled Wrong ! check it and try again",
+      data: Errors.array().map((arr) => arr.path),
+    });
+  }
+
+  try {
+    // GEt user Data From the Data Base
+    const USER = await Users_Model.findOne(
+      { _id, Token, LastName, email, FirstName },
+      { password: 0, __v: 0, Role: 0 }
+    );
+    if (USER !== null) {
+      // Update user Data
+      await Users_Model.updateOne(
+        { _id, Token, LastName, email, FirstName },
+        {
+          $set: {
+            FirstName,
+            LastName,
+            Mobile,
+            Address: { City, ZipCode, location },
+          },
+        }
+      );
+      return Res.json({
+        Status: Codes.SUCCESS,
+        Status_Code: Codes.SUCCESS_CODE,
+        message: "User Updated !",
+      });
+    }
+  } catch (err) {
+    Res.json({
+      Status: Codes.FAILD,
+      Status_Code: Codes.FAILD_CODE,
+      message: "User not founded",
+    });
+  }
+};
+
 export default {
   User_Login,
   User_Register,
   Get_Specific_User,
   Update_Avatar,
+  Update_User_Data,
 };

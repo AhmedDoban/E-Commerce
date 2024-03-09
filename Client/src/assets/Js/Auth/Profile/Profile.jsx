@@ -11,6 +11,7 @@ import {
   HandleChandeAvatar,
   UpdateLocalData,
   UpdateUserChanges,
+  UpdateUserPassword,
 } from "../../Toolkit/Slice/UserSlice";
 import "./Profile.css";
 import Footer from "../../Components/Footer/Footer";
@@ -28,7 +29,9 @@ function Profile() {
     NewPassword: "",
     ReNewPassword: "",
   });
+  const [PasswordMatch, SetPasswordMatch] = useState(false);
 
+  // to check all inputs not equal to null or empty before make request
   const handleNotNull = () => {
     const { FirstName, LastName, Mobile, email } = USER;
     if (
@@ -67,6 +70,7 @@ function Profile() {
     Dispatch(UpdateLocalData(USER));
   };
 
+  // to change inputs data with the user value
   const HandleChangeInput = (e) => {
     const { name, value } = e.target;
     Setuser({ ...USER, [name]: value });
@@ -113,6 +117,24 @@ function Profile() {
   const HandleChangePasswordInput = (e) => {
     const { name, value } = e.target;
     SetNewPassword({ ...NewPassword, [name]: value });
+  };
+
+  const HandelChangePassword = () => {
+    const Pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g;
+    if (
+      NewPassword.NewPassword === NewPassword.ReNewPassword &&
+      NewPassword.NewPassword.match(Pattern)
+    ) {
+      SetPasswordMatch(false);
+      Dispatch(
+        UpdateUserPassword({
+          password: NewPassword.OldPassword,
+          NewPassword: NewPassword.NewPassword,
+        })
+      );
+    } else {
+      SetPasswordMatch(true);
+    }
   };
 
   useEffect(() => {
@@ -296,8 +318,14 @@ function Profile() {
                 />
               </div>
               <div className="card-input">
-                <label htmlFor="NewPassword">New Password *</label>
+                <label htmlFor="NewPassword">
+                  New Password *
+                  {PasswordMatch && (
+                    <span className="errors">The password doesn't match</span>
+                  )}
+                </label>
                 <input
+                  className={PasswordMatch ? "Error" : ""}
                   type="text"
                   name="NewPassword"
                   id="NewPassword"
@@ -307,8 +335,14 @@ function Profile() {
                 />
               </div>
               <div className="card-input">
-                <label htmlFor="ReNewPassword">Re-New Password *</label>
+                <label htmlFor="ReNewPassword">
+                  Re-New Password *
+                  {PasswordMatch && (
+                    <span className="errors">The password doesn't match</span>
+                  )}
+                </label>
                 <input
+                  className={PasswordMatch ? "Error" : ""}
                   type="text"
                   name="ReNewPassword"
                   id="ReNewPassword"
@@ -317,7 +351,12 @@ function Profile() {
                   onChange={(e) => HandleChangePasswordInput(e)}
                 />
               </div>
-              <button className="buttonStyle">Change Password</button>
+              <button
+                className="buttonStyle"
+                onClick={() => HandelChangePassword()}
+              >
+                Change Password
+              </button>
             </div>
           </div>
         </div>

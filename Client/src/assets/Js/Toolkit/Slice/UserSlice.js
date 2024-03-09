@@ -97,6 +97,39 @@ export const UpdateUserChanges = createAsyncThunk(
   }
 );
 
+export const UpdateUserPassword = createAsyncThunk(
+  "UpdateUserPassword",
+  async (payload) => {
+    const { Token, _id } = JSON.parse(localStorage.getItem("Token"));
+    try {
+      await axios
+        .post(
+          `${process.env.REACT_APP_API_URL}/Users/Setting/Change_Password`,
+          {
+            _id: _id,
+            Token: Token,
+            NewPassword: payload.NewPassword,
+            password: payload.password,
+          },
+          {
+            headers: {
+              Authorization: Token,
+            },
+          }
+        )
+        .then((res) => {
+          if (res.data.Status === "Faild") {
+            Toast_Handelar("error", res.data.message);
+          } else {
+            Toast_Handelar("success", res.data.message);
+          }
+        });
+    } catch (err) {
+      Toast_Handelar("error", "Something happens wrong !");
+    }
+  }
+);
+
 const UserSlice = createSlice({
   name: "User",
   initialState: {

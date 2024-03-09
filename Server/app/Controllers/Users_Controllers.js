@@ -278,10 +278,61 @@ const Update_User_Data = async (Req, Res) => {
   }
 };
 
+// update user password
+const Update_User_Password = async (Req, Res) => {
+  const { _id, Token, password, NewPassword } = Req.body;
+  const Errors = validationResult(Req);
+  // Body Validation Before Searching in the database to increase performance
+  if (!Errors.isEmpty()) {
+    return Res.json({
+      Status: Codes.FAILD,
+      Status_Code: Codes.FAILD_CODE,
+      message: "Some data that was supposed to be sent is missing !",
+      data: Errors.array().map((arr) => arr.path),
+    });
+  }
+
+  try {
+    // GEt user Data From the Data Base
+    const USER = await Users_Model.findOne({ _id, Token });
+    const UserPassword = await bcrypt.compare(password, USER.password);
+
+    if (USER !== null && UserPassword) {
+      // Update user Data
+      const NewUserPassword = await bcrypt.hash(
+        NewPassword,
+        +process.env.HASH_PASSWORD
+      );
+      await Users_Model.updateOne(
+        { _id, Token },
+        { $set: { password: NewUserPassword } }
+      );
+      return Res.json({
+        Status: Codes.SUCCESS,
+        Status_Code: Codes.SUCCESS_CODE,
+        message: "Password Updated !",
+      });
+    } else {
+      Res.json({
+        Status: Codes.FAILD,
+        Status_Code: Codes.FAILD_CODE,
+        message: "Password is wrong !",
+      });
+    }
+  } catch (err) {
+    Res.json({
+      Status: Codes.FAILD,
+      Status_Code: Codes.FAILD_CODE,
+      message: "User not founded",
+    });
+  }
+};
+
 export default {
   User_Login,
   User_Register,
   Get_Specific_User,
   Update_Avatar,
   Update_User_Data,
+  Update_User_Password,
 };

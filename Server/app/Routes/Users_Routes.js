@@ -14,7 +14,7 @@ Router.route("/Login").post(
       .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/gi)
       .withMessage("Email is not Valid"),
     body("password")
-      .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gi)
+      .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g)
       .withMessage("Password is not Valid"),
   ],
   Users_controllers.User_Login
@@ -29,7 +29,7 @@ Router.route("/Register").post(
       .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/gi)
       .withMessage("Email is not Valid"),
     body("password")
-      .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gi)
+      .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g)
       .withMessage("Password is not Valid"),
   ],
   Users_controllers.User_Register
@@ -66,6 +66,22 @@ Router.route("/Setting/Upload_Changes").post(
     body("location").notEmpty().withMessage("location is not Valid"),
   ],
   Users_controllers.Update_User_Data
+);
+
+// Routes Handelar /API/Users/Setting/Change_Password
+Router.route("/Setting/Change_Password").post(
+  JWT.Verify_Token,
+  [
+    body("_id").notEmpty().withMessage("_id is not Valid"),
+    body("Token").notEmpty().withMessage("Token is not Valid"),
+    body("password")
+      .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g)
+      .withMessage("Password is not Valid"),
+    body("NewPassword")
+      .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g)
+      .withMessage("New Password is not Valid"),
+  ],
+  Users_controllers.Update_User_Password
 );
 
 // Routes Handelar /API/Users/ID

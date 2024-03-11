@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../Components/Header/Header";
 import Toast_Handelar from "../../Components/Toast_Handelar";
+import RecentlyShown from "./RecentlyShown/RecentlyShown";
+import Footer from "../../Components/Footer/Footer";
+
 import { useDispatch, useSelector } from "react-redux";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
@@ -14,7 +17,6 @@ import {
   UpdateUserPassword,
 } from "../../Toolkit/Slice/UserSlice";
 import "./Profile.css";
-import Footer from "../../Components/Footer/Footer";
 
 function Profile() {
   const UserData = useSelector((User) => User.User.user);
@@ -361,6 +363,7 @@ function Profile() {
           </div>
         </div>
       </div>
+      <RecentlyShown />
       <Footer />
     </React.Fragment>
   );

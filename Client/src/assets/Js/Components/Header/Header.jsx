@@ -69,7 +69,7 @@ function Header() {
             </div>
             <div className="DropDown">
               <span>
-                Loaction <i className="fa-solid fa-chevron-down"></i>
+                Location <i className="fa-solid fa-chevron-down"></i>
               </span>
               <ul className="list">
                 <li>UK</li>
@@ -234,7 +234,7 @@ function Header() {
           <div className="content d-none">
             <input
               type="text"
-              placeholder="Search proudact"
+              placeholder="Search prudact"
               value={SearchInput}
               onChange={(e) => SetSearchInput(e.target.value)}
             />

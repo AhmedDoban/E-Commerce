@@ -5,16 +5,8 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 import "./MostSelling.css";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Get_MostSelling_Products,
-  HandleIsInCart,
-} from "../../../Toolkit/Slice/MostSellingSlice";
+import { Get_MostSelling_Products } from "../../../Toolkit/Slice/MostSellingSlice";
 import Card from "../../../Components/Card/Card";
-import {
-  AddProduct,
-  DeleteFromCartSync,
-  DeleteProduct,
-} from "../../../Toolkit/Slice/CartSlice";
 
 function MostSelling() {
   const [SlideProgress, SetSlideProgress] = useState(1);

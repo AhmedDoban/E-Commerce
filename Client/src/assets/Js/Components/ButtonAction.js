@@ -5,6 +5,7 @@ import { HandleRate_IsInCart } from "../Toolkit/Slice/BestRateSlice";
 import { HandleMost_IsInCart } from "../Toolkit/Slice/MostSellingSlice";
 import { HandleTodayIsInCart } from "../Toolkit/Slice/TodayProductsSlice";
 import { HandleWeeklyIsInCart } from "../Toolkit/Slice/WeekProductsSlice";
+import { RecentlyShown_IsInCart } from "../Toolkit/Slice/RecentlyShown";
 import { useDispatch } from "react-redux";
 import {
   AddProduct,
@@ -50,6 +51,12 @@ function ButtonAction(props) {
         IsinCart: ISINCART,
       })
     );
+    Dispatch(
+      RecentlyShown_IsInCart({
+        _id: props._id,
+        IsinCart: ISINCART,
+      })
+    );
   };
 
   const HandelAdd = () => {
@@ -82,6 +89,12 @@ function ButtonAction(props) {
     );
     Dispatch(
       HandleWeeklyIsInCart({
+        _id: props._id,
+        IsinCart: ISINCART,
+      })
+    );
+    Dispatch(
+      RecentlyShown_IsInCart({
         _id: props._id,
         IsinCart: ISINCART,
       })

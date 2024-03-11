@@ -9,7 +9,7 @@ const Router = express.Router();
 // Routes Handelar /API/Products?Page=1&Limit=10
 Router.route("/").post(
   JWT.Verify_Token,
-  [body("_id").notEmpty().withMessage("_id is not Valid")],
+  [body("_id").notEmpty().withMessage("id is not Valid")],
   Products_Controllers.Get_All_Products
 );
 
@@ -31,10 +31,17 @@ Router.route("/Filter").post(
   Products_Controllers.Get_Filter_Products
 );
 
+// Routes Handelar /API/Products/RecentlyShown?Page=1&Limit=10
+Router.route("/RecentlyShown").post(
+  JWT.Verify_Token,
+  [body("_id").notEmpty().withMessage("id is not Valid")],
+  Products_Controllers.Get_RecentlyShown_Products
+);
+
 // Routes Handelar /API/Products/:id
 Router.route("/:id").post(
   JWT.Verify_Token,
-  [body("User_Id").notEmpty().withMessage("_id is not Valid")],
+  [body("User_Id").notEmpty().withMessage("id is not Valid")],
   Products_Controllers.Get_Product
 );
 

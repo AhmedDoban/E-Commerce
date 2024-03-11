@@ -4,6 +4,8 @@ import Products_Model from "../Models/Products_Model.js";
 import Cart_Model from "../Models/Cart_Model.js";
 import Rate_Model from "../Models/Rate_Model.js";
 import Codes from "../utils/Codes.js";
+import Seen_Products from "../Models/Seen_Products.js";
+import mongoose from "mongoose";
 
 // get all products
 const Get_All_Products = async (Req, Res) => {
@@ -107,14 +109,32 @@ const Get_All_Products = async (Req, Res) => {
 const Get_Product = async (Req, Res) => {
   const _id = Req.params.id;
   const { User_Id } = Req.body;
+  const Errors = validationResult(Req);
+  // Body Validation Before Searching in the database to increase performance
+  if (!Errors.isEmpty()) {
+    return Res.json({
+      Status: Codes.FAILD,
+      Status_Code: Codes.FAILD_CODE,
+      message: "Can't Register please Try again later",
+      data: Errors.array().map((arr) => arr.msg),
+    });
+  }
   try {
+    const UserHaveSeenProduct = await Seen_Products.findOne({
+      Product_ID: _id,
+      User_Id: User_Id,
+    });
+    // in case of  user hasn't seen the product
+    if (UserHaveSeenProduct == null) {
+      const NewSeen = new Seen_Products({ Product_ID: _id, User_Id: User_Id });
+      await NewSeen.save();
+      await Products_Model.updateOne(
+        { _id: _id },
+        { $inc: { "rating.N_of_Watches": 1 } }
+      );
+    }
     // GEt Single products From the Data Base
-    const Product = await Products_Model.findOneAndUpdate(
-      { _id: _id },
-      {
-        $inc: { "rating.N_of_Watches": 1 },
-      }
-    );
+    const Product = await Products_Model.findOne({ _id: _id });
     const Cart = await Cart_Model.find({ User_Id: User_Id });
     const Rate = await Rate_Model.findOne({
       User_Id: User_Id,
@@ -244,9 +264,75 @@ const Get_Filter_Products = async (Req, Res) => {
   }
 };
 
+// get Filter Products
+const Get_RecentlyShown_Products = async (Req, Res) => {
+  const { _id } = Req.body;
+  const Page = +Req.query.Page || 1;
+  const Limit = +Req.query.Limit || 10;
+  const Skip = (Page - 1) * Limit;
+
+  const Errors = validationResult(Req);
+  // Body Validation Before Searching in the database to increase performance
+  if (!Errors.isEmpty()) {
+    return Res.json({
+      Status: Codes.FAILD,
+      Status_Code: Codes.FAILD_CODE,
+      message: "Can't Register please Try again later",
+      data: Errors.array().map((arr) => arr.msg),
+    });
+  }
+
+  try {
+    // get user cart
+    const Cart = await Cart_Model.find({ User_Id: _id });
+    let CartProductsID = new Array();
+    await Cart.map((ele) => CartProductsID.push(ele.Product_ID));
+
+    // get user seen products
+    const Data = await Seen_Products.aggregate([
+      { $match: { User_Id: new mongoose.Types.ObjectId(_id) } },
+      {
+        $lookup: {
+          from: "Products",
+          localField: "Product_ID",
+          foreignField: "_id",
+          as: "Product",
+        },
+      },
+      { $unwind: "$Product" },
+      {
+        $replaceRoot: {
+          newRoot: {
+            $mergeObjects: [
+              "$Product",
+              { IsinCart: { $in: ["$Product_ID", CartProductsID] } },
+            ],
+          },
+        },
+      },
+
+      { $skip: Skip },
+      { $limit: Limit },
+    ]);
+
+    Res.json({
+      Status: Codes.SUCCESS,
+      Status_Code: Codes.SUCCESS_CODE,
+      Data: Data,
+    });
+  } catch (err) {
+    Res.json({
+      Status: Codes.FAILD,
+      Status_Code: Codes.FAILD_CODE,
+      message: "Page NOt Found",
+    });
+  }
+};
+
 export default {
   Get_All_Products,
   Get_All_Category,
   Get_Product,
   Get_Filter_Products,
+  Get_RecentlyShown_Products,
 };

@@ -227,8 +227,8 @@ const Get_Filter_Products = async (Req, Res) => {
       },
       { $match: CATEGORY == "" ? {} : { category: CATEGORY } },
       { $match: RATE == 0 ? {} : { "rating.rate": RATE } },
-      { $match: MIN == 0 ? {} : { price: { $gte: MIN } } },
-      { $match: MAX == 0 ? {} : { price: { $lte: MAX } } },
+      { $match: MIN == 0 ? {} : { price: { $gte: +MIN } } },
+      { $match: MAX == 0 ? {} : { price: { $lte: +MAX } } },
       { $skip: Skip },
       { $limit: Limit },
       {
@@ -237,6 +237,7 @@ const Get_Filter_Products = async (Req, Res) => {
         },
       },
     ]);
+
     const ProductsCount = await Products_Model.aggregate([
       {
         $match:
@@ -244,8 +245,8 @@ const Get_Filter_Products = async (Req, Res) => {
       },
       { $match: CATEGORY == "" ? {} : { category: CATEGORY } },
       { $match: RATE == 0 ? {} : { "rating.rate": RATE } },
-      { $match: MIN == 0 ? {} : { price: { $gte: MIN } } },
-      { $match: MAX == 0 ? {} : { price: { $lte: MAX } } },
+      { $match: MIN == 0 ? {} : { price: { $gte: +MIN } } },
+      { $match: MAX == 0 ? {} : { price: { $lte: +MAX } } },
       { $count: "Count" },
     ]);
 

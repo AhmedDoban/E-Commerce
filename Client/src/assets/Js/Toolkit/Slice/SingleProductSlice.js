@@ -59,11 +59,13 @@ const SingleProductSlice = createSlice({
     },
     HandleDecrementSingleProduct: (State, action) => {
       let NewProductState = { ...State.Product };
-      NewProductState = {
-        ...NewProductState,
-        CountInCart: NewProductState.CountInCart - 1,
-      };
-      State.Product = NewProductState;
+      if (NewProductState.CountInCart > 1) {
+        NewProductState = {
+          ...NewProductState,
+          CountInCart: NewProductState.CountInCart - 1,
+        };
+        State.Product = NewProductState;
+      }
     },
   },
   extraReducers: (builder) => {

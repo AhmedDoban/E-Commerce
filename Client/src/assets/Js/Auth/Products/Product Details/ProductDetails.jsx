@@ -50,7 +50,7 @@ function ProductDetails() {
 
   const Increment = () => {
     Dispatch(UpdateCount({ _id: Product._id, type: "ADD" }));
-    Dispatch(HandleIncrementSingleProduct());
+    Dispatch(HandleIncrementSingleProduct(Product._id));
     Dispatch(HandleIncrement(Product._id));
   };
 

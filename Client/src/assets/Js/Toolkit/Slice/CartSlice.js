@@ -129,26 +129,30 @@ const CartSlice = createSlice({
         (product) => product._id == action.payload
       )[0];
 
-      const ProudactId = NewCartState.indexOf(SingleProduct);
+      if (SingleProduct !== undefined) {
+        const ProudactId = NewCartState.indexOf(SingleProduct);
 
-      NewCartState[ProudactId] = {
-        ...NewCartState[ProudactId],
-        Count: NewCartState[ProudactId].Count + 1,
-      };
-      State.Cart = [...NewCartState];
+        NewCartState[ProudactId] = {
+          ...NewCartState[ProudactId],
+          Count: NewCartState[ProudactId].Count + 1,
+        };
+        State.Cart = [...NewCartState];
+      }
     },
     HandleDecrement: (State, action) => {
       const NewCartState = [...State.Cart];
       const SingleProduct = NewCartState.filter(
         (product) => product._id == action.payload
       )[0];
-      const ProudactId = NewCartState.indexOf(SingleProduct);
-      if (NewCartState[ProudactId].Count > 1) {
-        NewCartState[ProudactId] = {
-          ...NewCartState[ProudactId],
-          Count: NewCartState[ProudactId].Count - 1,
-        };
-        State.Cart = [...NewCartState];
+      if (SingleProduct !== undefined) {
+        const ProudactId = NewCartState.indexOf(SingleProduct);
+        if (NewCartState[ProudactId].Count > 1) {
+          NewCartState[ProudactId] = {
+            ...NewCartState[ProudactId],
+            Count: NewCartState[ProudactId].Count - 1,
+          };
+          State.Cart = [...NewCartState];
+        }
       }
     },
     HandleAddProduct: (State, action) => {

@@ -234,7 +234,7 @@ function Header() {
           <div className="content d-none">
             <input
               type="text"
-              placeholder="Search prudact"
+              placeholder="Search Product"
               value={SearchInput}
               onChange={(e) => SetSearchInput(e.target.value)}
             />

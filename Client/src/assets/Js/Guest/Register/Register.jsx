@@ -47,7 +47,7 @@ function Register() {
                   value={User.FirstName}
                   onChange={(e) => HandelChangeInput(e)}
                 />
-                {errors.includes("First Name is Required") && (
+                {errors?.includes("First Name is Required") && (
                   <div className="error">
                     <i className="fa-solid fa-triangle-exclamation"></i>
                     <p className="Message">First Name is Required</p>
@@ -63,7 +63,7 @@ function Register() {
                   value={User.LastName}
                   onChange={(e) => HandelChangeInput(e)}
                 />
-                {errors.includes("Last Name is Required") && (
+                {errors?.includes("Last Name is Required") && (
                   <div className="error">
                     <i className="fa-solid fa-triangle-exclamation"></i>
                     <p className="Message">Last Name is Required</p>
@@ -84,7 +84,7 @@ function Register() {
                 value={User.email}
                 onChange={(e) => HandelChangeInput(e)}
               />
-              {errors.includes("Email is not Valid") && (
+              {errors?.includes("Email is not Valid") && (
                 <div className="error">
                   <i className="fa-solid fa-triangle-exclamation"></i>
                   <p className="Message">Email is not Valid</p>
@@ -115,7 +115,7 @@ function Register() {
                   onClick={() => SetSeePassword(!SeePassword)}
                 />
               </div>
-              {errors.includes("Password is not Valid") && (
+              {errors?.includes("Password is not Valid") && (
                 <div className="error">
                   <i className="fa-solid fa-triangle-exclamation"></i>
                   <p className="Message">Password is not Valid</p>

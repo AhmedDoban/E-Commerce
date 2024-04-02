@@ -2,7 +2,7 @@
 
 <p align="center"><img src="https://github.com/AhmedDoban/E-Commerce/assets/73547094/eb25985d-a7e5-4c73-95cb-f69433d0a6f1"></p>
 
-# 🧐 Key Features
+## 🧐 Key Features
 
 Our e-commerce app offers a range of features to provide users with a seamless shopping experience:
 
@@ -14,41 +14,38 @@ Our e-commerce app offers a range of features to provide users with a seamless s
 - **Product Details Page:** Access comprehensive information about each product, including additional details and the ability to leave ratings and reviews.
 - **Responsive Design:** Our app is designed to be responsive and accessible across various devices, providing a consistent experience for all users.
 
-## 🛠️ 1- Installation Steps
+## 🛠️ Installation Steps
 
-<p>1. Clone the repository</p>
+1. **Clone the repository:**
 
-```
-git clone https://github.com/AhmedDoban/E-Commerce
-```
+   ```bash
+   git clone https://github.com/AhmedDoban/E-Commerce
+   ```
 
-<p>2. install all dependencys</p>
+2. **Install dependencies:**
 
-```
-cd client
-npm i
-cd .. //to back to the main folder
-cd server
-npm i
-```
+   ```bash
+   cd client
+   npm install
+   cd .. # Navigate back to the main directory
+   cd server
+   npm install
+   ```
 
-<p>3. Run the project</p>
-
-```
-cd client
-npm start
-// open new termenal
-cd server
-npm run nodemon // or node index.js
-```
+3. **Run the project:**
+   ```bash
+   cd client
+   npm start
+   # Open a new terminal
+   cd server
+   npm run nodemon # or node index.js
+   ```
 
 ## 🛠️ Set up environment variables
 
-```
- Create a .env file in the server directory.
- Define the following variables :
+Create a `.env` file in the `server` directory and define the following variables:
 
-1- MONGO_DB_URL
-2- JWT_SECRET_KEY
-```
-# 🚀 <a href="https://e-commerce-git-main-ahmeddoban.vercel.app/" > Demo </a>
+- `MONGO_DB_URL`
+- `JWT_SECRET_KEY`
+
+# 🚀 [Demo](https://e-commerce-git-main-ahmeddoban.vercel.app/)
